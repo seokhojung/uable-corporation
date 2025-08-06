@@ -1,0 +1,256 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+  
+  body {
+    @apply text-slate-100 bg-slate-900;
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  }
+  
+  * {
+    @apply border-slate-200;
+  }
+
+  /* The Architect: 정밀한 타이포그래피 */
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-display font-semibold tracking-tight;
+  }
+
+  h1 {
+    @apply text-4xl lg:text-5xl xl:text-6xl;
+  }
+
+  h2 {
+    @apply text-3xl lg:text-4xl;
+  }
+
+  h3 {
+    @apply text-2xl lg:text-3xl;
+  }
+}
+
+@layer components {
+  .container {
+    @apply mx-auto px-4 sm:px-6 lg:px-8 max-w-7xl;
+  }
+  
+  /* The Architect: 정밀한 버튼 시스템 */
+  .btn {
+    @apply inline-flex items-center justify-center rounded-lg text-sm font-medium transition-all duration-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2 disabled:opacity-50 disabled:pointer-events-none;
+  }
+  
+  .btn-primary {
+    @apply bg-blue-600 text-white hover:bg-blue-700 active:bg-blue-800 shadow-md hover:shadow-lg;
+  }
+  
+  .btn-secondary {
+    @apply bg-white text-slate-900 border border-slate-200 hover:bg-slate-50 active:bg-slate-100 shadow-sm hover:shadow-md;
+  }
+
+  /* The Tactile: 글래스모피즘 카드 */
+  .glass-card {
+    @apply bg-white/80 backdrop-blur-lg border border-white/20 shadow-xl;
+  }
+
+  .glass-card-dark {
+    @apply bg-slate-900/80 backdrop-blur-lg border border-slate-700/20 shadow-xl;
+  }
+
+  /* The Architect: 정밀한 그리드 시스템 */
+  .architect-grid {
+    @apply grid gap-6 md:gap-8 lg:gap-12;
+  }
+
+  .architect-grid-2 {
+    @apply architect-grid grid-cols-1 md:grid-cols-2;
+  }
+
+  .architect-grid-3 {
+    @apply architect-grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3;
+  }
+
+  .architect-grid-4 {
+    @apply architect-grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4;
+  }
+
+  /* The Tactile: 애니메이션 */
+  .tactile-hover {
+    @apply transition-all duration-300 ease-out hover:-translate-y-1 hover:shadow-lg;
+  }
+
+  .tactile-fade-in {
+    @apply opacity-0 translate-y-4 transition-all duration-700 ease-out;
+  }
+
+  .tactile-fade-in.in-view {
+    @apply opacity-100 translate-y-0;
+  }
+
+  /* 애니메이션을 바로 적용 */
+  .tactile-fade-in {
+    @apply opacity-100 translate-y-0;
+  }
+
+  /* 스크롤 기반 애니메이션 */
+  .animate-hero-content {
+    opacity: 0;
+    transform: translateX(-50px);
+    transition: all 1.2s ease-out;
+  }
+
+  .animate-hero-content.in-view {
+    opacity: 1;
+    transform: translateX(0);
+  }
+
+  .animate-hero-visual {
+    opacity: 0;
+    transform: translateX(50px) scale(0.9);
+    transition: all 1.2s ease-out;
+  }
+
+  .animate-hero-visual.in-view {
+    opacity: 1;
+    transform: translateX(0) scale(1);
+  }
+
+  .animate-service-header {
+    opacity: 0;
+    transform: translateY(-30px);
+    transition: all 0.8s ease-out;
+  }
+
+  .animate-service-header.in-view {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  .animate-service-cards {
+    opacity: 0;
+    transform: translateY(50px);
+    transition: all 1s ease-out;
+  }
+
+  .animate-service-cards.in-view {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  .animate-cta-content {
+    opacity: 0;
+    transform: scale(0.9);
+    transition: all 0.8s ease-out;
+  }
+
+  .animate-cta-content.in-view {
+    opacity: 1;
+    transform: scale(1);
+  }
+
+  .animate-portfolio-section {
+    opacity: 0;
+    transform: translateY(50px);
+    transition: all 1s ease-out;
+  }
+
+  .animate-portfolio-section.in-view {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  .animate-process-section {
+    opacity: 0;
+    transform: translateY(50px);
+    transition: all 1s ease-out;
+  }
+
+  .animate-process-section.in-view {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  .animate-effects-section {
+    opacity: 0;
+    transform: translateY(50px);
+    transition: all 1s ease-out;
+  }
+
+  .animate-effects-section.in-view {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  /* 포트폴리오 페이지 전용 애니메이션 */
+  .animate-stats-section {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+    transition-delay: 0.3s;
+  }
+
+  .animate-stats-section.in-view {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  .animate-filters-section {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  .animate-filters-section.in-view {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  .animate-projects-section {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  .animate-projects-section.in-view {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  /* 서비스 카드 이미지 애니메이션 */
+  .service-image-hover {
+    transition: transform 0.7s ease-out;
+  }
+
+  .service-image-hover:hover {
+    transform: translateY(-10px) scale(1.05);
+  }
+
+
+
+  /* 포트폴리오 전용 스타일 */
+  .portfolio-card {
+    @apply glass-card tactile-hover rounded-xl overflow-hidden;
+  }
+
+  .portfolio-filter {
+    @apply bg-slate-100 hover:bg-slate-200 text-slate-700 hover:text-slate-900 border-slate-200 rounded-full px-4 py-2 text-sm font-medium transition-all duration-200;
+  }
+
+  .portfolio-filter.active {
+    @apply bg-blue-600 text-white border-blue-600 shadow-md;
+  }
+}
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+  
+  .text-pretty {
+    text-wrap: pretty;
+  }
+}
