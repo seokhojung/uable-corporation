@@ -36,17 +36,19 @@ const services = [
 export const ServiceScroll = ({ className = '', speed = 1 }: ServiceScrollProps) => {
   const scrollRef = useRef<HTMLDivElement>(null)
   const [translateY, setTranslateY] = useState(0)
+  const animationRef = useRef<number>()
 
   useEffect(() => {
     const scrollElement = scrollRef.current
     if (!scrollElement) {
-      console.log('ServiceScroll: scrollElement not found')
       return
     }
 
-    console.log('ServiceScroll: Starting animation with', services.length, 'services')
+    // 이미 애니메이션이 실행 중이면 중단
+    if (animationRef.current) {
+      cancelAnimationFrame(animationRef.current)
+    }
     
-    let animationId: number
     let position = 0
 
     const animate = () => {
@@ -59,14 +61,14 @@ export const ServiceScroll = ({ className = '', speed = 1 }: ServiceScrollProps)
       }
       
       setTranslateY(position)
-      animationId = requestAnimationFrame(animate)
+      animationRef.current = requestAnimationFrame(animate)
     }
 
     animate()
 
     return () => {
-      if (animationId) {
-        cancelAnimationFrame(animationId)
+      if (animationRef.current) {
+        cancelAnimationFrame(animationRef.current)
       }
     }
   }, [speed])

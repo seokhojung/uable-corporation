@@ -2,7 +2,13 @@
 const nextConfig = {
   experimental: {
   },
+  // 동적 라우팅을 위한 설정
+  trailingSlash: false,
+  // 정적 생성을 위한 설정
+  output: 'export',
+  // 이미지 최적화 설정
   images: {
+    unoptimized: true, // 정적 export를 위해 이미지 최적화 비활성화
     formats: ['image/webp', 'image/avif'],
     deviceSizes: [640, 750, 828, 1080, 1200, 1920, 2048, 3840],
     imageSizes: [16, 32, 48, 64, 96, 128, 256, 384],
@@ -38,29 +44,9 @@ const nextConfig = {
   compiler: {
     removeConsole: process.env.NODE_ENV === 'production',
   },
-  // 정적 최적화
-  trailingSlash: false,
-  // 보안 헤더
-  async headers() {
-    return [
-      {
-        source: '/(.*)',
-        headers: [
-          {
-            key: 'X-Frame-Options',
-            value: 'DENY',
-          },
-          {
-            key: 'X-Content-Type-Options',
-            value: 'nosniff',
-          },
-          {
-            key: 'Referrer-Policy',
-            value: 'origin-when-cross-origin',
-          },
-        ],
-      },
-    ]
+  // 정적 생성을 위한 설정
+  generateBuildId: async () => {
+    return 'build-' + Date.now()
   },
 }
 

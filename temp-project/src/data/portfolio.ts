@@ -80,20 +80,13 @@ export const portfolioProjects: PortfolioProject[] = [
     },
     images: [
       {
-        src: '/images/portfolio/ar-furniture-1.jpg',
+        src: 'https://via.placeholder.com/1200x800?text=AR+Furniture+App',
         alt: 'AR 가구 배치 화면',
         width: 1200,
         height: 800
       }
     ],
-    videos: [
-      {
-        src: '/videos/portfolio/ar-furniture-demo.mp4',
-        alt: 'AR 가구 배치 데모 영상',
-        width: 1920,
-        height: 1080
-      }
-    ],
+
     links: {
       demo: undefined, // 추후 데모 링크 연결 예정
       contact: '/contact' // 추후 문의하기 양식 연결 예정
@@ -128,7 +121,7 @@ export const portfolioProjects: PortfolioProject[] = [
     },
     images: [
       {
-        src: '/images/portfolio/webxr-gallery-1.jpg',
+        src: 'https://via.placeholder.com/1200x800?text=WebXR+VR+Gallery',
         alt: 'VR 갤러리 메인 화면',
         width: 1200,
         height: 800
@@ -214,7 +207,7 @@ export const portfolioProjects: PortfolioProject[] = [
     },
     images: [
       {
-        src: '/images/portfolio/3d-data-1.jpg',
+        src: 'https://via.placeholder.com/1200x800?text=3D+Data+Visualization',
         alt: '3D 데이터 시각화 메인 화면',
         width: 1200,
         height: 800

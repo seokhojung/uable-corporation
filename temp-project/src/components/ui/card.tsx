@@ -1,3 +1,5 @@
+'use client'
+
 // src/components/ui/card.tsx
 interface CardProps {
   children: React.ReactNode

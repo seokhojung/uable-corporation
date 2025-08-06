@@ -55,7 +55,7 @@ const contactInfo = [
   {
     icon: Mail,
     title: '이메일',
-    value: 'admin@uable.co.kr</span>',
+    value: 'admin@uable.co.kr',
     description: '24시간 내 답변'
   },
   {
@@ -140,7 +140,7 @@ export default function ContactPage() {
     return Object.keys(newErrors).length === 0
   }
 
-  // 폼 제출
+  // 폼 제출 - Formspree 사용
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
     
@@ -152,17 +152,27 @@ export default function ContactPage() {
     setSubmitStatus('idle')
 
     try {
-      const response = await fetch('/api/inquiries', {
+      // Formspree 엔드포인트
+      const formspreeEndpoint = 'https://formspree.io/f/xqalynyy'
+      
+      const response = await fetch(formspreeEndpoint, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
         },
-        body: JSON.stringify(formData),
+        body: JSON.stringify({
+          name: formData.name,
+          email: formData.email,
+          phone: formData.phone,
+          company: formData.company,
+          subject: formData.subject,
+          message: formData.message,
+          category: formData.category,
+          _subject: `[문의] ${formData.subject} - ${formData.category}`
+        }),
       })
 
-      const result = await response.json()
-
-      if (result.success) {
+      if (response.ok) {
         setSubmitStatus('success')
         setFormData({
           name: '',
@@ -175,7 +185,7 @@ export default function ContactPage() {
         })
       } else {
         setSubmitStatus('error')
-        setErrors({ submit: result.error || '문의 전송에 실패했습니다.' })
+        setErrors({ submit: '문의 전송에 실패했습니다.' })
       }
     } catch (error) {
       setSubmitStatus('error')
@@ -382,24 +392,24 @@ export default function ContactPage() {
                   )}
                 </div>
 
-                                 {/* 제출 버튼 */}
-                 <button
-                   type="submit"
-                   disabled={isSubmitting}
-                   className="w-full bg-gradient-to-r from-slate-600 to-slate-700 hover:from-slate-700 hover:to-slate-800 text-slate-100 py-4 text-lg font-medium rounded-lg transition-all duration-200 disabled:opacity-50 disabled:cursor-not-allowed text-center"
-                 >
-                                     {isSubmitting ? (
-                     <div className="flex items-center justify-center gap-2">
-                       <div className="w-5 h-5 border-2 border-slate-300 border-t-transparent rounded-full animate-spin" />
-                       전송 중...
-                     </div>
-                   ) : (
-                     <div className="flex items-center justify-center gap-2">
-                       <Send className="w-5 h-5" />
-                       문의 전송하기
-                     </div>
-                   )}
-                                   </button>
+                {/* 제출 버튼 */}
+                <button
+                  type="submit"
+                  disabled={isSubmitting}
+                  className="w-full bg-gradient-to-r from-slate-600 to-slate-700 hover:from-slate-700 hover:to-slate-800 text-slate-100 py-4 text-lg font-medium rounded-lg transition-all duration-200 disabled:opacity-50 disabled:cursor-not-allowed text-center"
+                >
+                  {isSubmitting ? (
+                    <div className="flex items-center justify-center gap-2">
+                      <div className="w-5 h-5 border-2 border-slate-300 border-t-transparent rounded-full animate-spin" />
+                      전송 중...
+                    </div>
+                  ) : (
+                    <div className="flex items-center justify-center gap-2">
+                      <Send className="w-5 h-5" />
+                      문의 전송하기
+                    </div>
+                  )}
+                </button>
 
                 {/* 상태 메시지 */}
                 {submitStatus === 'success' && (

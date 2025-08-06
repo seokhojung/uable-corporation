@@ -11,17 +11,19 @@ interface TechScrollProps {
 export const TechScroll = ({ technologies, speed = 1, className = '' }: TechScrollProps) => {
   const scrollRef = useRef<HTMLDivElement>(null)
   const [translateX, setTranslateX] = useState(0)
+  const animationRef = useRef<number>()
 
   useEffect(() => {
     const scrollElement = scrollRef.current
     if (!scrollElement) {
-      console.log('TechScroll: scrollElement not found')
       return
     }
 
-    // console.log('TechScroll: Starting animation with', technologies.length, 'technologies')
+    // 이미 애니메이션이 실행 중이면 중단
+    if (animationRef.current) {
+      cancelAnimationFrame(animationRef.current)
+    }
     
-    let animationId: number
     let position = 0
 
     const animate = () => {
@@ -34,14 +36,14 @@ export const TechScroll = ({ technologies, speed = 1, className = '' }: TechScro
       }
       
       setTranslateX(position)
-      animationId = requestAnimationFrame(animate)
+      animationRef.current = requestAnimationFrame(animate)
     }
 
     animate()
 
     return () => {
-      if (animationId) {
-        cancelAnimationFrame(animationId)
+      if (animationRef.current) {
+        cancelAnimationFrame(animationRef.current)
       }
     }
   }, [speed, technologies])
