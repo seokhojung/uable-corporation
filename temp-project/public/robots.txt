@@ -1,0 +1,9 @@
+# *
+User-agent: *
+Allow: /
+
+# Host
+Host: https://uable.com
+
+# Sitemaps
+Sitemap: https://uable.com/sitemap.xml
