@@ -1,5 +1,6 @@
 // src/components/layout/footer.tsx
 import Link from 'next/link'
+import Image from 'next/image'
 import { Mail, Phone, MapPin, Linkedin, Twitter, Github } from 'lucide-react'
 
 const footerLinks = {
@@ -50,8 +51,15 @@ export const Footer = () => {
           {/* 회사 정보 */}
           <div className="lg:col-span-2">
             <div className="flex items-center space-x-3 mb-6">
-              <div className="w-12 h-12 bg-gradient-to-r from-slate-600 to-slate-700 rounded-xl flex items-center justify-center shadow-lg">
-                <span className="text-slate-100 font-bold text-lg">U</span>
+              <div className="w-12 h-12 flex items-center justify-center shadow-lg overflow-hidden">
+                <Image
+                  src="/UABLE-logo.png"
+                  alt="Uable Corporation Logo"
+                  width={32}
+                  height={32}
+                  className="object-contain"
+                  priority
+                />
               </div>
               <div>
                 <span className="text-2xl font-bold bg-gradient-to-r from-slate-300 to-slate-400 bg-clip-text text-transparent">Uable Corporation</span>

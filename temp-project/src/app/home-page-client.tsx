@@ -115,7 +115,7 @@ export function HomePageClient() {
   return (
     <main className="min-h-screen bg-slate-900">
       {/* Hero Section - VIVAR 스타일 참고 */}
-      <section className="relative min-h-screen flex items-center justify-center overflow-hidden bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900">
+      <section className="relative min-h-screen md:h-[90vh] lg:h-[85vh] flex items-center justify-center overflow-hidden bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900  md:pt-0">
         {/* 배경 요소 */}
         <div className="absolute inset-0 overflow-hidden">
           <div className="absolute top-20 right-20 w-72 h-72 bg-gradient-to-r from-slate-600 to-slate-500 rounded-full opacity-20 animate-pulse"></div>
@@ -124,7 +124,7 @@ export function HomePageClient() {
         </div>
 
         <div className="relative z-10 w-full max-w-7xl mx-auto px-4 lg:px-8 xl:px-12">
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-16 items-center min-h-screen">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-16 items-center">
             {/* 텍스트 콘텐츠 */}
             <div ref={heroContentRef} className="lg:col-span-7 text-center lg:text-left animate-hero-content py-8 lg:py-0">
               {/* 배지 */}
@@ -134,7 +134,7 @@ export function HomePageClient() {
               </div>
 
               {/* 메인 헤드라인 - VIVAR 스타일 */}
-              <h1 className="text-5xl lg:text-6xl xl:text-5xl font-bold text-slate-100 mb-8 leading-tight">
+              <h1 className="text-4xl lg:text-6xl xl:text-6xl font-bold text-slate-100 mb-8 leading-tight">
                 고객에게 필요한
                 <br />
                 <span className="text-transparent bg-clip-text bg-gradient-to-r from-slate-300 to-slate-400">
@@ -156,13 +156,14 @@ export function HomePageClient() {
                     <ArrowRight className="w-5 h-5 ml-2" />
                   </Button>
                 </Link>
-                
-                <Button variant="outline" size="lg" className="text-lg px-8 py-4 border-2 border-slate-600 text-slate-200 hover:bg-slate-700">
+
+                <Link href="/">
+                <Button variant="outline" size="lg" className="text-lg px-8 py-4 border-slate-600 text-slate-200 hover:bg-slate-700">
                   <Play className="w-5 h-5 mr-2" />
                   소개 영상 보기
                 </Button>
+              </Link>
               </div>
-
               {/* 통계 */}
               <div className="grid grid-cols-3 gap-8 pt-8 border-t border-slate-700">
                 {stats.map((stat, index) => (
@@ -200,7 +201,7 @@ export function HomePageClient() {
             </div>
 
             {/* 시각적 요소 - VIVAR 스타일 */}
-            <div ref={heroVisualRef} className="lg:col-span-5 relative animate-hero-visual py-8 lg:py-0">
+            <div ref={heroVisualRef} className="lg:col-span-5 relative animate-hero-visual py-8 lg:py-0 h-64 lg:h-auto">
               <ServiceScroll speed={0.5} />
             </div>
           </div>
@@ -214,7 +215,7 @@ export function HomePageClient() {
             <Badge variant="outline" className="mb-8 px-6 py-3 text-lg">
               서비스 소개
             </Badge>
-            <h2 className="text-5xl lg:text-6xl xl:text-7xl font-bold text-slate-100 mb-8 leading-tight">
+            <h2 className="text-4xl lg:text-6xl xl:text-6xl font-bold text-slate-100 mb-8 leading-tight">
               체험하고 구매하는{' '}
               <br /> <span className="text-transparent bg-clip-text bg-gradient-to-r from-slate-300 to-slate-400">
                 3D 제품 컨피규레이터
@@ -330,7 +331,7 @@ export function HomePageClient() {
             <Badge variant="outline" className="mb-6">
               프로젝트 포트폴리오
             </Badge>
-            <h2 className="text-4xl lg:text-5xl font-bold text-slate-100 mb-6">
+            <h2 className="text-3xl lg:text-6xl font-bold text-slate-100 mb-6">
               Uable의 3D/AR/WebXR 프로젝트 사례를 직접 확인해보세요
             </h2>
             <p className="text-xl text-slate-300 mb-8">
@@ -365,7 +366,7 @@ export function HomePageClient() {
             <Badge variant="primary" className="mb-6">
               도입 절차
             </Badge>
-            <h2 className="text-4xl lg:text-5xl font-bold text-slate-100 mb-6">
+            <h2 className="text-3xl lg:text-5xl font-bold text-slate-100 mb-6">
               간단한 3단계로 프로젝트를 시작하세요
             </h2>
             <p className="text-xl text-slate-300">
@@ -423,14 +424,14 @@ export function HomePageClient() {
       <section ref={effectsSectionRef} className="py-32 bg-slate-800 animate-effects-section">
         <div className="w-full max-w-7xl mx-auto px-4 lg:px-8 xl:px-12">
           {/* 헤드라인 섹션 */}
-          <div className="max-w-5xl mx-auto mb-20">
+          <div className="max-w-5xl mx-auto mb-20 ">
             <div className="flex items-center mb-6">
               <div className="w-4 h-4 bg-slate-400 rounded mr-3 "></div>
               <Badge variant="outline" className="text-slate-300 border-slate-600">
                 도입 효과
               </Badge>
             </div>
-            <h2 className="text-5xl lg:text-6xl xl:text-2xl font-bold text-slate-100 mb-8 leading-tight text-left">
+            <h2 className="text-3xl lg:text-6xl xl:text-2xl font-bold text-slate-100 mb-8 leading-tight text-center">
               무한한 구성과, 개인화 옵션의 제품은{' '}
               <span className="text-slate-300">
                 기존의 방법으로 판매가 어렵습니다.
@@ -481,7 +482,7 @@ export function HomePageClient() {
       <section className="py-32 bg-gradient-to-r from-slate-700 via-slate-800 to-slate-900">
         <div className="w-full max-w-7xl mx-auto px-4 lg:px-8 xl:px-12">
           <div ref={ctaContentRef} className="max-w-4xl mx-auto text-center animate-cta-content">
-            <h2 className="text-4xl lg:text-5xl font-bold text-slate-100 mb-8">
+            <h2 className="text-3xl lg:text-5xl font-bold text-slate-100 mb-8">
               프로젝트를 시작할 준비가 되셨나요?
             </h2>
             <p className="text-xl text-slate-300 mb-12">

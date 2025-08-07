@@ -6,6 +6,7 @@ import { Menu, X } from 'lucide-react'
 import { Button } from '@/components/ui/button'
 import { ThemeToggle } from '@/components/ui/theme-toggle'
 import Link from 'next/link'
+import Image from 'next/image'
 
 const navigation = [
   { name: 'Home', href: '/' },
@@ -16,10 +17,20 @@ export const Header = () => {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
 
   return (
-    <header className="sticky top-0 z-50 bg-slate-800/20 backdrop-blur-lg border-b border-slate-700/30 shadow-lg">
+    <header className={`sticky top-0 z-50 bg-slate-800/20 backdrop-blur-lg border-b border-slate-700/30 shadow-lg transition-all duration-300 ${mobileMenuOpen ? 'min-h-80 lg:min-h-20' : 'min-h-16 lg:min-h-20'}`}>
       <nav className="mx-auto flex max-w-7xl items-center justify-between p-6 lg:px-8" aria-label="Global">
         <div className="flex lg:flex-1">
-          <Link href="/" className="-m-1.5 p-1.5">
+          <Link href="/" className="-m-1.5 p-1.5 flex items-center space-x-2">
+            <div className="w-8 h-8 flex items-center justify-center overflow-hidden">
+              <Image
+                src="/UABLE-logo.png"
+                alt="Uable Corporation Logo"
+                width={20}
+                height={20}
+                className="object-contain"
+                priority
+              />
+            </div>
             <span className="text-2xl font-bold bg-gradient-to-r from-slate-300 to-slate-400 bg-clip-text text-transparent">
               Uable
             </span>
