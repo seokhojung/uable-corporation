@@ -225,26 +225,38 @@ export function HomePageClient() {
             </p>
           </div>
           
-                     {/* 동영상 데모 섹션 - 테스트용 단순화 */}
+                     {/* 동영상 데모 섹션 - 실제 동영상 플레이어 */}
            <div className="mb-20">
              <div className="max-w-5xl mx-auto">
-               <div className="relative aspect-video rounded-2xl overflow-hidden shadow-2xl border border-slate-700 bg-slate-800">
-                 {/* 테스트용 플레이스홀더 */}
-                 <div className="absolute inset-0 flex items-center justify-center">
-                   <div className="text-center">
-                     <div className="text-6xl mb-4">🎬</div>
-                     <p className="text-slate-300 text-xl">동영상 섹션 테스트</p>
-                     <p className="text-slate-400 text-sm mt-2">동영상 파일: t6By7SQ79bqq7KHtdfDLiQ65A.mp4</p>
-                   </div>
-                 </div>
+               <div className="relative aspect-video rounded-2xl overflow-hidden shadow-2xl border border-slate-700">
+                 <video
+                   ref={videoRef}
+                   src="/t6By7SQ79bqq7KHtdfDLiQ65A.mp4"
+                   className="w-full h-full object-cover"
+                   muted={isVideoMuted}
+                   loop
+                   playsInline
+                   autoPlay
+                   onPlay={() => setIsVideoPlaying(true)}
+                   onPause={() => setIsVideoPlaying(false)}
+                 />
+                 
+                 {/* 오버레이 */}
+                 <div className="absolute inset-0 bg-gradient-to-t from-black/30 via-transparent to-transparent" />
                  
                  {/* 컨트롤 버튼들 */}
                  <div className="absolute bottom-6 left-6 flex gap-3">
-                   <button className="p-3 bg-white/20 backdrop-blur-sm rounded-full hover:bg-white/30 transition-colors">
-                     <Play className="w-5 h-5 text-white" />
+                   <button 
+                     onClick={toggleVideoPlay}
+                     className="p-3 bg-white/20 backdrop-blur-sm rounded-full hover:bg-white/30 transition-colors"
+                   >
+                     {isVideoPlaying ? <Pause className="w-5 h-5 text-white" /> : <Play className="w-5 h-5 text-white" />}
                    </button>
-                   <button className="p-3 bg-white/20 backdrop-blur-sm rounded-full hover:bg-white/30 transition-colors">
-                     <VolumeX className="w-5 h-5 text-white" />
+                   <button 
+                     onClick={toggleVideoMute}
+                     className="p-3 bg-white/20 backdrop-blur-sm rounded-full hover:bg-white/30 transition-colors"
+                   >
+                     {isVideoMuted ? <VolumeX className="w-5 h-5 text-white" /> : <Volume2 className="w-5 h-5 text-white" />}
                    </button>
                  </div>
                  
