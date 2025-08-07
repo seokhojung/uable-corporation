@@ -115,7 +115,7 @@ export function HomePageClient() {
   return (
     <main className="min-h-screen bg-slate-900">
       {/* Hero Section - VIVAR 스타일 참고 */}
-      <section className="relative h-screen md:h-[90vh] lg:h-[85vh] flex items-center justify-center overflow-hidden bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900">
+      <section className="relative min-h-screen flex items-center justify-center overflow-hidden bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900">
         {/* 배경 요소 */}
         <div className="absolute inset-0 overflow-hidden">
           <div className="absolute top-20 right-20 w-72 h-72 bg-gradient-to-r from-slate-600 to-slate-500 rounded-full opacity-20 animate-pulse"></div>
@@ -124,9 +124,9 @@ export function HomePageClient() {
         </div>
 
         <div className="relative z-10 w-full max-w-7xl mx-auto px-4 lg:px-8 xl:px-12">
-          <div className="grid lg:grid-cols-12 gap-16 items-center">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-16 items-center min-h-screen">
             {/* 텍스트 콘텐츠 */}
-            <div ref={heroContentRef} className="lg:col-span-7 text-center lg:text-left animate-hero-content">
+            <div ref={heroContentRef} className="lg:col-span-7 text-center lg:text-left animate-hero-content py-8 lg:py-0">
               {/* 배지 */}
               <div className="inline-flex items-center px-4 py-2 bg-slate-700 text-slate-200 rounded-full text-sm font-medium mb-8">
                 <Star className="w-4 h-4 mr-2" />
@@ -200,7 +200,7 @@ export function HomePageClient() {
             </div>
 
             {/* 시각적 요소 - VIVAR 스타일 */}
-            <div ref={heroVisualRef} className="lg:col-span-5 relative animate-hero-visual">
+            <div ref={heroVisualRef} className="lg:col-span-5 relative animate-hero-visual py-8 lg:py-0">
               <ServiceScroll speed={0.5} />
             </div>
           </div>
@@ -263,7 +263,7 @@ export function HomePageClient() {
                  {/* 동영상 제목 오버레이 */}
                  <div className="absolute top-6 left-6">
                    <Badge variant="outline" className="bg-white/20 backdrop-blur-sm border-white/30 text-white">
-                     3D 제품 컨피규레이터 데모
+                     3D 제품 컨피규레이터
                    </Badge>
                  </div>
                </div>
