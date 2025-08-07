@@ -21,33 +21,21 @@ export const portfolioProjects: PortfolioProject[] = [
       '모바일 디바이스 호환성 확보'
     ],
     thumbnail: {
-      src: 'https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=400&h=300&fit=crop',
+      src: '/portfolio/images/configurator.webp',
       alt: '3D 제품 컨피규레이터 썸네일',
       width: 400,
       height: 300
     },
     images: [
       {
-        src: 'https://via.placeholder.com/1200x800?text=3D+Configurator+Main',
-        alt: '3D 제품 컨피규레이터 메인 화면',
-        width: 1200,
-        height: 800
-      },
-      {
-        src: 'https://via.placeholder.com/1200x800?text=3D+Configurator+Options',
-        alt: '제품 옵션 선택 화면',
-        width: 1200,
-        height: 800
-      },
-      {
-        src: 'https://via.placeholder.com/1200x800?text=3D+Configurator+Result',
-        alt: '최종 결과물 화면',
+        src: '/portfolio/images/configurator-interface.webp',
+        alt: '3D 제품 컨피규레이터 인터페이스 - 픽셀 수납장 구성 도구',
         width: 1200,
         height: 800
       }
     ],
     links: {
-      demo: undefined, // 추후 데모 링크 연결 예정
+      demo: 'https://befun241204.netlify.app/', // 외부 데모 링크
       contact: '/contact' // 추후 문의하기 양식 연결 예정
     },
     featured: true,
@@ -73,14 +61,14 @@ export const portfolioProjects: PortfolioProject[] = [
       '크로스 플랫폼 지원'
     ],
     thumbnail: {
-      src: 'https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c?w=400&h=300&fit=crop',
+      src: '/portfolio/images/arfurniture.webp',
       alt: 'AR 가구 배치 앱 썸네일',
       width: 400,
       height: 300
     },
     images: [
       {
-        src: 'https://via.placeholder.com/1200x800?text=AR+Furniture+App',
+        src: '/portfolio/images/arfurniture.webp',
         alt: 'AR 가구 배치 화면',
         width: 1200,
         height: 800
@@ -114,14 +102,14 @@ export const portfolioProjects: PortfolioProject[] = [
       '성능 최적화로 부드러운 VR 경험 제공'
     ],
     thumbnail: {
-      src: 'https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=400&h=300&fit=crop',
+      src: '/portfolio/images/3Dgallery.webp',
       alt: 'WebXR VR 갤러리 썸네일',
       width: 400,
       height: 300
     },
     images: [
       {
-        src: 'https://via.placeholder.com/1200x800?text=WebXR+VR+Gallery',
+        src: '/portfolio/images/3Dgallery.webp',
         alt: 'VR 갤러리 메인 화면',
         width: 1200,
         height: 800
@@ -154,21 +142,15 @@ export const portfolioProjects: PortfolioProject[] = [
       '크로스 플랫폼 VR/AR 지원'
     ],
     thumbnail: {
-      src: 'https://images.unsplash.com/photo-1518709268805-4e9042af2176?w=400&h=300&fit=crop',
+      src: '/portfolio/images/webxr.webp',
       alt: 'WebXR 쇼룸 썸네일',
       width: 400,
       height: 300
     },
     images: [
       {
-        src: 'https://via.placeholder.com/1200x800?text=WebXR+Showroom+Main',
+        src: '/portfolio/images/webxr.webp',
         alt: 'WebXR 쇼룸 메인 화면',
-        width: 1200,
-        height: 800
-      },
-      {
-        src: 'https://via.placeholder.com/1200x800?text=WebXR+Showroom+Product',
-        alt: '제품 상세 화면',
         width: 1200,
         height: 800
       }
@@ -200,14 +182,14 @@ export const portfolioProjects: PortfolioProject[] = [
       '실시간 데이터 업데이트'
     ],
     thumbnail: {
-      src: 'https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=400&h=300&fit=crop',
+      src: '/portfolio/images/3Ddata.webp',
       alt: '3D 데이터 시각화 썸네일',
       width: 400,
       height: 300
     },
     images: [
       {
-        src: 'https://via.placeholder.com/1200x800?text=3D+Data+Visualization',
+        src: '/portfolio/images/3Ddata.webp',
         alt: '3D 데이터 시각화 메인 화면',
         width: 1200,
         height: 800
@@ -240,14 +222,14 @@ export const portfolioProjects: PortfolioProject[] = [
       '다양한 교육 분야 지원'
     ],
     thumbnail: {
-      src: 'https://images.unsplash.com/photo-1516321318423-f06f85e504b3?w=400&h=300&fit=crop',
+      src: '/portfolio/images/arlesson.webp',
       alt: 'AR 교육 콘텐츠 썸네일',
       width: 400,
       height: 300
     },
     images: [
       {
-        src: 'https://via.placeholder.com/1200x800?text=AR+Education+Content',
+        src: '/portfolio/images/arlesson.webp',
         alt: 'AR 교육 콘텐츠 화면',
         width: 1200,
         height: 800

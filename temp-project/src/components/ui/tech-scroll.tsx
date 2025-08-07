@@ -49,7 +49,7 @@ export const TechScroll = ({ technologies, speed = 1, className = '' }: TechScro
   }, [speed, technologies])
 
   return (
-    <div className={`overflow-hidden bg-slate-800 w-full ${className}`}>
+    <div className={`overflow-hidden w-full ${className}`}>
       <div 
         ref={scrollRef}
         className="flex whitespace-nowrap py-3 md:py-4 lg:py-6 h-10 md:h-12 lg:h-15 w-full"

@@ -1,9 +1,13 @@
+'use client'
+
 // src/app/portfolio/page.tsx
 import { Badge } from '@/components/ui/badge'
 import { PortfolioCard } from '@/components/portfolio/portfolio-card'
 import { TechScroll } from '@/components/ui/tech-scroll'
 import { portfolioProjects } from '@/data/portfolio'
 import { Star, Globe, Code, Award } from 'lucide-react'
+import Image from 'next/image'
+import { useEffect, useRef } from 'react'
 
 export default function PortfolioPage() {
   // 프로젝트 정렬 (추천 프로젝트 우선)
@@ -22,85 +26,145 @@ export default function PortfolioPage() {
     'ARKit', 'ARCore', 'WebGL', 'A-Frame', 'C#', 'iOS', 'Android'
   ]
 
+  // 애니메이션을 위한 ref들
+  const heroContentRef = useRef<HTMLDivElement>(null)
+  const techCardsRef = useRef<HTMLDivElement>(null)
+  const projectsHeaderRef = useRef<HTMLDivElement>(null)
+  const projectsCardsRef = useRef<HTMLDivElement>(null)
+
+  // Intersection Observer를 사용한 스크롤 애니메이션
+  useEffect(() => {
+    const observerOptions = {
+      threshold: 0.1,
+      rootMargin: '0px 0px -50px 0px'
+    }
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('in-view')
+        }
+      })
+    }, observerOptions)
+
+    const sections = [
+      heroContentRef.current,
+      techCardsRef.current,
+      projectsHeaderRef.current,
+      projectsCardsRef.current
+    ]
+    
+    sections.forEach(section => {
+      if (section) observer.observe(section)
+    })
+
+    return () => observer.disconnect()
+  }, [])
+
   return (
     <div className="min-h-screen bg-slate-900">
-      {/* 히어로 섹션 */}
-      <section className="py-20 bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center">
-            <h1 className="text-4xl md:text-6xl font-bold text-slate-100 mb-6">
-              3D/AR/WebXR
-              <span className="block text-blue-400">포트폴리오</span>
+      {/* 히어로 섹션 - 메인 페이지와 동일한 스타일 */}
+      <section className="relative min-h-screen md:h-[90vh] lg:h-[85vh] flex items-center justify-center overflow-hidden bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900">
+        {/* 배경 요소 */}
+        <div className="absolute inset-0 overflow-hidden">
+          <div className="absolute top-20 right-20 w-72 h-72 opacity-20 filter brightness-0" style={{animation: 'pulse 4s ease-in-out infinite'}}>
+            <Image
+              src="/UABLE-logo.png"
+              alt="Uable Logo Background"
+              width={288}
+              height={288}
+              className="w-full h-full object-contain"
+            />
+          </div>
+          <div className="absolute bottom-20 left-20 w-96 h-96 opacity-10 filter brightness-0" style={{animation: 'pulse 6s ease-in-out infinite', animationDelay: '1s'}}>
+            <Image
+              src="/UABLE-logo.png"
+              alt="Uable Logo Background"
+              width={384}
+              height={384}
+              className="w-full h-full object-contain"
+            />
+          </div>
+          <div className="absolute top-1/2 left-1/4 w-48 h-48 opacity-15 filter brightness-0" style={{animation: 'pulse 5s ease-in-out infinite', animationDelay: '2s'}}>
+            <Image
+              src="/UABLE-logo.png"
+              alt="Uable Logo Background"
+              width={192}
+              height={192}
+              className="w-full h-full object-contain"
+            />
+          </div>
+        </div>
+
+        <div className="relative z-10 w-full max-w-7xl mx-auto px-4 lg:px-8 xl:px-12">
+          <div ref={heroContentRef} className="text-center animate-hero-content">
+            {/* 배지 */}
+            <div className="inline-flex items-center px-4 py-2 bg-slate-700 text-slate-200 rounded-full text-sm font-medium mb-8">
+              <Star className="w-4 h-4 mr-2" />
+              프로젝트 포트폴리오
+            </div>
+
+            {/* 메인 헤드라인 */}
+            <h1 className="text-4xl lg:text-6xl xl:text-6xl font-bold text-slate-100 mb-8 leading-tight">
+              Uable의 3D/AR/WebXR
+              <br />
+              <span className="text-transparent bg-clip-text bg-gradient-to-r from-slate-300 to-slate-400">
+                프로젝트 사례를 직접 확인해보세요
+              </span>
             </h1>
-            <p className="text-xl text-slate-300 mb-8 max-w-3xl mx-auto leading-relaxed">
-              혁신적인 3D, AR, WebXR 프로젝트들의 창의적 여정을 확인하세요. 
+
+            {/* 서브헤드라인 */}
+            <p className="text-xl lg:text-2xl text-slate-300 mb-12 max-w-4xl mx-auto leading-relaxed">
               인터랙티브 3D 컨피규레이터부터 증강현실 애플리케이션, 
               웹 기반 VR 갤러리까지 다양한 프로젝트를 소개합니다.
             </p>
-            <div className="flex flex-wrap justify-center gap-4">
-              <Badge variant="primary" className="text-lg px-4 py-2">
-                <Star className="w-4 h-4 mr-2" />
-                추천 프로젝트
-              </Badge>
-              <Badge variant="outline" className="text-lg px-4 py-2">
-                <Globe className="w-4 h-4 mr-2" />
-                웹 기반
-              </Badge>
-              <Badge variant="outline" className="text-lg px-4 py-2">
-                <Code className="w-4 h-4 mr-2" />
-                최신 기술
-              </Badge>
+
+            {/* 통계 */}
+            <div className="grid grid-cols-2 md:grid-cols-4 gap-8 pt-8 border-t border-slate-700 max-w-4xl mx-auto">
+              <div className="text-center">
+                <div className="text-3xl lg:text-4xl font-bold text-slate-100 mb-2">
+                  {portfolioProjects.length}
+                </div>
+                <p className="text-sm text-slate-300 font-medium">총 프로젝트</p>
+              </div>
+              <div className="text-center">
+                <div className="text-3xl lg:text-4xl font-bold text-slate-100 mb-2">
+                  {portfolioProjects.filter(p => p.featured).length}
+                </div>
+                <p className="text-sm text-slate-300 font-medium">추천 프로젝트</p>
+              </div>
+              <div className="text-center">
+                <div className="text-3xl lg:text-4xl font-bold text-slate-100 mb-2">
+                  {new Set(portfolioProjects.map(p => p.category)).size}
+                </div>
+                <p className="text-sm text-slate-300 font-medium">카테고리</p>
+              </div>
+              <div className="text-center">
+                <div className="text-3xl lg:text-4xl font-bold text-slate-100 mb-2">
+                  {portfolioProjects.reduce((sum, p) => sum + p.teamSize, 0)}
+                </div>
+                <p className="text-sm text-slate-300 font-medium">총 참여 인원</p>
+              </div>
             </div>
           </div>
         </div>
       </section>
 
-      {/* 통계 섹션 */}
-      <section className="py-16 bg-slate-800">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
-            <div>
-              <div className="text-3xl md:text-4xl font-bold text-blue-400 mb-2">
-                {portfolioProjects.length}
-              </div>
-              <div className="text-slate-300">총 프로젝트</div>
-            </div>
-            <div>
-              <div className="text-3xl md:text-4xl font-bold text-green-400 mb-2">
-                {portfolioProjects.filter(p => p.featured).length}
-              </div>
-              <div className="text-slate-300">추천 프로젝트</div>
-            </div>
-            <div>
-              <div className="text-3xl md:text-4xl font-bold text-purple-400 mb-2">
-                {new Set(portfolioProjects.map(p => p.category)).size}
-              </div>
-              <div className="text-slate-300">카테고리</div>
-            </div>
-            <div>
-              <div className="text-3xl md:text-4xl font-bold text-orange-400 mb-2">
-                {portfolioProjects.reduce((sum, p) => sum + p.teamSize, 0)}
-              </div>
-              <div className="text-slate-300">총 참여 인원</div>
-            </div>
-          </div>
-        </div>
-      </section>
+
 
       {/* 기술 스택 스크롤 */}
-      <section className="py-12 bg-slate-900">
+      <section className="py-12">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <h2 className="text-2xl md:text-3xl font-bold text-slate-100 text-center mb-8">
-            주요 기술 스택
-          </h2>
-          <TechScroll technologies={techStacks} />
+          <div ref={techCardsRef} className="animate-service-cards">
+            <TechScroll technologies={techStacks} />
+          </div>
         </div>
       </section>
 
       {/* 프로젝트 목록 */}
-      <section className="py-16 bg-slate-800">
+      <section className="py-16">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex items-center justify-between mb-12">
+          <div ref={projectsHeaderRef} className="flex items-center justify-between mb-12 animate-service-header">
             <h2 className="text-3xl md:text-4xl font-bold text-slate-100">
               프로젝트 갤러리
             </h2>
@@ -110,7 +174,7 @@ export default function PortfolioPage() {
             </div>
           </div>
           
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+          <div ref={projectsCardsRef} className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 animate-service-cards">
             {sortedProjects.map((project, index) => (
               <PortfolioCard key={project.id} project={project} index={index} />
             ))}

@@ -15,21 +15,21 @@ const services = [
     title: '웹 개발',
     description: '반응형 웹사이트 및 웹 애플리케이션 개발',
     color: 'from-slate-600 to-slate-500',
-    image: 'https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=400&h=200&fit=crop'
+    image: '/portfolio/images/configurator.webp'
   },
   {
     icon: Smartphone,
     title: '모바일 앱',
     description: 'iOS/Android 네이티브 및 크로스 플랫폼 앱',
     color: 'from-slate-500 to-slate-400',
-    image: 'https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c?w=400&h=200&fit=crop'
+    image: '/portfolio/images/arfurniture.webp'
   },
   {
     icon: Code,
     title: '3D/AR/WebXR',
     description: '최신 기술을 활용한 인터랙티브 경험',
     color: 'from-slate-500 to-slate-400',
-    image: 'https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=400&h=200&fit=crop'
+    image: '/portfolio/images/webxr.webp'
   }
 ]
 
