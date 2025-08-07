@@ -229,17 +229,17 @@ export function HomePageClient() {
           <div className="mb-20">
             <div className="max-w-5xl mx-auto">
               <div className="relative aspect-video rounded-2xl overflow-hidden shadow-2xl border border-slate-700">
-                <video
-                  ref={videoRef}
-                  src="/videos/t6By7SQ79bqq7KHtdfDLiQ65A.mp4"
-                  className="w-full h-full object-cover"
-                  muted={isVideoMuted}
-                  loop
-                  playsInline
-                  autoPlay
-                  onPlay={() => setIsVideoPlaying(true)}
-                  onPause={() => setIsVideoPlaying(false)}
-                />
+                                 <video
+                   ref={videoRef}
+                   src="/t6By7SQ79bqq7KHtdfDLiQ65A.mp4"
+                   className="w-full h-full object-cover"
+                   muted={isVideoMuted}
+                   loop
+                   playsInline
+                   autoPlay
+                   onPlay={() => setIsVideoPlaying(true)}
+                   onPause={() => setIsVideoPlaying(false)}
+                 />
                 
                 {/* 오버레이 */}
                 <div className="absolute inset-0 bg-gradient-to-t from-black/30 via-transparent to-transparent" />
