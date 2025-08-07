@@ -1,11 +1,11 @@
 'use client'
 
-import { ArrowRight, Play, Star, Users, Award, Globe, Code, Smartphone, CheckCircle, ChevronRight } from 'lucide-react'
+import { ArrowRight, Play, Pause, Star, Users, Award, Globe, Code, Smartphone, CheckCircle, ChevronRight, Volume2, VolumeX } from 'lucide-react'
 import { Button } from '@/components/ui/button'
 import { Badge } from '@/components/ui/badge'
 import Link from 'next/link'
 import Image from 'next/image'
-import { useEffect, useRef } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import { portfolioProjects } from '@/data/portfolio'
 import { CountUp } from '@/components/ui/count-up'
 import { ServiceScroll } from '@/components/ui/service-scroll'
@@ -54,6 +54,30 @@ export function HomePageClient() {
   const processSectionRef = useRef<HTMLDivElement>(null)
   const effectsSectionRef = useRef<HTMLDivElement>(null)
   const ctaContentRef = useRef<HTMLDivElement>(null)
+  
+  // 동영상 컨트롤 상태
+  const [isVideoPlaying, setIsVideoPlaying] = useState(false)
+  const [isVideoMuted, setIsVideoMuted] = useState(true)
+  const videoRef = useRef<HTMLVideoElement>(null)
+
+  // 동영상 컨트롤 함수들
+  const toggleVideoPlay = () => {
+    if (videoRef.current) {
+      if (isVideoPlaying) {
+        videoRef.current.pause()
+      } else {
+        videoRef.current.play()
+      }
+      setIsVideoPlaying(!isVideoPlaying)
+    }
+  }
+
+  const toggleVideoMute = () => {
+    if (videoRef.current) {
+      videoRef.current.muted = !isVideoMuted
+      setIsVideoMuted(!isVideoMuted)
+    }
+  }
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -199,6 +223,58 @@ export function HomePageClient() {
             <p className="text-xl lg:text-2xl text-slate-300 mb-12 max-w-4xl mx-auto leading-relaxed">
               색상 조합부터 모듈 추가까지, Uable 도입 문의하기
             </p>
+          </div>
+          
+          {/* 동영상 데모 섹션 - 새로 추가 */}
+          <div className="mb-20">
+            <div className="max-w-5xl mx-auto">
+              <div className="relative aspect-video rounded-2xl overflow-hidden shadow-2xl border border-slate-700">
+                <video
+                  ref={videoRef}
+                  src="/videos/t6By7SQ79bqq7KHtdfDLiQ65A.mp4"
+                  className="w-full h-full object-cover"
+                  muted={isVideoMuted}
+                  loop
+                  playsInline
+                  autoPlay
+                  onPlay={() => setIsVideoPlaying(true)}
+                  onPause={() => setIsVideoPlaying(false)}
+                />
+                
+                {/* 오버레이 */}
+                <div className="absolute inset-0 bg-gradient-to-t from-black/30 via-transparent to-transparent" />
+                
+                {/* 컨트롤 버튼들 */}
+                <div className="absolute bottom-6 left-6 flex gap-3">
+                  <button 
+                    onClick={toggleVideoPlay}
+                    className="p-3 bg-white/20 backdrop-blur-sm rounded-full hover:bg-white/30 transition-colors"
+                  >
+                    {isVideoPlaying ? <Pause className="w-5 h-5 text-white" /> : <Play className="w-5 h-5 text-white" />}
+                  </button>
+                  <button 
+                    onClick={toggleVideoMute}
+                    className="p-3 bg-white/20 backdrop-blur-sm rounded-full hover:bg-white/30 transition-colors"
+                  >
+                    {isVideoMuted ? <VolumeX className="w-5 h-5 text-white" /> : <Volume2 className="w-5 h-5 text-white" />}
+                  </button>
+                </div>
+                
+                {/* 동영상 제목 오버레이 */}
+                <div className="absolute top-6 left-6">
+                  <Badge variant="outline" className="bg-white/20 backdrop-blur-sm border-white/30 text-white">
+                    3D 제품 컨피규레이터 데모
+                  </Badge>
+                </div>
+              </div>
+              
+              {/* 동영상 설명 */}
+              <div className="mt-6 text-center">
+                <p className="text-slate-300 text-lg">
+                  실제 3D 제품 컨피규레이터의 동작을 확인해보세요
+                </p>
+              </div>
+            </div>
           </div>
           
           <div ref={serviceCardsRef} className="grid lg:grid-cols-2 gap-12 animate-service-cards">
