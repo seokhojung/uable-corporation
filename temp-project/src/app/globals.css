@@ -71,11 +71,11 @@
   }
 
   .architect-grid-3 {
-    @apply architect-grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3;
+    @apply architect-grid grid-cols-1 md:grid-cols-2 lg:grid-cols3;
   }
 
   .architect-grid-4 {
-    @apply architect-grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4;
+    @apply architect-grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 xl:grid-cols-4;
   }
 
   /* The Tactile: 애니메이션 */
