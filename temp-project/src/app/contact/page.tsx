@@ -97,6 +97,7 @@ export default function ContactPage() {
   const [errors, setErrors] = useState<Record<string, string>>({})
   const [isSubmitting, setIsSubmitting] = useState(false)
   const [submitStatus, setSubmitStatus] = useState<'idle' | 'success' | 'error'>('idle')
+  const [hasConsented, setHasConsented] = useState(false)
 
   // 폼 데이터 업데이트
   const handleInputChange = (field: string, value: string) => {
@@ -139,6 +140,11 @@ export default function ContactPage() {
       newErrors.message = '메시지를 입력해주세요.'
     } else if (formData.message.length < 10) {
       newErrors.message = '메시지는 10자 이상이어야 합니다.'
+    }
+
+    // 개인정보 수집 및 이용 동의 확인
+    if (!hasConsented) {
+      newErrors.consent = '개인정보 수집 및 이용에 동의해주세요.'
     }
 
     setErrors(newErrors)
@@ -397,6 +403,32 @@ export default function ContactPage() {
                     <p className="mt-1 text-sm text-red-400 flex items-center gap-1">
                       <AlertCircle className="w-4 h-4" />
                       {errors.message}
+                    </p>
+                  )}
+                </div>
+
+                {/* 개인정보 수집 및 이용 동의 */}
+                <div className="rounded-lg border border-slate-700/40 bg-slate-800/40 p-4">
+                  <label className="flex items-start gap-3 cursor-pointer">
+                    <input
+                      type="checkbox"
+                      checked={hasConsented}
+                      onChange={(e) => {
+                        setHasConsented(e.target.checked)
+                        if (errors.consent) {
+                          setErrors(prev => ({ ...prev, consent: '' }))
+                        }
+                      }}
+                      className="mt-1 h-4 w-4 rounded border-slate-600 bg-slate-700 text-slate-100 focus:ring-2 focus:ring-slate-500"
+                    />
+                    <span className="text-sm text-slate-300">
+                      개인정보 수집 및 이용에 동의합니다. 수집항목: 이름, 이메일, 문의내용(선택: 전화번호, 회사명) / 이용목적: 문의 응답 및 상담 / 보유기간: 목적 달성 시까지. 자세한 내용은 <a href="/privacy" target="_blank" className="underline text-slate-200">개인정보처리방침</a>을 확인해주세요.
+                    </span>
+                  </label>
+                  {errors.consent && (
+                    <p className="mt-2 text-sm text-red-400 flex items-center gap-1">
+                      <AlertCircle className="w-4 h-4" />
+                      {errors.consent}
                     </p>
                   )}
                 </div>
