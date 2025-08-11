@@ -33,6 +33,10 @@ export const PortfolioCard = ({ project, index }: PortfolioCardProps) => {
         return 'bg-slate-700 text-slate-200 border-slate-600'
       case 'web-development':
         return 'bg-slate-700 text-slate-200 border-slate-600'
+      case 'interactive-installation':
+        return 'bg-slate-700 text-slate-200 border-slate-600'
+      case '3d-platform':
+        return 'bg-slate-700 text-slate-200 border-slate-600'
       default:
         return 'bg-slate-700 text-slate-200 border-slate-600'
     }
@@ -54,10 +58,10 @@ export const PortfolioCard = ({ project, index }: PortfolioCardProps) => {
             className="w-full h-full object-cover"
             priority={index < 3}
           />
-          <div className="absolute inset-0 bg-gradient-to-br from-slate-600/70 to-slate-700/70 flex items-center justify-center backdrop-blur-sm">
+          <div className="absolute inset-0 bg-gradient-to-br from-slate-900/30 to-slate-900/50 flex items-center justify-center">
             <div className="text-slate-100 text-center p-6">
-              <div className="text-2xl font-bold mb-3 tracking-tight">{project.title}</div>
-              <div className="text-sm opacity-95 leading-relaxed">{project.shortDescription}</div>
+              <div className="text-2xl font-bold mb-3 tracking-tight text-shadow">{project.title}</div>
+              <div className="text-sm opacity-95 leading-relaxed text-shadow">{project.shortDescription}</div>
             </div>
           </div>
           {/* 글래스 오버레이 효과 */}
@@ -96,6 +100,8 @@ export const PortfolioCard = ({ project, index }: PortfolioCardProps) => {
                 {project.category === 'ar-vr' && 'AR/VR'}
                 {project.category === 'webxr' && 'WebXR'}
                 {project.category === 'web-development' && '웹 개발'}
+                {project.category === 'interactive-installation' && '인터렉티브 설치'}
+                {project.category === '3d-platform' && '3D 플랫폼'}
               </Badge>
             </div>
             <div className="flex flex-wrap gap-1">

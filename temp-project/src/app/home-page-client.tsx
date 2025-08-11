@@ -124,7 +124,7 @@ export function HomePageClient() {
               alt="Uable Logo Background"
               width={288}
               height={288}
-              className="w-full h-full object-contain"
+              className="object-contain max-w-full max-h-full w-auto h-auto"
             />
           </div>
                      <div className="absolute bottom-20 left-20 w-96 h-96 opacity-10 filter brightness-0" style={{animation: 'pulse 6s ease-in-out infinite', animationDelay: '1s'}}>
@@ -133,7 +133,7 @@ export function HomePageClient() {
               alt="Uable Logo Background"
               width={384}
               height={384}
-              className="w-full h-full object-contain"
+              className="object-contain max-w-full max-h-full w-auto h-auto"
             />
           </div>
                      <div className="absolute top-1/2 left-1/4 w-48 h-48 opacity-15 filter brightness-0" style={{animation: 'pulse 5s ease-in-out infinite', animationDelay: '2s'}}>
@@ -142,7 +142,7 @@ export function HomePageClient() {
               alt="Uable Logo Background"
               width={192}
               height={192}
-              className="w-full h-full object-contain"
+              className="object-contain max-w-full max-h-full w-auto h-auto"
             />
           </div>
         </div>
@@ -225,8 +225,21 @@ export function HomePageClient() {
             </div>
 
             {/* 시각적 요소 - VIVAR 스타일 */}
-            <div ref={heroVisualRef} className="lg:col-span-5 relative animate-hero-visual py-8 lg:py-0 h-64 lg:h-auto">
-              <ServiceScroll speed={0.5} />
+            <div ref={heroVisualRef} className="lg:col-span-5 relative animate-hero-visual py-8 lg:py-0 min-h-[200px] lg:min-h-auto">
+              {/* 데스크톱에서만 ServiceScroll 표시 (CSS로 제어) */}
+              <div className="hidden lg:block h-full">
+                <ServiceScroll speed={0.8} />
+              </div>
+              
+              {/* 모바일/태블릿용 대체 콘텐츠 */}
+              <div className="lg:hidden flex items-center justify-center h-full">
+                <div className="text-center">
+                  <div className="text-4xl mb-4"></div>
+                  <p className="text-slate-300 text-sm">
+                    
+                  </p>
+                </div>
+              </div>
             </div>
           </div>
         </div>

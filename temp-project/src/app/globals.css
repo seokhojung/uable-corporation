@@ -246,6 +246,9 @@
 }
 
 @layer utilities {
+  .text-shadow {
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.8);
+  }
   .text-balance {
     text-wrap: balance;
   }

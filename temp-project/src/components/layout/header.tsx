@@ -20,20 +20,17 @@ export const Header = () => {
     <header className={`sticky top-0 z-50 bg-slate-800/20 backdrop-blur-lg border-b border-slate-700/30 shadow-lg transition-all duration-300 ${mobileMenuOpen ? 'min-h-80 lg:min-h-20' : 'min-h-16 lg:min-h-20'}`}>
       <nav className="mx-auto flex max-w-7xl items-center justify-between p-6 lg:px-8" aria-label="Global">
         <div className="flex lg:flex-1">
-          <Link href="/" className="-m-1.5 p-1.5 flex items-center space-x-2">
-            <div className="w-8 h-8 flex items-center justify-center overflow-hidden">
+          <Link href="/" className="-m-1.5 p-1.5">
+            <div className="h-10 flex items-center justify-center overflow-hidden">
               <Image
-                src="/UABLE-logo.png"
+                src="/UABLE-logo-full.png"
                 alt="Uable Corporation Logo"
-                width={20}
-                height={20}
-                className="object-contain"
+                width={160}
+                height={40}
+                className="object-contain h-full w-auto"
                 priority
               />
             </div>
-            <span className="text-2xl font-bold bg-gradient-to-r from-slate-300 to-slate-400 bg-clip-text text-transparent">
-              Uable
-            </span>
           </Link>
         </div>
         <div className="flex lg:hidden">
@@ -70,9 +67,16 @@ export const Header = () => {
           <div className="fixed inset-y-0 right-0 z-50 w-full overflow-y-auto bg-slate-800/90 backdrop-blur-lg px-6 py-6 sm:max-w-sm sm:ring-1 sm:ring-slate-700/30">
             <div className="flex items-center justify-between">
               <Link href="/" className="-m-1.5 p-1.5">
-                <span className="text-2xl font-bold bg-gradient-to-r from-slate-300 to-slate-400 bg-clip-text text-transparent">
-                  Uable
-                </span>
+                <div className="h-8 flex items-center justify-center overflow-hidden">
+                  <Image
+                    src="/UABLE-logo-full.png"
+                    alt="Uable Corporation Logo"
+                    width={120}
+                    height={32}
+                    className="object-contain h-full w-auto"
+                    priority
+                  />
+                </div>
               </Link>
               <button
                 type="button"

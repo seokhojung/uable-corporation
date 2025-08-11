@@ -5,6 +5,9 @@ import { ArrowRight, Play, Star, Users, Award } from 'lucide-react'
 import { Button } from '@/components/ui/button'
 import { Badge } from '@/components/ui/badge'
 import Link from 'next/link'
+import Image from 'next/image'
+import { useState, useEffect } from 'react'
+import { portfolioProjects } from '@/data/portfolio'
 
 const stats = [
   { label: '완료 프로젝트', value: '150+', icon: Award },
@@ -13,6 +16,22 @@ const stats = [
 ]
 
 export const HeroSection = () => {
+  const [currentProjectIndex, setCurrentProjectIndex] = useState(0)
+  
+  // 추천 프로젝트들만 필터링
+  const featuredProjects = portfolioProjects.filter(project => project.featured)
+  
+  // 자동 슬라이드 효과
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setCurrentProjectIndex((prev) => (prev + 1) % featuredProjects.length)
+    }, 4000) // 4초마다 변경
+    
+    return () => clearInterval(interval)
+  }, [featuredProjects.length])
+  
+  const currentProject = featuredProjects[currentProjectIndex]
+
   return (
     <section className="relative min-h-screen flex items-center justify-center overflow-hidden bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900">
       {/* 배경 요소 */}
@@ -80,38 +99,88 @@ export const HeroSection = () => {
 
           {/* 시각적 요소 */}
           <div className="order-1 lg:order-2 flex justify-center lg:justify-end">
-            <div className="relative w-full max-w-md lg:max-w-lg">
-              {/* 메인 카드 */}
-              <div className="bg-slate-800 rounded-2xl shadow-2xl p-6 sm:p-8 border border-slate-700 hover:-translate-y-2 transition-transform duration-300">
-                <div className="space-y-4">
-                  <div className="flex items-center space-x-3">
-                    <div className="w-3 h-3 bg-green-500 rounded-full"></div>
-                    <div className="w-3 h-3 bg-yellow-500 rounded-full"></div>
-                    <div className="w-3 h-3 bg-red-500 rounded-full"></div>
-                  </div>
-                  <div className="bg-gradient-to-br from-slate-600 to-slate-700 rounded-lg h-32 sm:h-40 flex items-center justify-center">
-                    <div className="text-slate-100 text-center">
-                      <div className="text-2xl sm:text-3xl font-bold mb-2">3D/AR</div>
-                      <div className="text-sm opacity-90">WebXR Experience</div>
+            {currentProject && (
+              <div className="relative w-full max-w-md lg:max-w-lg">
+                {/* 포트폴리오 카드 */}
+                <Link href={`/portfolio/${currentProject.id}`}>
+                  <div className="bg-slate-800 rounded-2xl shadow-2xl border border-slate-700 hover:-translate-y-2 transition-all duration-500 overflow-hidden group cursor-pointer">
+                    {/* 브라우저 스타일 헤더 */}
+                    <div className="flex items-center space-x-2 p-4 bg-slate-700/50">
+                      <div className="w-3 h-3 bg-red-500 rounded-full"></div>
+                      <div className="w-3 h-3 bg-yellow-500 rounded-full"></div>
+                      <div className="w-3 h-3 bg-green-500 rounded-full"></div>
+                      <div className="flex-1 text-center">
+                        <div className="text-xs text-slate-300">{currentProject.title}</div>
+                      </div>
+                    </div>
+                    
+                    {/* 프로젝트 썸네일 */}
+                    <div className="relative aspect-video overflow-hidden">
+                      <Image
+                        src={currentProject.thumbnail.src}
+                        alt={currentProject.thumbnail.alt}
+                        fill
+                        className="object-cover transition-transform duration-500 group-hover:scale-105"
+                        priority
+                      />
+                      <div className="absolute inset-0 bg-gradient-to-t from-slate-900/60 via-transparent to-transparent" />
+                      
+                      {/* 프로젝트 정보 오버레이 */}
+                      <div className="absolute bottom-4 left-4 right-4">
+                        <Badge variant="primary" className="mb-2">
+                          {currentProject.category === '3d-visualization' && '3D 시각화'}
+                          {currentProject.category === 'ar-vr' && 'AR/VR'}
+                          {currentProject.category === 'webxr' && 'WebXR'}
+                          {currentProject.category === 'web-development' && '웹 개발'}
+                          {currentProject.category === 'interactive-installation' && '인터렉티브 설치'}
+                          {currentProject.category === '3d-platform' && '3D 플랫폼'}
+                        </Badge>
+                        <h3 className="text-white font-bold text-lg mb-1">{currentProject.title}</h3>
+                        <p className="text-slate-200 text-sm line-clamp-2">{currentProject.shortDescription}</p>
+                      </div>
+                    </div>
+                    
+                    {/* 기술 스택 미리보기 */}
+                    <div className="p-4">
+                      <div className="flex flex-wrap gap-1">
+                        {currentProject.technologies.slice(0, 3).map((tech) => (
+                          <Badge key={tech} variant="secondary" className="text-xs">
+                            {tech}
+                          </Badge>
+                        ))}
+                        {currentProject.technologies.length > 3 && (
+                          <Badge variant="secondary" className="text-xs">
+                            +{currentProject.technologies.length - 3}
+                          </Badge>
+                        )}
+                      </div>
                     </div>
                   </div>
-                  <div className="space-y-2">
-                    <div className="h-2 bg-slate-700 rounded-full"></div>
-                    <div className="h-2 bg-slate-700 rounded-full w-3/4"></div>
-                    <div className="h-2 bg-slate-700 rounded-full w-1/2"></div>
-                  </div>
+                </Link>
+
+                {/* 플로팅 요소들 */}
+                <div className="absolute -top-4 -right-4 bg-slate-700 rounded-lg p-3 shadow-lg animate-bounce">
+                  <Star className="w-6 h-6 text-slate-200" />
+                </div>
+
+                <div className="absolute -bottom-4 -left-4 bg-slate-700 rounded-lg p-3 shadow-lg animate-bounce">
+                  <Award className="w-6 h-6 text-slate-200" />
+                </div>
+                
+                {/* 프로젝트 인디케이터 */}
+                <div className="absolute -bottom-8 left-1/2 transform -translate-x-1/2 flex gap-2">
+                  {featuredProjects.map((_, index) => (
+                    <button
+                      key={index}
+                      onClick={() => setCurrentProjectIndex(index)}
+                      className={`w-2 h-2 rounded-full transition-colors ${
+                        index === currentProjectIndex ? 'bg-slate-400' : 'bg-slate-600'
+                      }`}
+                    />
+                  ))}
                 </div>
               </div>
-
-              {/* 플로팅 요소들 */}
-              <div className="absolute -top-4 -right-4 bg-slate-700 rounded-lg p-3 shadow-lg animate-bounce">
-                <Star className="w-6 h-6 text-slate-200" />
-              </div>
-
-              <div className="absolute -bottom-4 -left-4 bg-slate-700 rounded-lg p-3 shadow-lg animate-bounce">
-                <Award className="w-6 h-6 text-slate-200" />
-              </div>
-            </div>
+            )}
           </div>
         </div>
       </div>

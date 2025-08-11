@@ -5,7 +5,7 @@ export interface PortfolioProject {
   title: string
   description: string
   shortDescription: string
-  category: '3d-visualization' | 'ar-vr' | 'webxr' | 'web-development'
+  category: '3d-visualization' | 'ar-vr' | 'webxr' | 'web-development' | 'interactive-installation' | '3d-platform'
   technologies: string[]
   duration: {
     start: string
@@ -79,6 +79,18 @@ export const PORTFOLIO_CATEGORIES: PortfolioCategory[] = [
     label: '웹 개발',
     description: '반응형 웹사이트 및 웹 애플리케이션',
     icon: 'Code'
+  },
+  {
+    value: 'interactive-installation',
+    label: '인터렉티브 설치',
+    description: '설치형 인터렉티브 공간 및 체험 프로젝트',
+    icon: 'Building'
+  },
+  {
+    value: '3d-platform',
+    label: '3D 플랫폼',
+    description: '3D 모델 뷰어 및 배포 플랫폼',
+    icon: 'Box'
   }
 ]
 
@@ -91,6 +103,15 @@ export const TECHNOLOGIES = [
   'WebXR',
   'Unity',
   'AR.js',
+  'ARCore',
+  'ARKit',
+  'Enscape',
+  'C#',
+  'Android',
+  'Kotlin',
+  'VR',
+  '3D Rendering',
+  'Interactive Design',
   'Framer Motion',
   'Tailwind CSS',
   'Node.js',
