@@ -83,7 +83,7 @@ export const Footer = () => {
                 <div className="w-8 h-8 bg-gradient-to-r from-slate-500/20 to-slate-400/20 rounded-lg flex items-center justify-center group-hover:scale-110 transition-transform">
                   <Phone className="w-4 h-4" />
                 </div>
-                <span>010-8983-6637</span>
+                <span>02-557-6637</span>
               </div>
               <div className="flex items-center space-x-3 text-slate-300 hover:text-slate-100 transition-colors group">
                 <div className="w-8 h-8 bg-gradient-to-r from-slate-500/20 to-slate-400/20 rounded-lg flex items-center justify-center group-hover:scale-110 transition-transform">

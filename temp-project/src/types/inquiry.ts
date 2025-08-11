@@ -20,7 +20,7 @@ export interface InquiryData {
   company?: string
   subject: string
   message: string
-  category: string
+  category: InquiryCategory
 }
 
 // 문의 응답 인터페이스

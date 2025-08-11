@@ -21,32 +21,37 @@ import {
 } from 'lucide-react'
 import type { InquiryData, InquiryCategory } from '@/types/inquiry'
 
-// 문의 카테고리 옵션
-const categoryOptions: { value: InquiryCategory; label: string; description: string }[] = [
+// 문의 카테고리 옵션 - 영문 value로 변경하여 Formspree 호환성 개선
+const categoryOptions: { value: string; label: string; description: string; displayName: string }[] = [
   {
-    value: '웹 개발',
+    value: 'web-development',
     label: '웹 개발',
-    description: '웹사이트 및 웹 애플리케이션 개발'
+    description: '웹사이트 및 웹 애플리케이션 개발',
+    displayName: '웹 개발'
   },
   {
-    value: '모바일 앱 개발',
+    value: 'mobile-app-development',
     label: '모바일 앱 개발',
-    description: 'iOS/Android 앱 개발'
+    description: 'iOS/Android 앱 개발',
+    displayName: '모바일 앱 개발'
   },
   {
-    value: '3D 제품 컨피규레이터',
+    value: '3d-product-configurator',
     label: '3D 제품 컨피규레이터',
-    description: '3D 제품 커스터마이징 솔루션'
+    description: '3D 제품 커스터마이징 솔루션',
+    displayName: '3D 제품 컨피규레이터'
   },
   {
-    value: 'UI/UX 디자인',
+    value: 'ui-ux-design',
     label: 'UI/UX 디자인',
-    description: '사용자 인터페이스 및 경험 디자인'
+    description: '사용자 인터페이스 및 경험 디자인',
+    displayName: 'UI/UX 디자인'
   },
   {
-    value: '기타',
+    value: 'other',
     label: '기타',
-    description: '기타 문의사항'
+    description: '기타 문의사항',
+    displayName: '기타'
   }
 ]
 
@@ -61,7 +66,7 @@ const contactInfo = [
   {
     icon: Phone,
     title: '전화번호',
-    value: '010-8983-6637',
+    value: '02-557-6637',
     description: '평일 09:00-18:00'
   },
   {
@@ -79,14 +84,14 @@ const contactInfo = [
 ]
 
 export default function ContactPage() {
-  const [formData, setFormData] = useState<InquiryData>({
+  const [formData, setFormData] = useState({
     name: '',
     email: '',
     phone: '',
     company: '',
     subject: '',
     message: '',
-    category: '웹 개발'
+    category: 'web-development'
   })
 
   const [errors, setErrors] = useState<Record<string, string>>({})
@@ -94,7 +99,7 @@ export default function ContactPage() {
   const [submitStatus, setSubmitStatus] = useState<'idle' | 'success' | 'error'>('idle')
 
   // 폼 데이터 업데이트
-  const handleInputChange = (field: keyof InquiryData, value: string) => {
+  const handleInputChange = (field: string, value: string) => {
     setFormData(prev => ({ ...prev, [field]: value }))
     
     // 에러 메시지 초기화
@@ -140,7 +145,7 @@ export default function ContactPage() {
     return Object.keys(newErrors).length === 0
   }
 
-  // 폼 제출 - Formspree 사용
+  // 폼 제출 - Formspree HTML 폼 방식 사용
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
     
@@ -152,25 +157,19 @@ export default function ContactPage() {
     setSubmitStatus('idle')
 
     try {
-      // Formspree 엔드포인트
-      const formspreeEndpoint = 'https://formspree.io/f/xqalynyy'
-      
-      const response = await fetch(formspreeEndpoint, {
+      // HTML FormData를 사용하여 표준 폼 제출 방식으로 변경
+      const form = e.target as HTMLFormElement
+      const formDataToSend = new FormData(form)
+
+      const response = await fetch('https://formspree.io/f/xqalynyy', {
         method: 'POST',
+        body: formDataToSend,
         headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({
-          name: formData.name,
-          email: formData.email,
-          phone: formData.phone,
-          company: formData.company,
-          subject: formData.subject,
-          message: formData.message,
-          category: formData.category,
-          _subject: `[문의] ${formData.subject} - ${formData.category}`
-        }),
+          'Accept': 'application/json'
+        }
       })
+
+      const responseData = await response.json()
 
       if (response.ok) {
         setSubmitStatus('success')
@@ -181,15 +180,15 @@ export default function ContactPage() {
           company: '',
           subject: '',
           message: '',
-          category: '웹 개발'
+          category: 'web-development'
         })
       } else {
         setSubmitStatus('error')
-        setErrors({ submit: '문의 전송에 실패했습니다.' })
+        setErrors({ submit: '문의 전송에 실패했습니다. 잠시 후 다시 시도해주세요.' })
       }
     } catch (error) {
       setSubmitStatus('error')
-      setErrors({ submit: '네트워크 오류가 발생했습니다.' })
+      setErrors({ submit: '네트워크 오류가 발생했습니다. 잠시 후 다시 시도해주세요.' })
     } finally {
       setIsSubmitting(false)
     }
@@ -237,6 +236,10 @@ export default function ContactPage() {
               </div>
 
               <form onSubmit={handleSubmit} className="space-y-6">
+                {/* Hidden input for category - Formspree에서 인식할 수 있도록 */}
+                <input type="hidden" name="category" value={formData.category} />
+                <input type="hidden" name="_subject" value={`[문의] ${formData.subject} - ${categoryOptions.find(opt => opt.value === formData.category)?.displayName || formData.category}`} />
+                
                 {/* 카테고리 선택 */}
                 <div>
                   <label className="block text-sm font-medium text-slate-200 mb-3">
@@ -270,6 +273,7 @@ export default function ContactPage() {
                     <User className="absolute left-3 top-1/2 transform -translate-y-1/2 w-5 h-5 text-slate-400" />
                     <input
                       type="text"
+                      name="name"
                       value={formData.name}
                       onChange={(e) => handleInputChange('name', e.target.value)}
                       className={`w-full pl-10 pr-4 py-3 bg-slate-700/50 border rounded-lg text-slate-100 placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-slate-500 focus:border-transparent ${
@@ -295,6 +299,7 @@ export default function ContactPage() {
                     <Mail className="absolute left-3 top-1/2 transform -translate-y-1/2 w-5 h-5 text-slate-400" />
                     <input
                       type="email"
+                      name="email"
                       value={formData.email}
                       onChange={(e) => handleInputChange('email', e.target.value)}
                       className={`w-full pl-10 pr-4 py-3 bg-slate-700/50 border rounded-lg text-slate-100 placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-slate-500 focus:border-transparent ${
@@ -320,6 +325,7 @@ export default function ContactPage() {
                     <Phone className="absolute left-3 top-1/2 transform -translate-y-1/2 w-5 h-5 text-slate-400" />
                     <input
                       type="tel"
+                      name="phone"
                       value={formData.phone}
                       onChange={(e) => handleInputChange('phone', e.target.value)}
                       className="w-full pl-10 pr-4 py-3 bg-slate-700/50 border border-slate-600 rounded-lg text-slate-100 placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-slate-500 focus:border-transparent"
@@ -337,6 +343,7 @@ export default function ContactPage() {
                     <Building className="absolute left-3 top-1/2 transform -translate-y-1/2 w-5 h-5 text-slate-400" />
                     <input
                       type="text"
+                      name="company"
                       value={formData.company}
                       onChange={(e) => handleInputChange('company', e.target.value)}
                       className="w-full pl-10 pr-4 py-3 bg-slate-700/50 border border-slate-600 rounded-lg text-slate-100 placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-slate-500 focus:border-transparent"
@@ -352,6 +359,7 @@ export default function ContactPage() {
                   </label>
                   <input
                     type="text"
+                    name="subject"
                     value={formData.subject}
                     onChange={(e) => handleInputChange('subject', e.target.value)}
                     className={`w-full px-4 py-3 bg-slate-700/50 border rounded-lg text-slate-100 placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-slate-500 focus:border-transparent ${
@@ -375,6 +383,7 @@ export default function ContactPage() {
                   <div className="relative">
                     <MessageSquare className="absolute left-3 top-3 w-5 h-5 text-slate-400" />
                     <textarea
+                      name="message"
                       value={formData.message}
                       onChange={(e) => handleInputChange('message', e.target.value)}
                       rows={6}
