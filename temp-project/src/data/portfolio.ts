@@ -171,9 +171,9 @@ export const portfolioProjects: PortfolioProject[] = [
   },
   {
     id: '3d-data-visualization',
-    title: '3D 모델 뷰어 배포 플랫폼',
-    description: 'Three.js를 기반으로 한 3D 모델 뷰어 배포 플랫폼입니다. 다양한 3D 모델 포맷을 지원하며, 웹에서 직접 3D 모델을 업로드, 관리, 공유할 수 있는 통합 솔루션을 제공합니다.',
-    shortDescription: '3D 모델 뷰어 배포 플랫폼',
+    title: '3D 모델 뷰어 플랫폼',
+    description: 'Three.js를 기반으로 한 3D 모델 뷰어 플랫폼입니다. 다양한 3D 모델 포맷을 지원하며, 웹에서 직접 3D 모델을 업로드, 관리, 공유할 수 있는 통합 솔루션을 제공합니다.',
+    shortDescription: '3D 모델 뷰어 플랫폼',
     category: '3d-platform',
     technologies: ['Three.js', 'React', 'TypeScript', 'WebGL', 'Node.js'],
     duration: {
