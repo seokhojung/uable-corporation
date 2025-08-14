@@ -28,10 +28,42 @@ export const portfolioProjects: PortfolioProject[] = [
     },
     images: [
       {
-        src: '/portfolio/3d-product-configurator/gallery/interface.webp',
-        alt: '3D 제품 컨피규레이터 인터페이스 - 픽셀 수납장 구성 도구',
+        src: '/portfolio/3d-product-configurator/gallery/KakaoTalk_20250814_163330691.png',
+        alt: '3D 제품 컨피규레이터 인터페이스 - 메인 화면',
         width: 1200,
         height: 800
+      },
+      {
+        src: '/portfolio/3d-product-configurator/gallery/KakaoTalk_20250814_163406705.png',
+        alt: '3D 제품 컨피규레이터 - 제품 구성 옵션',
+        width: 1200,
+        height: 800
+      },
+      {
+        src: '/portfolio/3d-product-configurator/gallery/KakaoTalk_20250814_163423036.png',
+        alt: '3D 제품 컨피규레이터 - 3D 뷰어 화면',
+        width: 1200,
+        height: 800
+      },
+      {
+        src: '/portfolio/3d-product-configurator/gallery/KakaoTalk_20250814_163434083.png',
+        alt: '3D 제품 컨피규레이터 - 상세 설정 패널',
+        width: 1200,
+        height: 800
+      },
+      {
+        src: '/portfolio/3d-product-configurator/gallery/KakaoTalk_20250814_163457254.png',
+        alt: '3D 제품 컨피규레이터 - 최종 구성 결과',
+        width: 1200,
+        height: 800
+      }
+    ],
+    videos: [
+      {
+        src: '/videos/inshowconfigurator.mp4',
+        alt: '3D 제품 컨피규레이터 데모 영상',
+        width: 1200,
+        height: 675
       }
     ],
     links: {
@@ -112,7 +144,7 @@ export const portfolioProjects: PortfolioProject[] = [
     updatedAt: '2024-04-15'
   },
   {
-    id: 'webxr-showroom',
+    id: 'interactive-space-tour',
     title: '인터렉티브 공간 투어',
     description: '엔스케이프와 Unity를 활용한 설치형 인터렉티브 공간 투어 시스템입니다. 고해상도 3D 환경에서 사용자가 직접 공간을 탐색하고 상호작용할 수 있는 몰입형 경험을 제공합니다.',
     shortDescription: '인터렉티브 공간 투어 시스템',
@@ -130,35 +162,43 @@ export const portfolioProjects: PortfolioProject[] = [
       '몰입형 인터렉티브 경험 구현'
     ],
     thumbnail: {
-      src: '/portfolio/webxr-showroom/thumbnails/main.webp',
+      src: '/portfolio/interactive-space-tour/thumbnails/main.webp',
       alt: '인터렉티브 공간 투어 썸네일',
       width: 400,
       height: 300
     },
     images: [
       {
-        src: '/portfolio/webxr-showroom/gallery/HighresScreenshot00000.png',
+        src: '/portfolio/interactive-space-tour/gallery/HighresScreenshot00000.png',
         alt: '인터렉티브 공간 투어 스크린샷 1',
         width: 1200,
         height: 800
       },
       {
-        src: '/portfolio/webxr-showroom/gallery/HighresScreenshot00001.png',
+        src: '/portfolio/interactive-space-tour/gallery/HighresScreenshot00001.png',
         alt: '인터렉티브 공간 투어 스크린샷 2',
         width: 1200,
         height: 800
       },
       {
-        src: '/portfolio/webxr-showroom/gallery/HighresScreenshot00002.png',
+        src: '/portfolio/interactive-space-tour/gallery/HighresScreenshot00002.png',
         alt: '인터렉티브 공간 투어 스크린샷 3',
         width: 1200,
         height: 800
       },
       {
-        src: '/portfolio/webxr-showroom/gallery/HighresScreenshot00004.png',
+        src: '/portfolio/interactive-space-tour/gallery/HighresScreenshot00004.png',
         alt: '인터렉티브 공간 투어 스크린샷 4',
         width: 1200,
         height: 800
+      }
+    ],
+    videos: [
+      {
+        src: '/videos/archipleNRP.mp4',
+        alt: '인터랙티브 공간 투어 프로젝트 소개 영상',
+        width: 1200,
+        height: 675
       }
     ],
     links: {
@@ -194,6 +234,14 @@ export const portfolioProjects: PortfolioProject[] = [
       height: 300
     },
     images: [
+    ],
+    videos: [
+      {
+        src: '/videos/metahuman.mp4',
+        alt: '3D 모델 뷰어 플랫폼 데모 영상',
+        width: 1200,
+        height: 675
+      }
     ],
     links: {
       demo: undefined, // 추후 데모 링크 연결 예정

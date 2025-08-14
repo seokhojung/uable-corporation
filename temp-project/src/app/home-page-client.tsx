@@ -61,21 +61,37 @@ export function HomePageClient() {
   const videoRef = useRef<HTMLVideoElement>(null)
 
   // 동영상 컨트롤 함수들
-  const toggleVideoPlay = () => {
+  const toggleVideoPlay = async () => {
     if (videoRef.current) {
-      if (isVideoPlaying) {
-        videoRef.current.pause()
-      } else {
-        videoRef.current.play()
+      try {
+        if (isVideoPlaying) {
+          videoRef.current.pause()
+          setIsVideoPlaying(false)
+        } else {
+          await videoRef.current.play()
+          setIsVideoPlaying(true)
+        }
+      } catch (error) {
+        console.error('동영상 재생 오류:', error)
+        // 자동재생이 차단된 경우 수동으로 재생 시도
+        if (videoRef.current) {
+          videoRef.current.muted = true
+          try {
+            await videoRef.current.play()
+            setIsVideoPlaying(true)
+          } catch (playError) {
+            console.error('음소거 상태에서도 재생 실패:', playError)
+          }
+        }
       }
-      setIsVideoPlaying(!isVideoPlaying)
     }
   }
 
   const toggleVideoMute = () => {
     if (videoRef.current) {
-      videoRef.current.muted = !isVideoMuted
-      setIsVideoMuted(!isVideoMuted)
+      const newMutedState = !isVideoMuted
+      videoRef.current.muted = newMutedState
+      setIsVideoMuted(newMutedState)
     }
   }
 
@@ -269,7 +285,7 @@ export function HomePageClient() {
                <div className="relative aspect-video rounded-2xl overflow-hidden shadow-2xl border border-slate-700">
                  <video
                    ref={videoRef}
-                   src="/t6By7SQ79bqq7KHtdfDLiQ65A.mp4"
+                   src="/videos/inshowconfigurator.mp4"
                    className="w-full h-full object-cover"
                    muted={isVideoMuted}
                    loop
@@ -277,6 +293,9 @@ export function HomePageClient() {
                    autoPlay
                    onPlay={() => setIsVideoPlaying(true)}
                    onPause={() => setIsVideoPlaying(false)}
+                   onLoadedData={() => console.log('동영상 로드 완료')}
+                   onError={(e) => console.error('동영상 로드 오류:', e)}
+                   onCanPlay={() => console.log('동영상 재생 가능')}
                  />
                  
                  {/* 오버레이 */}
@@ -286,13 +305,15 @@ export function HomePageClient() {
                  <div className="absolute bottom-6 left-6 flex gap-3">
                    <button 
                      onClick={toggleVideoPlay}
-                     className="p-3 bg-white/20 backdrop-blur-sm rounded-full hover:bg-white/30 transition-colors"
+                     className="p-3 bg-white/20 backdrop-blur-sm rounded-full hover:bg-white/30 transition-colors focus:outline-none focus:ring-2 focus:ring-white/50"
+                     title={isVideoPlaying ? '일시정지' : '재생'}
                    >
                      {isVideoPlaying ? <Pause className="w-5 h-5 text-white" /> : <Play className="w-5 h-5 text-white" />}
                    </button>
                    <button 
                      onClick={toggleVideoMute}
-                     className="p-3 bg-white/20 backdrop-blur-sm rounded-full hover:bg-white/30 transition-colors"
+                     className="p-3 bg-white/20 backdrop-blur-sm rounded-full hover:bg-white/30 transition-colors focus:outline-none focus:ring-2 focus:ring-white/50"
+                     title={isVideoMuted ? '음소거 해제' : '음소거'}
                    >
                      {isVideoMuted ? <VolumeX className="w-5 h-5 text-white" /> : <Volume2 className="w-5 h-5 text-white" />}
                    </button>

@@ -3,7 +3,7 @@
 import React, { useState, useRef } from 'react'
 import Image from 'next/image'
 import Link from 'next/link'
-import { ArrowLeft, ExternalLink, Github, Globe, Mail, Calendar, Users, Award, ChevronLeft, ChevronRight } from 'lucide-react'
+import { ArrowLeft, ExternalLink, Github, Globe, Mail, Calendar, Users, Award, ChevronLeft, ChevronRight, Play, Pause, Volume2, VolumeX } from 'lucide-react'
 import { Container } from '@/components/ui/container'
 import { Badge } from '@/components/ui/badge'
 import { Button } from '@/components/ui/button'
@@ -18,6 +18,9 @@ interface PortfolioDetailClientProps {
 
 export function PortfolioDetailClient({ project }: PortfolioDetailClientProps) {
   const [currentImageIndex, setCurrentImageIndex] = useState(0)
+  
+  // 영상 컨트롤 상태
+  const [videoStates, setVideoStates] = useState<{ [key: number]: { isPlaying: boolean; isMuted: boolean } }>({})
 
   // 애니메이션을 위한 ref들
   const headerRef = useRef<HTMLDivElement>(null)
@@ -53,6 +56,27 @@ export function PortfolioDetailClient({ project }: PortfolioDetailClientProps) {
   }
   const prevImage = () => {
     setCurrentImageIndex((prev) => (prev - 1 + project.images.length) % project.images.length)
+  }
+
+  // 영상 컨트롤 함수들
+  const toggleVideoPlay = (videoIndex: number) => {
+    setVideoStates(prev => ({
+      ...prev,
+      [videoIndex]: {
+        ...prev[videoIndex],
+        isPlaying: !prev[videoIndex]?.isPlaying
+      }
+    }))
+  }
+
+  const toggleVideoMute = (videoIndex: number) => {
+    setVideoStates(prev => ({
+      ...prev,
+      [videoIndex]: {
+        ...prev[videoIndex],
+        isMuted: !prev[videoIndex]?.isMuted
+      }
+    }))
   }
 
   return (
@@ -211,6 +235,87 @@ export function PortfolioDetailClient({ project }: PortfolioDetailClientProps) {
                   ))}
                 </div>
               )}
+            </div>
+          </Container>
+        </section>
+      )}
+
+      {/* 프로젝트 영상 */}
+      {project.videos && project.videos.length > 0 && (
+        <section className="py-12 bg-slate-900">
+          <Container>
+            <h2 className="text-2xl font-bold text-slate-100 mb-8">프로젝트 영상</h2>
+            <div className="space-y-8">
+              {project.videos.map((video, index) => (
+                <div key={index} className="space-y-4">
+                  <div className="relative aspect-video bg-slate-700 rounded-lg overflow-hidden shadow-2xl border border-slate-700">
+                                         <video
+                       src={video.src}
+                       className="w-full h-full object-cover"
+                       muted={videoStates[index]?.isMuted ?? true}
+                       loop
+                       playsInline
+                       autoPlay
+                       onPlay={() => {
+                         setVideoStates(prev => ({
+                           ...prev,
+                           [index]: { ...prev[index], isPlaying: true }
+                         }))
+                       }}
+                       onPause={() => {
+                         setVideoStates(prev => ({
+                           ...prev,
+                           [index]: { ...prev[index], isPlaying: false }
+                         }))
+                       }}
+                     />
+                    
+                    {/* 오버레이 */}
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/30 via-transparent to-transparent" />
+                    
+                    {/* 컨트롤 버튼들 */}
+                    <div className="absolute bottom-6 left-6 flex gap-3">
+                                             <button 
+                         onClick={() => {
+                           const videoElement = document.querySelector(`video[src="${video.src}"]`) as HTMLVideoElement
+                           if (videoElement) {
+                             if (videoStates[index]?.isPlaying) {
+                               videoElement.pause()
+                             } else {
+                               videoElement.play()
+                             }
+                           }
+                         }}
+                         className="p-3 bg-white/20 backdrop-blur-sm rounded-full hover:bg-white/30 transition-colors"
+                       >
+                         {videoStates[index]?.isPlaying ? <Pause className="w-5 h-5 text-white" /> : <Play className="w-5 h-5 text-white" />}
+                       </button>
+                                             <button 
+                         onClick={() => {
+                           const videoElement = document.querySelector(`video[src="${video.src}"]`) as HTMLVideoElement
+                           if (videoElement) {
+                             videoElement.muted = !videoStates[index]?.isMuted
+                             setVideoStates(prev => ({
+                               ...prev,
+                               [index]: { ...prev[index], isMuted: !prev[index]?.isMuted }
+                             }))
+                           }
+                         }}
+                         className="p-3 bg-white/20 backdrop-blur-sm rounded-full hover:bg-white/30 transition-colors"
+                       >
+                         {videoStates[index]?.isMuted ? <VolumeX className="w-5 h-5 text-white" /> : <Volume2 className="w-5 h-5 text-white" />}
+                       </button>
+                    </div>
+                    
+                    {/* 영상 제목 오버레이 */}
+                    <div className="absolute top-6 left-6">
+                      <div className="bg-black/50 backdrop-blur-sm text-white px-4 py-2 rounded-lg">
+                        <h3 className="text-lg font-semibold">{video.alt}</h3>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              ))}
             </div>
           </Container>
         </section>
