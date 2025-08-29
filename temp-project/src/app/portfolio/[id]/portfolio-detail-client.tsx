@@ -340,14 +340,14 @@ export function PortfolioDetailClient({ project }: PortfolioDetailClientProps) {
         </Container>
       </section>
 
-      {/* 관련 프로젝트 */}
+      {/* 다른 프로젝트 */}
       <section ref={relatedRef} className="py-12 bg-slate-800">
         <Container>
-          <h2 className="text-2xl font-bold text-slate-100 mb-8">관련 프로젝트</h2>
+          <h2 className="text-2xl font-bold text-slate-100 mb-8">다른 프로젝트 둘러보기</h2>
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
             {portfolioProjects
-              .filter(p => p.id !== project.id && p.category === project.category)
-              .slice(0, 3)
+              .filter(p => p.id !== project.id)
+              .slice(0, 5)
               .map((relatedProject) => (
                 <Card key={relatedProject.id} className="overflow-hidden hover:scale-105 transition-transform">
                   <Link href={`/portfolio/${relatedProject.id}`}>
