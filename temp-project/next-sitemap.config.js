@@ -1,6 +1,6 @@
 /** @type {import('next-sitemap').IConfig} */
 module.exports = {
-  siteUrl: process.env.SITE_URL || 'https://your-project-name.vercel.app',
+  siteUrl: process.env.SITE_URL || 'https://uable.co.kr',
   generateRobotsTxt: true,
   generateIndexSitemap: false,
   robotsTxtOptions: {
@@ -9,9 +9,17 @@ module.exports = {
         userAgent: '*',
         allow: '/',
       },
+      {
+        userAgent: 'Yeti',
+        allow: '/',
+      },
+      {
+        userAgent: 'Googlebot',
+        allow: '/',
+      },
     ],
     additionalSitemaps: [
-      'https://your-project-name.vercel.app/sitemap.xml',
+      'https://uable.co.kr/sitemap.xml',
     ],
   },
   exclude: ['/admin/*', '/api/*'],

@@ -2,8 +2,16 @@
 User-agent: *
 Allow: /
 
+# Yeti
+User-agent: Yeti
+Allow: /
+
+# Googlebot
+User-agent: Googlebot
+Allow: /
+
 # Host
-Host: https://your-project-name.vercel.app
+Host: https://uable.co.kr
 
 # Sitemaps
-Sitemap: https://your-project-name.vercel.app/sitemap.xml
+Sitemap: https://uable.co.kr/sitemap.xml

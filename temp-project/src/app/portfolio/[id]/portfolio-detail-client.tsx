@@ -3,7 +3,7 @@
 import React, { useState, useRef } from 'react'
 import Image from 'next/image'
 import Link from 'next/link'
-import { ArrowLeft, ExternalLink, Github, Globe, Mail, Calendar, Users, Award, ChevronLeft, ChevronRight, Play, Pause, Volume2, VolumeX } from 'lucide-react'
+import { ArrowLeft, ExternalLink, Mail, Calendar, Users, Award, Play, Pause, Volume2, VolumeX } from 'lucide-react'
 import { Container } from '@/components/ui/container'
 import { Badge } from '@/components/ui/badge'
 import { Button } from '@/components/ui/button'
@@ -11,19 +11,22 @@ import { Card } from '@/components/ui/card'
 import { portfolioProjects } from '@/data/portfolio'
 import { PortfolioProject } from '@/types/portfolio'
 import { PORTFOLIO_CATEGORIES } from '@/types/portfolio'
+import { ImageGallery } from '@/components/portfolio/image-gallery'
+import { ProjectDetails } from '@/components/portfolio/project-details'
 
 interface PortfolioDetailClientProps {
   project: PortfolioProject
 }
 
 export function PortfolioDetailClient({ project }: PortfolioDetailClientProps) {
-  const [currentImageIndex, setCurrentImageIndex] = useState(0)
   
   // 영상 컨트롤 상태
   const [videoStates, setVideoStates] = useState<{ [key: number]: { isPlaying: boolean; isMuted: boolean } }>({})
 
   // 애니메이션을 위한 ref들
   const headerRef = useRef<HTMLDivElement>(null)
+  const detailsRef = useRef<HTMLDivElement>(null)
+  const galleryRef = useRef<HTMLDivElement>(null)
   const achievementsRef = useRef<HTMLDivElement>(null)
   const relatedRef = useRef<HTMLDivElement>(null)
 
@@ -42,7 +45,7 @@ export function PortfolioDetailClient({ project }: PortfolioDetailClientProps) {
       })
     }, observerOptions)
 
-    const sections = [headerRef.current, achievementsRef.current, relatedRef.current]
+    const sections = [headerRef.current, detailsRef.current, galleryRef.current, achievementsRef.current, relatedRef.current]
     sections.forEach(section => {
       if (section) observer.observe(section)
     })
@@ -51,12 +54,6 @@ export function PortfolioDetailClient({ project }: PortfolioDetailClientProps) {
   }, [])
 
   const category = PORTFOLIO_CATEGORIES.find(cat => cat.value === project.category)
-  const nextImage = () => {
-    setCurrentImageIndex((prev) => (prev + 1) % project.images.length)
-  }
-  const prevImage = () => {
-    setCurrentImageIndex((prev) => (prev - 1 + project.images.length) % project.images.length)
-  }
 
   // 영상 컨트롤 함수들
   const toggleVideoPlay = (videoIndex: number) => {
@@ -188,57 +185,20 @@ export function PortfolioDetailClient({ project }: PortfolioDetailClientProps) {
         </Container>
       </section>
 
+      {/* 프로젝트 상세 정보 */}
+      <div ref={detailsRef} className="animate-slideUp">
+        <ProjectDetails detailContent={project.detailContent} />
+      </div>
+
       {/* 프로젝트 이미지 갤러리 */}
-      {project.images.length > 0 && (
+      <div ref={galleryRef} className="animate-slideUp">
         <section className="py-12 bg-slate-800">
           <Container>
             <h2 className="text-2xl font-bold text-slate-100 mb-8">프로젝트 갤러리</h2>
-            <div className="relative">
-              <div className="relative aspect-video bg-slate-700 rounded-lg overflow-hidden">
-                <Image
-                  src={project.images[currentImageIndex].src}
-                  alt={project.images[currentImageIndex].alt}
-                  fill
-                  className="object-cover"
-                />
-                
-                {/* 이미지 네비게이션 */}
-                {project.images.length > 1 && (
-                  <>
-                    <button
-                      onClick={prevImage}
-                      className="absolute left-4 top-1/2 -translate-y-1/2 bg-slate-900/80 hover:bg-slate-900 text-slate-100 p-2 rounded-full transition-colors"
-                    >
-                      <ChevronLeft className="w-6 h-6" />
-                    </button>
-                    <button
-                      onClick={nextImage}
-                      className="absolute right-4 top-1/2 -translate-y-1/2 bg-slate-900/80 hover:bg-slate-900 text-slate-100 p-2 rounded-full transition-colors"
-                    >
-                      <ChevronRight className="w-6 h-6" />
-                    </button>
-                  </>
-                )}
-              </div>
-              
-              {/* 이미지 인디케이터 */}
-              {project.images.length > 1 && (
-                <div className="flex justify-center mt-4 gap-2">
-                  {project.images.map((_, index) => (
-                    <button
-                      key={index}
-                      onClick={() => setCurrentImageIndex(index)}
-                      className={`w-2 h-2 rounded-full transition-colors ${
-                        index === currentImageIndex ? 'bg-slate-400' : 'bg-slate-600'
-                      }`}
-                    />
-                  ))}
-                </div>
-              )}
-            </div>
+            <ImageGallery images={project.images} />
           </Container>
         </section>
-      )}
+      </div>
 
       {/* 프로젝트 영상 */}
       {project.videos && project.videos.length > 0 && (

@@ -36,6 +36,30 @@ export interface PortfolioProject {
     demo?: string
     contact?: string
   }
+  detailContent?: {
+    background: string
+    challenges: string[]
+    solutions: string[]
+    impact: string
+  }
+  visualMetrics?: {
+    coreValues: {
+      label: string
+      value: number
+      unit: '%' | '배' | 'X' | '점'
+      type: 'donut' | 'gauge' | 'progress'
+      color: string
+      description: string
+    }[]
+    differentiators: {
+      label: string
+      value: number
+      unit: 'ms' | 's' | '%' | '도' | 'fps'
+      type: 'speedometer' | 'circular' | 'bar'
+      color: string
+      description: string
+    }[]
+  }
   featured: boolean
   createdAt: string
   updatedAt: string

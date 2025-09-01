@@ -23,20 +23,20 @@ export const metadata: Metadata = {
     address: false,
     telephone: false,
   },
-  metadataBase: new URL('https://uable.com'),
+  metadataBase: new URL('https://uable.co.kr'),
   alternates: {
     canonical: '/',
   },
   openGraph: {
     type: 'website',
     locale: 'ko_KR',
-    url: 'https://uable.com',
+    url: 'https://uable.co.kr',
     siteName: 'Uable Corporation',
     title: 'Uable Corporation - 3D/AR/WebXR 기술 전문 기업',
     description: '3D/AR/WebXR 기술을 활용하여 비즈니스의 디지털 혁신을 이끄는 전문 기업입니다.',
     images: [
       {
-        url: 'https://uable.com/og-image.jpg',
+        url: 'https://uable.co.kr/og-image.jpg',
         width: 1200,
         height: 630,
         alt: 'Uable Corporation - 3D/AR/WebXR 기술 전문 기업',
@@ -60,7 +60,10 @@ export const metadata: Metadata = {
     },
   },
   verification: {
-    google: 'your-google-verification-code',
+    google: 'ZCH8fsrJ7tFRjaU10ACWwONt1JWELsc3751Pmsv8V-c',
+    other: {
+      'naver-site-verification': 'your-naver-verification-code',
+    },
   },
   icons: {
     icon: [
@@ -95,6 +98,34 @@ export default function RootLayout({
         <meta name="application-name" content="Uable Corporation" />
         <meta name="msapplication-TileColor" content="#2563eb" />
         <meta name="msapplication-config" content="/browserconfig.xml" />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              '@context': 'https://schema.org',
+              '@type': 'Organization',
+              name: 'Uable Corporation',
+              alternateName: '유에이블',
+              url: 'https://uable.co.kr',
+              logo: 'https://uable.co.kr/UABLE-logo-full.png',
+              description: '3D/AR/WebXR 기술을 활용하여 비즈니스의 디지털 혁신을 이끄는 전문 기업입니다.',
+              address: {
+                '@type': 'PostalAddress',
+                addressCountry: 'KR',
+                addressLocality: 'Seoul',
+              },
+              contactPoint: {
+                '@type': 'ContactPoint',
+                contactType: 'customer service',
+                availableLanguage: ['Korean', 'English'],
+              },
+              sameAs: [
+                'https://github.com/uable',
+                'https://linkedin.com/company/uable-corporation',
+              ],
+            })
+          }}
+        />
       </head>
       <body className={inter.className}>
         <SkipLink />

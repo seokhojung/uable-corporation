@@ -5,8 +5,8 @@ export const getStructuredData = () => {
     '@context': 'https://schema.org',
     '@type': 'Organization',
     name: 'Uable Corporation',
-    url: 'https://uable.com',
-    logo: 'https://uable.com/logo.png',
+    url: 'https://uable.co.kr',
+    logo: 'https://uable.co.kr/UABLE-logo-full.png',
     description: '3D/AR/WebXR 기술을 활용하여 비즈니스의 디지털 혁신을 이끄는 전문 기업입니다.',
     address: {
       '@type': 'PostalAddress',
@@ -16,9 +16,9 @@ export const getStructuredData = () => {
     },
     contactPoint: {
       '@type': 'ContactPoint',
-      telephone: '+82-2-1234-5678',
+      telephone: '+82-10-1234-5678',
       contactType: 'customer service',
-      email: 'contact@uable.com',
+      email: 'contact@uable.co.kr',
     },
     sameAs: [
       'https://twitter.com/uablecorp',
@@ -71,11 +71,11 @@ export const getStructuredData = () => {
     '@context': 'https://schema.org',
     '@type': 'WebSite',
     name: 'Uable Corporation',
-    url: 'https://uable.com',
+    url: 'https://uable.co.kr',
     description: '3D/AR/WebXR 기술을 활용하여 비즈니스의 디지털 혁신을 이끄는 전문 기업입니다.',
     potentialAction: {
       '@type': 'SearchAction',
-      target: 'https://uable.com/search?q={search_term_string}',
+      target: 'https://uable.co.kr/search?q={search_term_string}',
       'query-input': 'required name=search_term_string',
     },
   }
