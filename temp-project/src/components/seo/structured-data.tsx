@@ -21,9 +21,10 @@ export const getStructuredData = () => {
       email: 'contact@uable.co.kr',
     },
     sameAs: [
-      'https://twitter.com/uablecorp',
-      'https://linkedin.com/company/uable-corporation',
-      'https://github.com/uable',
+      // SNS 링크는 실제 계정 생성 후 추가
+      // 'https://twitter.com/uablecorp',
+      // 'https://linkedin.com/company/uable-corporation',
+      // 'https://github.com/uable',
     ],
     knowsAbout: [
       '3D Technology',

@@ -1,6 +1,6 @@
 'use client'
 
-import { ArrowRight, Play, Pause, Star, Users, Award, Globe, Code, Smartphone, CheckCircle, ChevronRight, Volume2, VolumeX } from 'lucide-react'
+import { ArrowRight, Play, Pause, Star, Users, Award, CheckCircle, Volume2, VolumeX } from 'lucide-react'
 import { Button } from '@/components/ui/button'
 import { Badge } from '@/components/ui/badge'
 import Link from 'next/link'
@@ -17,33 +17,7 @@ const stats = [
   { label: '평균 평점', value: '4.8+', icon: Star },
 ]
 
-const services = [
-  {
-    icon: Globe,
-    title: '웹 개발',
-    description: '반응형 웹사이트 및 웹 애플리케이션 개발',
-    color: 'from-slate-600 to-slate-700'
-  },
-  {
-    icon: Smartphone,
-    title: '모바일 앱',
-    description: 'iOS/Android 네이티브 및 크로스 플랫폼 앱',
-    color: 'from-slate-500 to-slate-600'
-  },
-  {
-    icon: Code,
-    title: '3D/AR/WebXR',
-    description: '최신 기술을 활용한 인터랙티브 경험',
-    color: 'from-slate-400 to-slate-500'
-  }
-]
 
-const features = [
-  '체험하고 구매하는 3D 제품 컨피규레이터',
-  '색상 조합부터 모듈 추가까지',
-  '직관적인 구매 경험 제공',
-  '최신 WebXR 기술 활용'
-]
 
 export function HomePageClient() {
   const heroContentRef = useRef<HTMLDivElement>(null)
@@ -197,16 +171,16 @@ export function HomePageClient() {
                   </Button>
                 </Link>
 
-                <Link href="/">
+                <Link href="https://befunweb.vercel.app/">
                 <Button variant="outline" size="lg" className="text-lg px-8 py-4 border-slate-600 text-slate-200 hover:bg-slate-700">
                   <Play className="w-5 h-5 mr-2" />
-                  소개 영상 보기
+                  컨피규레이터 보기
                 </Button>
               </Link>
               </div>
               {/* 통계 */}
               <div className="grid grid-cols-3 gap-8 pt-8 border-t border-slate-700">
-                {stats.map((stat, index) => (
+                {stats.map((stat) => (
                   <div key={stat.label} className="text-center">
                     <div className="flex items-center justify-center mb-2">
                       <stat.icon className="w-6 h-6 text-slate-300 mr-2" />
@@ -399,9 +373,9 @@ export function HomePageClient() {
           </div>
           
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 mb-12">
-            {portfolioProjects.slice(0, 3).map((project, index) => (
+            {portfolioProjects.slice(0, 3).map((project) => (
               <div key={project.id} className="bg-slate-800 rounded-2xl p-6 shadow-lg border border-slate-700 hover:shadow-xl transition-shadow">
-                <PortfolioCard project={project} index={index} />
+                <PortfolioCard project={project} index={0} />
               </div>
             ))}
           </div>

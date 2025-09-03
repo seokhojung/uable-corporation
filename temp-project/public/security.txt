@@ -1,0 +1,4 @@
+Contact: mailto:security@uable.co.kr
+Expires: 2025-12-31T23:59:59.000Z
+Preferred-Languages: ko, en
+Canonical: https://uable.co.kr/security.txt

@@ -3,7 +3,6 @@ import { Inter } from 'next/font/google'
 import './globals.css'
 import { Header } from '@/components/layout/header'
 import { Footer } from '@/components/layout/footer'
-import { getStructuredData } from '@/components/seo/structured-data'
 import SkipLink from '@/components/ui/skip-link'
 
 const inter = Inter({ subsets: ['latin'] })
@@ -123,6 +122,77 @@ export default function RootLayout({
                 'https://github.com/uable',
                 'https://linkedin.com/company/uable-corporation',
               ],
+              // 추가 서비스 키워드 (검색엔진용)
+              makesOffer: [
+                {
+                  '@type': 'Offer',
+                  itemOffered: {
+                    '@type': 'Service',
+                    name: '3D 제품 컨피규레이터 개발',
+                    alternateName: 'Three.js 3D 개발'
+                  }
+                },
+                {
+                  '@type': 'Offer',
+                  itemOffered: {
+                    '@type': 'Service', 
+                    name: 'AR 마케팅 솔루션',
+                    alternateName: 'AR.js 증강현실 개발'
+                  }
+                }
+              ]
+            })
+          }}
+        />
+        {/* FAQ Schema - 키워드 노출을 위한 Q&A */}
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              '@context': 'https://schema.org',
+              '@type': 'FAQPage',
+              mainEntity: [
+                {
+                  '@type': 'Question',
+                  name: 'Three.js 개발 비용은 얼마인가요?',
+                  acceptedAnswer: {
+                    '@type': 'Answer',
+                    text: 'Three.js를 활용한 3D 개발 비용은 프로젝트 복잡도와 기능에 따라 다릅니다. 기본적인 3D 뷰어는 500만원부터, 인터랙티브 3D 제품 컨피규레이터는 1000만원부터 시작됩니다. 정확한 견적은 프로젝트 요구사항을 검토한 후 제공해드립니다.'
+                  }
+                },
+                {
+                  '@type': 'Question',
+                  name: 'AR 앱 개발 기간은 얼마나 걸리나요?',
+                  acceptedAnswer: {
+                    '@type': 'Answer',
+                    text: 'AR.js를 활용한 웹 기반 증강현실 개발은 4-6주, 네이티브 AR 모바일 앱은 8-12주 정도 소요됩니다. WebXR API를 사용한 브라우저 AR 경험은 6-8주가 일반적입니다. 프로젝트 규모와 복잡도에 따라 기간이 달라질 수 있습니다.'
+                  }
+                },
+                {
+                  '@type': 'Question',
+                  name: 'WebXR과 일반 웹사이트의 차이점은 무엇인가요?',
+                  acceptedAnswer: {
+                    '@type': 'Answer',
+                    text: 'WebXR은 웹브라우저에서 VR/AR 경험을 제공하는 기술입니다. 일반 웹사이트와 달리 3차원 공간에서 몰입형 인터랙션이 가능하며, VR 헤드셋이나 스마트폰을 통해 가상현실과 증강현실을 체험할 수 있습니다. 별도 앱 설치 없이 브라우저에서 바로 접근 가능한 것이 큰 장점입니다.'
+                  }
+                },
+                {
+                  '@type': 'Question',
+                  name: '3D 제품 컨피규레이터는 어떤 업종에 적합한가요?',
+                  acceptedAnswer: {
+                    '@type': 'Answer',
+                    text: '3D 제품 컨피규레이터는 자동차, 가구, 패션, 전자제품, 인테리어 업계에 특히 효과적입니다. 고객이 제품을 360도로 확인하고 색상, 재질, 옵션을 실시간으로 변경하며 구매 결정을 도울 수 있습니다. 온라인 쇼핑몰의 전환율 향상과 반품률 감소에 크게 기여합니다.'
+                  }
+                },
+                {
+                  '@type': 'Question',
+                  name: 'React Three Fiber와 Three.js의 차이점은?',
+                  acceptedAnswer: {
+                    '@type': 'Answer',
+                    text: 'Three.js는 웹 3D 그래픽을 위한 JavaScript 라이브러리이고, React Three Fiber는 Three.js를 React 환경에서 선언적으로 사용할 수 있게 해주는 렌더러입니다. React Three Fiber를 사용하면 JSX 문법으로 3D 씬을 구성할 수 있어 React 개발자에게 더 친숙하고 유지보수가 용이합니다.'
+                  }
+                }
+              ]
             })
           }}
         />

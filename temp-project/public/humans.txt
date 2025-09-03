@@ -1,0 +1,19 @@
+/* TEAM */
+Company: Uable Corporation
+Site: https://uable.co.kr
+Email: admin@uable.co.kr
+Location: Seoul, South Korea
+
+/* TECHNOLOGY */
+Frontend: Next.js, React, TypeScript
+3D/AR: Three.js, React Three Fiber, AR.js
+Styling: Tailwind CSS
+Animation: Framer Motion
+Hosting: Vercel / AWS
+
+/* SITE */
+Last update: 2025/09/02
+Language: Korean / English
+Standards: HTML5, CSS3, ES6+
+Components: React Components
+IDE: VS Code

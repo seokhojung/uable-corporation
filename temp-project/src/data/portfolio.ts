@@ -67,7 +67,7 @@ export const portfolioProjects: PortfolioProject[] = [
       }
     ],
     links: {
-      demo: 'https://befun241204.netlify.app/', // 외부 데모 링크
+      demo: 'https://befunweb.vercel.app/configurator', // 외부 데모 링크
       contact: '/contact' // 추후 문의하기 양식 연결 예정
     },
     detailContent: {
