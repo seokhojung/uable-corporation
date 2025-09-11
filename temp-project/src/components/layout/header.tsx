@@ -5,6 +5,7 @@ import { useState } from 'react'
 import { Menu, X } from 'lucide-react'
 import { Button } from '@/components/ui/button'
 import { ThemeToggle } from '@/components/ui/theme-toggle'
+import { applyThemeClasses } from '@/lib/theme-class-mapping'
 import Link from 'next/link'
 import Image from 'next/image'
 
@@ -15,9 +16,14 @@ const navigation = [
 
 export const Header = () => {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
+  // 테마 시스템 기본 활성화(명시적으로 'false'인 경우만 비활성)
+  const isThemeSystemEnabled = process.env.NEXT_PUBLIC_THEME_SYSTEM !== 'false'
 
   return (
-    <header className={`sticky top-0 z-50 bg-slate-800/20 backdrop-blur-lg border-b border-slate-700/30 shadow-lg transition-all duration-300 ${mobileMenuOpen ? 'min-h-80 lg:min-h-20' : 'min-h-16 lg:min-h-20'}`}>
+    <header className={applyThemeClasses(
+      `sticky top-0 z-50 bg-slate-800/20 backdrop-blur-lg border-b border-slate-700/30 shadow-lg transition-all duration-300 ${mobileMenuOpen ? 'min-h-80 lg:min-h-20' : 'min-h-16 lg:min-h-20'}`,
+      isThemeSystemEnabled
+    )}>
       <nav className="mx-auto flex max-w-7xl items-center justify-between p-6 lg:px-8" aria-label="Global">
         <div className="flex lg:flex-1">
           <Link href="/" className="-m-1.5 p-1.5">
@@ -36,7 +42,7 @@ export const Header = () => {
         <div className="flex lg:hidden">
           <button
             type="button"
-            className="-m-2.5 inline-flex items-center justify-center rounded-md p-2.5 text-slate-300"
+            className={applyThemeClasses("-m-2.5 inline-flex items-center justify-center rounded-md p-2.5 text-slate-300", isThemeSystemEnabled)}
             onClick={() => setMobileMenuOpen(true)}
           >
             <span className="sr-only">메뉴 열기</span>
@@ -48,13 +54,24 @@ export const Header = () => {
             <Link
               key={item.name}
               href={item.href}
-              className="relative text-sm font-semibold leading-6 text-slate-100 hover:text-slate-300 transition-colors group"
+              className={applyThemeClasses(
+                "relative text-sm font-semibold leading-6 text-slate-100 hover:text-slate-300 transition-colors group",
+                isThemeSystemEnabled
+              )}
             >
               {item.name}
-              <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-gradient-to-r from-slate-300 to-slate-400 transition-all duration-300 group-hover:w-full"></span>
+              <span className={applyThemeClasses(
+                "absolute -bottom-1 left-0 w-0 h-0.5 bg-gradient-to-r from-slate-300 to-slate-400 transition-all duration-300 group-hover:w-full",
+                isThemeSystemEnabled
+              )}></span>
             </Link>
           ))}
-          <Button className="bg-gradient-to-r from-slate-600 to-slate-700 hover:from-slate-700 hover:to-slate-800 shadow-lg hover:shadow-xl transition-all duration-300">
+          {/* 테마 토글 버튼 - 데스크톱 */}
+          <ThemeToggle className="ml-2" />
+          <Button className={applyThemeClasses(
+            "bg-gradient-to-r from-slate-600 to-slate-700 hover:from-slate-700 hover:to-slate-800 shadow-lg hover:shadow-xl transition-all duration-300",
+            isThemeSystemEnabled
+          )}>
             <Link href="/contact">Contact</Link>
           </Button>
         </div>
@@ -64,7 +81,10 @@ export const Header = () => {
       {mobileMenuOpen && (
         <div className="lg:hidden">
           <div className="fixed inset-0 z-50" />
-          <div className="fixed inset-y-0 right-0 z-50 w-full overflow-y-auto bg-slate-800/90 backdrop-blur-lg px-6 py-6 sm:max-w-sm sm:ring-1 sm:ring-slate-700/30">
+          <div className={applyThemeClasses(
+            "fixed inset-y-0 right-0 z-50 w-full overflow-y-auto bg-slate-800/90 backdrop-blur-lg px-6 py-6 sm:max-w-sm sm:ring-1 sm:ring-slate-700/30",
+            isThemeSystemEnabled
+          )}>
             <div className="flex items-center justify-between">
               <Link href="/" className="-m-1.5 p-1.5">
                 <div className="h-6 flex items-center justify-center overflow-hidden">
@@ -80,7 +100,10 @@ export const Header = () => {
               </Link>
               <button
                 type="button"
-                className="-m-2.5 rounded-md p-2.5 text-slate-300"
+                className={applyThemeClasses(
+                  "-m-2.5 rounded-md p-2.5 text-slate-300",
+                  isThemeSystemEnabled
+                )}
                 onClick={() => setMobileMenuOpen(false)}
               >
                 <span className="sr-only">메뉴 닫기</span>
@@ -88,13 +111,19 @@ export const Header = () => {
               </button>
             </div>
             <div className="mt-6 flow-root">
-              <div className="-my-6 divide-y divide-slate-700/30">
+              <div className={applyThemeClasses(
+                "-my-6 divide-y divide-slate-700/30",
+                isThemeSystemEnabled
+              )}>
                 <div className="space-y-2 py-6">
                   {navigation.map((item) => (
                     <Link
                       key={item.name}
                       href={item.href}
-                      className="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-slate-100 hover:bg-slate-700/50"
+                      className={applyThemeClasses(
+                        "-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-slate-100 hover:bg-slate-700/50",
+                        isThemeSystemEnabled
+                      )}
                       onClick={() => setMobileMenuOpen(false)}
                     >
                       {item.name}
@@ -102,6 +131,14 @@ export const Header = () => {
                   ))}
                 </div>
                 <div className="py-6 space-y-4">
+                  {/* 테마 토글 버튼 - 모바일 */}
+                  <div className="flex items-center justify-between">
+                    <span className={applyThemeClasses(
+                      "text-sm font-medium text-slate-300",
+                      isThemeSystemEnabled
+                    )}>테마</span>
+                    <ThemeToggle />
+                  </div>
                   <Button variant="primary" className="w-full">
                     <Link href="/contact">Contact</Link>
                   </Button>

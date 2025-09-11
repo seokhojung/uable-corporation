@@ -1,8 +1,11 @@
 // src/components/layout/footer.tsx
+'use client'
+
 import Link from 'next/link'
 import Image from 'next/image'
 import { Mail, Phone, MapPin, Linkedin, Twitter, Github } from 'lucide-react'
 import { portfolioProjects } from '@/data/portfolio'
+import { applyThemeClasses } from '@/lib/theme-class-mapping'
 
 const footerLinks = {
   company: [
@@ -29,6 +32,8 @@ const socialLinks = [
 ]
 
 export const Footer = () => {
+  const isThemeSystemEnabled = process.env.NEXT_PUBLIC_THEME_SYSTEM !== 'false'
+  
   // 대표 여부 우선 정렬 후 최신 업데이트 순, 최대 6개 노출
   const projectLinks = (portfolioProjects || [])
     .slice()
@@ -43,7 +48,7 @@ export const Footer = () => {
     .map(p => ({ label: p.title, href: `/portfolio/${p.id}` }))
 
   return (
-    <footer className="bg-slate-900/80 backdrop-blur-lg text-white relative overflow-hidden">
+    <footer className="bg-gray-100 dark:bg-slate-900/80 backdrop-blur-lg text-gray-900 dark:text-white relative overflow-hidden">
       {/* 배경 장식 */}
       <div className="absolute inset-0">
         <div className="absolute top-0 left-0 w-full h-full opacity-10" style={{
@@ -71,10 +76,10 @@ export const Footer = () => {
             </div>
             <div>
               <span className="text-2xl font-bold bg-gradient-to-r from-slate-300 to-slate-400 bg-clip-text text-transparent">Uable Corporation</span>
-              <p className="text-sm text-slate-400">혁신적인 디지털 솔루션</p>
+              <p className={applyThemeClasses("text-sm text-slate-400", isThemeSystemEnabled)}>혁신적인 디지털 솔루션</p>
             </div>
           </div>
-          <p className="text-slate-300 mb-6 max-w-md">
+          <p className={applyThemeClasses("text-slate-300 mb-6 max-w-md", isThemeSystemEnabled)}>
             혁신적인 디지털 솔루션을 제공하여 비즈니스의 성장을 돕습니다. 
             최신 기술과 창의적인 디자인으로 고객의 비전을 현실로 만듭니다.
           </p>
@@ -104,13 +109,13 @@ export const Footer = () => {
 
         {/* 회사 + 지원 */}
         <div>
-          <h3 className="text-lg font-semibold mb-6 text-slate-100">회사</h3>
+          <h3 className={applyThemeClasses("text-lg font-semibold mb-6 text-slate-100", isThemeSystemEnabled)}>회사</h3>
           <ul className="space-y-3">
             {footerLinks.company.map((link) => (
               <li key={link.href}>
                 <Link
                   href={link.href}
-                  className="text-slate-300 hover:text-slate-100 transition-colors relative group"
+                  className={applyThemeClasses("text-slate-300 hover:text-slate-100 transition-colors relative group", isThemeSystemEnabled)}
                 >
                   <span className="relative">
                     {link.label}
@@ -121,13 +126,13 @@ export const Footer = () => {
             ))}
           </ul>
 
-          <h3 className="text-lg font-semibold mt-10 mb-6 text-slate-100">지원</h3>
+          <h3 className={applyThemeClasses("text-lg font-semibold mt-10 mb-6 text-slate-100", isThemeSystemEnabled)}>지원</h3>
           <ul className="space-y-3">
             {footerLinks.support.map((link) => (
               <li key={link.href}>
                 <Link
                   href={link.href}
-                  className="text-slate-300 hover:text-slate-100 transition-colors relative group"
+                  className={applyThemeClasses("text-slate-300 hover:text-slate-100 transition-colors relative group", isThemeSystemEnabled)}
                 >
                   <span className="relative">
                     {link.label}
@@ -141,13 +146,13 @@ export const Footer = () => {
 
         {/* 프로젝트 */}
         <div>
-          <h3 className="text-lg font-semibold mb-6 text-slate-100">프로젝트</h3>
+          <h3 className={applyThemeClasses("text-lg font-semibold mb-6 text-slate-100", isThemeSystemEnabled)}>프로젝트</h3>
           <ul className="space-y-3">
             {(projectLinks.length ? projectLinks : [{ label: '포트폴리오 전체 보기', href: '/portfolio' }]).map((link) => (
               <li key={link.href}>
                 <Link
                   href={link.href}
-                  className="text-slate-300 hover:text-slate-100 transition-colors relative group"
+                  className={applyThemeClasses("text-slate-300 hover:text-slate-100 transition-colors relative group", isThemeSystemEnabled)}
                 >
                   <span className="relative">
                     {link.label}
