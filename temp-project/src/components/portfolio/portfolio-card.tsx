@@ -26,29 +26,29 @@ export const PortfolioCard = ({ project, index }: PortfolioCardProps) => {
   const getCategoryColor = (category: string) => {
     switch (category) {
       case '3d-visualization':
-        return 'bg-slate-700 text-slate-200 border-slate-600'
+        return 'bg-gray-200 dark:bg-slate-700 text-gray-800 dark:text-slate-200 border-gray-300 dark:border-slate-600'
       case 'ar-vr':
-        return 'bg-slate-700 text-slate-200 border-slate-600'
+        return 'bg-gray-200 dark:bg-slate-700 text-gray-800 dark:text-slate-200 border-gray-300 dark:border-slate-600'
       case 'webxr':
-        return 'bg-slate-700 text-slate-200 border-slate-600'
+        return 'bg-gray-200 dark:bg-slate-700 text-gray-800 dark:text-slate-200 border-gray-300 dark:border-slate-600'
       case 'web-development':
-        return 'bg-slate-700 text-slate-200 border-slate-600'
+        return 'bg-gray-200 dark:bg-slate-700 text-gray-800 dark:text-slate-200 border-gray-300 dark:border-slate-600'
       case 'interactive-installation':
-        return 'bg-slate-700 text-slate-200 border-slate-600'
+        return 'bg-gray-200 dark:bg-slate-700 text-gray-800 dark:text-slate-200 border-gray-300 dark:border-slate-600'
       case '3d-platform':
-        return 'bg-slate-700 text-slate-200 border-slate-600'
+        return 'bg-gray-200 dark:bg-slate-700 text-gray-800 dark:text-slate-200 border-gray-300 dark:border-slate-600'
       default:
-        return 'bg-slate-700 text-slate-200 border-slate-600'
+        return 'bg-gray-200 dark:bg-slate-700 text-gray-800 dark:text-slate-200 border-gray-300 dark:border-slate-600'
     }
   }
 
   return (
     <div
-      className="group bg-slate-800/80 backdrop-blur-lg border border-slate-700/20 shadow-xl transition-all duration-300 ease-out hover:-translate-y-1 hover:shadow-lg rounded-xl overflow-hidden"
+      className="group bg-white dark:bg-slate-800/80 backdrop-blur-lg border border-gray-200 dark:border-slate-700/20 shadow-xl transition-all duration-300 ease-out hover:-translate-y-1 hover:shadow-lg rounded-xl overflow-hidden"
       style={{ animationDelay: `${index * 0.1}s` }}
     >
         {/* 썸네일 이미지 - The Tactile 글래스모피즘 */}
-        <div className="relative aspect-video overflow-hidden bg-gradient-to-br from-slate-700 to-slate-800">
+        <div className="relative aspect-video overflow-hidden bg-gradient-to-br from-gray-100 to-gray-200 dark:from-slate-700 dark:to-slate-800">
           {/* 배경 이미지 */}
           <Image
             src={project.thumbnail.src}
@@ -58,8 +58,8 @@ export const PortfolioCard = ({ project, index }: PortfolioCardProps) => {
             className="w-full h-full object-cover"
             priority={index < 3}
           />
-          <div className="absolute inset-0 bg-gradient-to-br from-slate-900/30 to-slate-900/50 flex items-center justify-center">
-            <div className="text-slate-100 text-center p-6">
+          <div className="absolute inset-0 bg-gradient-to-br from-black/30 to-black/50 dark:from-slate-900/30 dark:to-slate-900/50 flex items-center justify-center">
+            <div className="text-white text-center p-6">
               <div className="text-2xl font-bold mb-3 tracking-tight text-shadow">{project.title}</div>
               <div className="text-sm opacity-95 leading-relaxed text-shadow">{project.shortDescription}</div>
             </div>
@@ -69,7 +69,7 @@ export const PortfolioCard = ({ project, index }: PortfolioCardProps) => {
           
           {project.featured && (
             <div className="absolute top-4 right-4">
-              <Badge variant="primary" className="bg-slate-600/90 text-slate-100 border-slate-500/30 shadow-lg backdrop-blur-sm">
+              <Badge variant="primary" className="bg-green-600/90 dark:bg-slate-600/90 text-white dark:text-slate-100 border-green-500/30 dark:border-slate-500/30 shadow-lg backdrop-blur-sm">
                 <Award className="w-3 h-3 mr-1" />
                 추천
               </Badge>
@@ -81,10 +81,10 @@ export const PortfolioCard = ({ project, index }: PortfolioCardProps) => {
         <div className="p-8">
           {/* 제목 및 설명 */}
           <div className="mb-6">
-            <h3 className="text-xl font-semibold text-slate-100 mb-3 group-hover:text-slate-300 transition-colors tracking-tight">
+            <h3 className="text-xl font-semibold text-gray-900 dark:text-slate-100 mb-3 group-hover:text-gray-700 dark:group-hover:text-slate-300 transition-colors tracking-tight">
               {project.title}
             </h3>
-            <p className="text-slate-300 text-sm line-clamp-2 leading-relaxed">
+            <p className="text-gray-600 dark:text-slate-300 text-sm line-clamp-2 leading-relaxed">
               {project.description}
             </p>
           </div>
@@ -119,7 +119,7 @@ export const PortfolioCard = ({ project, index }: PortfolioCardProps) => {
           </div>
 
           {/* 프로젝트 메타 정보 */}
-          <div className="flex items-center gap-4 text-sm text-slate-400 mb-4">
+          <div className="flex items-center gap-4 text-sm text-gray-600 dark:text-slate-400 mb-4">
             <div className="flex items-center gap-1">
               <Calendar className="w-4 h-4" />
               <span>{formatDuration(project.duration.start, project.duration.end)}</span>
@@ -132,10 +132,10 @@ export const PortfolioCard = ({ project, index }: PortfolioCardProps) => {
 
           {/* 성과 요약 */}
           <div className="mb-4">
-            <h4 className="text-sm font-semibold text-slate-200 mb-2">주요 성과:</h4>
+            <h4 className="text-sm font-semibold text-gray-800 dark:text-slate-200 mb-2">주요 성과:</h4>
             <ul className="space-y-1">
               {project.achievements.slice(0, 2).map((achievement, idx) => (
-                <li key={idx} className="text-xs text-slate-300 flex items-start">
+                <li key={idx} className="text-xs text-gray-600 dark:text-slate-300 flex items-start">
                   <div className="w-1 h-1 bg-green-400 rounded-full mt-1.5 mr-2 flex-shrink-0"></div>
                   {achievement}
                 </li>

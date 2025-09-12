@@ -10,13 +10,13 @@ export const Badge = ({ children, variant = 'default', size = 'md', className = 
   const baseClasses = 'inline-flex items-center font-medium rounded-full transition-all duration-200 hover:scale-105'
   
   const variants = {
-    default: 'bg-slate-700 text-slate-200',
-    primary: 'bg-slate-600 text-slate-200',
-    secondary: 'bg-slate-600 text-slate-200',
-    success: 'bg-slate-600 text-slate-200',
-    warning: 'bg-slate-600 text-slate-200',
+    default: 'bg-gray-200 dark:bg-slate-700 text-gray-800 dark:text-slate-200',
+    primary: 'bg-green-600 text-white',
+    secondary: 'bg-gray-100 dark:bg-slate-600 text-gray-700 dark:text-slate-200',
+    success: 'bg-green-600 text-white',
+    warning: 'bg-yellow-600 text-white',
     error: 'bg-red-600 text-white',
-    outline: 'border border-slate-600 text-slate-200 bg-transparent',
+    outline: 'border border-gray-300 dark:border-slate-600 text-gray-700 dark:text-slate-200 bg-transparent',
   }
   
   const sizes = {

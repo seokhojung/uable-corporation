@@ -201,7 +201,7 @@ export default function ContactPage() {
   }
 
   return (
-    <div className="min-h-screen bg-slate-900">
+    <div className="min-h-screen bg-white dark:bg-slate-900">
       <Container>
         {/* 헤더 섹션 */}
         <motion.div
@@ -213,10 +213,10 @@ export default function ContactPage() {
           <Badge variant="primary" className="mb-4">
             문의하기
           </Badge>
-          <h1 className="text-4xl lg:text-5xl font-bold text-slate-100 mb-6">
+          <h1 className="text-4xl lg:text-5xl font-bold text-gray-900 dark:text-slate-100 mb-6">
             프로젝트를 시작할 준비가 되셨나요?
           </h1>
-          <p className="text-xl text-slate-300 max-w-3xl mx-auto">
+          <p className="text-xl text-gray-600 dark:text-slate-300 max-w-3xl mx-auto">
             최신 기술과 창의적인 솔루션으로 비즈니스의 디지털 혁신을 이끌어보세요.
             <br />
             언제든지 문의해주시면 빠른 시일 내에 답변드리겠습니다.
@@ -230,14 +230,14 @@ export default function ContactPage() {
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.8, delay: 0.2 }}
           >
-            <Card className="p-8 bg-slate-800/80 border-slate-700/20">
+            <Card className="p-8 bg-white dark:bg-slate-800/80 border-gray-200 dark:border-slate-700/20">
               <div className="flex items-center gap-3 mb-8">
-                <div className="w-12 h-12 bg-gradient-to-r from-slate-600 to-slate-700 rounded-xl flex items-center justify-center">
-                  <Send className="w-6 h-6 text-slate-100" />
+                <div className="w-12 h-12 bg-gradient-to-r from-green-600 to-green-700 dark:from-slate-600 dark:to-slate-700 rounded-xl flex items-center justify-center">
+                  <Send className="w-6 h-6 text-white" />
                 </div>
                 <div>
-                  <h2 className="text-2xl font-bold text-slate-100">문의 양식</h2>
-                  <p className="text-slate-400">필수 항목을 모두 입력해주세요</p>
+                  <h2 className="text-2xl font-bold text-gray-900 dark:text-slate-100">문의 양식</h2>
+                  <p className="text-gray-600 dark:text-slate-400">필수 항목을 모두 입력해주세요</p>
                 </div>
               </div>
 
@@ -248,7 +248,7 @@ export default function ContactPage() {
                 
                 {/* 카테고리 선택 */}
                 <div>
-                  <label className="block text-sm font-medium text-slate-200 mb-3">
+                  <label className="block text-sm font-medium text-gray-800 dark:text-slate-200 mb-3">
                     문의 유형 *
                   </label>
                   <div className="grid grid-cols-2 gap-3">
@@ -259,12 +259,12 @@ export default function ContactPage() {
                         onClick={() => handleInputChange('category', option.value)}
                         className={`p-4 rounded-lg border-2 transition-all duration-200 text-left ${
                           formData.category === option.value
-                            ? 'border-slate-500 bg-slate-700/50 text-slate-100'
-                            : 'border-slate-600 bg-slate-800/50 text-slate-300 hover:border-slate-500 hover:bg-slate-700/30'
+                            ? 'border-green-500 dark:border-slate-500 bg-green-50 dark:bg-slate-700/50 text-green-900 dark:text-slate-100'
+                            : 'border-gray-300 dark:border-slate-600 bg-white dark:bg-slate-800/50 text-gray-700 dark:text-slate-300 hover:border-gray-400 dark:hover:border-slate-500 hover:bg-gray-50 dark:hover:bg-slate-700/30'
                         }`}
                       >
                         <div className="font-medium mb-1">{option.label}</div>
-                        <div className="text-xs text-slate-400">{option.description}</div>
+                        <div className="text-xs text-gray-500 dark:text-slate-400">{option.description}</div>
                       </button>
                     ))}
                   </div>
@@ -272,24 +272,24 @@ export default function ContactPage() {
 
                 {/* 이름 */}
                 <div>
-                  <label className="block text-sm font-medium text-slate-200 mb-2">
+                  <label className="block text-sm font-medium text-gray-800 dark:text-slate-200 mb-2">
                     이름 *
                   </label>
                   <div className="relative">
-                    <User className="absolute left-3 top-1/2 transform -translate-y-1/2 w-5 h-5 text-slate-400" />
+                    <User className="absolute left-3 top-1/2 transform -translate-y-1/2 w-5 h-5 text-gray-500 dark:text-slate-400" />
                     <input
                       type="text"
                       name="name"
                       value={formData.name}
                       onChange={(e) => handleInputChange('name', e.target.value)}
-                      className={`w-full pl-10 pr-4 py-3 bg-slate-700/50 border rounded-lg text-slate-100 placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-slate-500 focus:border-transparent ${
-                        errors.name ? 'border-red-500' : 'border-slate-600'
+                      className={`w-full pl-10 pr-4 py-3 bg-white dark:bg-slate-700/50 border rounded-lg text-gray-900 dark:text-slate-100 placeholder-gray-400 dark:placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-green-500 dark:focus:ring-slate-500 focus:border-transparent ${
+                        errors.name ? 'border-red-500' : 'border-gray-300 dark:border-slate-600'
                       }`}
                       placeholder="홍길동"
                     />
                   </div>
                   {errors.name && (
-                    <p className="mt-1 text-sm text-red-400 flex items-center gap-1">
+                    <p className="mt-1 text-sm text-red-500 dark:text-red-400 flex items-center gap-1">
                       <AlertCircle className="w-4 h-4" />
                       {errors.name}
                     </p>
@@ -298,24 +298,24 @@ export default function ContactPage() {
 
                 {/* 이메일 */}
                 <div>
-                  <label className="block text-sm font-medium text-slate-200 mb-2">
+                  <label className="block text-sm font-medium text-gray-800 dark:text-slate-200 mb-2">
                     이메일 *
                   </label>
                   <div className="relative">
-                    <Mail className="absolute left-3 top-1/2 transform -translate-y-1/2 w-5 h-5 text-slate-400" />
+                    <Mail className="absolute left-3 top-1/2 transform -translate-y-1/2 w-5 h-5 text-gray-500 dark:text-slate-400" />
                     <input
                       type="email"
                       name="email"
                       value={formData.email}
                       onChange={(e) => handleInputChange('email', e.target.value)}
-                      className={`w-full pl-10 pr-4 py-3 bg-slate-700/50 border rounded-lg text-slate-100 placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-slate-500 focus:border-transparent ${
-                        errors.email ? 'border-red-500' : 'border-slate-600'
+                      className={`w-full pl-10 pr-4 py-3 bg-white dark:bg-slate-700/50 border rounded-lg text-gray-900 dark:text-slate-100 placeholder-gray-400 dark:placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-green-500 dark:focus:ring-slate-500 focus:border-transparent ${
+                        errors.email ? 'border-red-500' : 'border-gray-300 dark:border-slate-600'
                       }`}
                       placeholder="hong@example.com"
                     />
                   </div>
                   {errors.email && (
-                    <p className="mt-1 text-sm text-red-400 flex items-center gap-1">
+                    <p className="mt-1 text-sm text-red-500 dark:text-red-400 flex items-center gap-1">
                       <AlertCircle className="w-4 h-4" />
                       {errors.email}
                     </p>
@@ -324,17 +324,17 @@ export default function ContactPage() {
 
                 {/* 전화번호 */}
                 <div>
-                  <label className="block text-sm font-medium text-slate-200 mb-2">
+                  <label className="block text-sm font-medium text-gray-800 dark:text-slate-200 mb-2">
                     전화번호
                   </label>
                   <div className="relative">
-                    <Phone className="absolute left-3 top-1/2 transform -translate-y-1/2 w-5 h-5 text-slate-400" />
+                    <Phone className="absolute left-3 top-1/2 transform -translate-y-1/2 w-5 h-5 text-gray-400 dark:text-slate-400" />
                     <input
                       type="tel"
                       name="phone"
                       value={formData.phone}
                       onChange={(e) => handleInputChange('phone', e.target.value)}
-                      className="w-full pl-10 pr-4 py-3 bg-slate-700/50 border border-slate-600 rounded-lg text-slate-100 placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-slate-500 focus:border-transparent"
+                      className="w-full pl-10 pr-4 py-3 bg-white dark:bg-slate-700/50 border border-gray-300 dark:border-slate-600 rounded-lg text-gray-900 dark:text-slate-100 placeholder-gray-400 dark:placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-green-500 dark:focus:ring-slate-500 focus:border-transparent"
                       placeholder="010-1234-5678"
                     />
                   </div>
@@ -342,17 +342,17 @@ export default function ContactPage() {
 
                 {/* 회사명 */}
                 <div>
-                  <label className="block text-sm font-medium text-slate-200 mb-2">
+                  <label className="block text-sm font-medium text-gray-800 dark:text-slate-200 mb-2">
                     회사명
                   </label>
                   <div className="relative">
-                    <Building className="absolute left-3 top-1/2 transform -translate-y-1/2 w-5 h-5 text-slate-400" />
+                    <Building className="absolute left-3 top-1/2 transform -translate-y-1/2 w-5 h-5 text-gray-500 dark:text-slate-400" />
                     <input
                       type="text"
                       name="company"
                       value={formData.company}
                       onChange={(e) => handleInputChange('company', e.target.value)}
-                      className="w-full pl-10 pr-4 py-3 bg-slate-700/50 border border-slate-600 rounded-lg text-slate-100 placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-slate-500 focus:border-transparent"
+                      className="w-full pl-10 pr-4 py-3 bg-white dark:bg-slate-700/50 border border-gray-300 dark:border-slate-600 rounded-lg text-gray-900 dark:text-slate-100 placeholder-gray-400 dark:placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-green-500 dark:focus:ring-slate-500 focus:border-transparent"
                       placeholder="회사명 (선택사항)"
                     />
                   </div>
@@ -360,7 +360,7 @@ export default function ContactPage() {
 
                 {/* 제목 */}
                 <div>
-                  <label className="block text-sm font-medium text-slate-200 mb-2">
+                  <label className="block text-sm font-medium text-gray-800 dark:text-slate-200 mb-2">
                     제목 *
                   </label>
                   <input
@@ -368,13 +368,13 @@ export default function ContactPage() {
                     name="subject"
                     value={formData.subject}
                     onChange={(e) => handleInputChange('subject', e.target.value)}
-                    className={`w-full px-4 py-3 bg-slate-700/50 border rounded-lg text-slate-100 placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-slate-500 focus:border-transparent ${
-                      errors.subject ? 'border-red-500' : 'border-slate-600'
+                    className={`w-full px-4 py-3 bg-white dark:bg-slate-700/50 border rounded-lg text-gray-900 dark:text-slate-100 placeholder-gray-400 dark:placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-green-500 dark:focus:ring-slate-500 focus:border-transparent ${
+                      errors.subject ? 'border-red-500' : 'border-gray-300 dark:border-slate-600'
                     }`}
                     placeholder="문의 제목을 입력해주세요"
                   />
                   {errors.subject && (
-                    <p className="mt-1 text-sm text-red-400 flex items-center gap-1">
+                    <p className="mt-1 text-sm text-red-500 dark:text-red-400 flex items-center gap-1">
                       <AlertCircle className="w-4 h-4" />
                       {errors.subject}
                     </p>
@@ -383,24 +383,24 @@ export default function ContactPage() {
 
                 {/* 메시지 */}
                 <div>
-                  <label className="block text-sm font-medium text-slate-200 mb-2">
+                  <label className="block text-sm font-medium text-gray-800 dark:text-slate-200 mb-2">
                     메시지 *
                   </label>
                   <div className="relative">
-                    <MessageSquare className="absolute left-3 top-3 w-5 h-5 text-slate-400" />
+                    <MessageSquare className="absolute left-3 top-3 w-5 h-5 text-gray-500 dark:text-slate-400" />
                     <textarea
                       name="message"
                       value={formData.message}
                       onChange={(e) => handleInputChange('message', e.target.value)}
                       rows={6}
-                      className={`w-full pl-10 pr-4 py-3 bg-slate-700/50 border rounded-lg text-slate-100 placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-slate-500 focus:border-transparent resize-none ${
-                        errors.message ? 'border-red-500' : 'border-slate-600'
+                      className={`w-full pl-10 pr-4 py-3 bg-white dark:bg-slate-700/50 border rounded-lg text-gray-900 dark:text-slate-100 placeholder-gray-400 dark:placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-green-500 dark:focus:ring-slate-500 focus:border-transparent resize-none ${
+                        errors.message ? 'border-red-500' : 'border-gray-300 dark:border-slate-600'
                       }`}
                       placeholder="문의 내용을 자세히 입력해주세요..."
                     />
                   </div>
                   {errors.message && (
-                    <p className="mt-1 text-sm text-red-400 flex items-center gap-1">
+                    <p className="mt-1 text-sm text-red-500 dark:text-red-400 flex items-center gap-1">
                       <AlertCircle className="w-4 h-4" />
                       {errors.message}
                     </p>
@@ -408,7 +408,7 @@ export default function ContactPage() {
                 </div>
 
                 {/* 개인정보 수집 및 이용 동의 */}
-                <div className="rounded-lg border border-slate-700/40 bg-slate-800/40 p-4">
+                <div className="rounded-lg border border-gray-200 dark:border-slate-700/40 bg-gray-50 dark:bg-slate-800/40 p-4">
                   <label className="flex items-start gap-3 cursor-pointer">
                     <input
                       type="checkbox"
@@ -419,14 +419,14 @@ export default function ContactPage() {
                           setErrors(prev => ({ ...prev, consent: '' }))
                         }
                       }}
-                      className="mt-1 h-4 w-4 rounded border-slate-600 bg-slate-700 text-slate-100 focus:ring-2 focus:ring-slate-500"
+                      className="mt-1 h-4 w-4 rounded border-gray-300 dark:border-slate-600 bg-white dark:bg-slate-700 text-green-600 dark:text-slate-100 focus:ring-2 focus:ring-green-500 dark:focus:ring-slate-500"
                     />
-                    <span className="text-sm text-slate-300">
+                    <span className="text-sm text-gray-700 dark:text-slate-300">
                       개인정보 수집 및 이용에 동의합니다. 수집항목: 이름, 이메일, 문의내용(선택: 전화번호, 회사명) / 이용목적: 문의 응답 및 상담 / 보유기간: 목적 달성 시까지. 자세한 내용은 <a href="/privacy" target="_blank" className="underline text-slate-200">개인정보처리방침</a>을 확인해주세요.
                     </span>
                   </label>
                   {errors.consent && (
-                    <p className="mt-2 text-sm text-red-400 flex items-center gap-1">
+                    <p className="mt-2 text-sm text-red-500 dark:text-red-400 flex items-center gap-1">
                       <AlertCircle className="w-4 h-4" />
                       {errors.consent}
                     </p>
@@ -437,11 +437,11 @@ export default function ContactPage() {
                 <button
                   type="submit"
                   disabled={isSubmitting}
-                  className="w-full bg-gradient-to-r from-slate-600 to-slate-700 hover:from-slate-700 hover:to-slate-800 text-slate-100 py-4 text-lg font-medium rounded-lg transition-all duration-200 disabled:opacity-50 disabled:cursor-not-allowed text-center"
+                  className="w-full bg-gradient-to-r from-green-600 to-green-700 hover:from-green-700 hover:to-green-800 dark:from-slate-600 dark:to-slate-700 dark:hover:from-slate-700 dark:hover:to-slate-800 text-white py-4 text-lg font-medium rounded-lg transition-all duration-200 disabled:opacity-50 disabled:cursor-not-allowed text-center"
                 >
                   {isSubmitting ? (
                     <div className="flex items-center justify-center gap-2">
-                      <div className="w-5 h-5 border-2 border-slate-300 border-t-transparent rounded-full animate-spin" />
+                      <div className="w-5 h-5 border-2 border-white border-t-transparent rounded-full animate-spin" />
                       전송 중...
                     </div>
                   ) : (
@@ -489,19 +489,19 @@ export default function ContactPage() {
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.6, delay: 0.6 + index * 0.1 }}
               >
-                <Card className="p-6 bg-slate-800/80 border-slate-700/20">
+                <Card className="p-6 bg-white dark:bg-slate-800/80 border-gray-200 dark:border-slate-700/20">
                   <div className="flex items-start gap-4">
-                    <div className="w-12 h-12 bg-gradient-to-r from-slate-600 to-slate-700 rounded-xl flex items-center justify-center flex-shrink-0">
-                      <info.icon className="w-6 h-6 text-slate-100" />
+                    <div className="w-12 h-12 bg-gradient-to-r from-green-500 to-green-600 dark:from-slate-600 dark:to-slate-700 rounded-xl flex items-center justify-center flex-shrink-0">
+                      <info.icon className="w-6 h-6 text-white dark:text-slate-100" />
                     </div>
                     <div className="flex-1">
-                      <h3 className="text-lg font-semibold text-slate-100 mb-1">
+                      <h3 className="text-lg font-semibold text-gray-900 dark:text-slate-100 mb-1">
                         {info.title}
                       </h3>
-                      <p className="text-slate-100 font-medium mb-1">
+                      <p className="text-gray-900 dark:text-slate-100 font-medium mb-1">
                         {info.value}
                       </p>
-                      <p className="text-sm text-slate-400">
+                      <p className="text-sm text-gray-600 dark:text-slate-400">
                         {info.description}
                       </p>
                     </div>
@@ -516,25 +516,25 @@ export default function ContactPage() {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 1.0 }}
             >
-              <Card className="p-6 bg-gradient-to-br from-slate-800 to-slate-900 border-slate-700/20">
-                <h3 className="text-lg font-semibold text-slate-100 mb-4">
+              <Card className="p-6 bg-gradient-to-br from-gray-50 to-gray-100 dark:from-slate-800 dark:to-slate-900 border-gray-200 dark:border-slate-700/20">
+                <h3 className="text-lg font-semibold text-gray-900 dark:text-slate-100 mb-4">
                   빠른 응답을 위한 팁
                 </h3>
-                <ul className="space-y-2 text-sm text-slate-300">
+                <ul className="space-y-2 text-sm text-gray-700 dark:text-slate-300">
                   <li className="flex items-start gap-2">
-                    <div className="w-1.5 h-1.5 bg-slate-400 rounded-full mt-2 flex-shrink-0" />
+                    <div className="w-1.5 h-1.5 bg-green-500 dark:bg-slate-400 rounded-full mt-2 flex-shrink-0" />
                     프로젝트 규모와 예산 범위를 명시해주세요
                   </li>
                   <li className="flex items-start gap-2">
-                    <div className="w-1.5 h-1.5 bg-slate-400 rounded-full mt-2 flex-shrink-0" />
+                    <div className="w-1.5 h-1.5 bg-green-500 dark:bg-slate-400 rounded-full mt-2 flex-shrink-0" />
                     원하는 완료 시점을 알려주세요
                   </li>
                   <li className="flex items-start gap-2">
-                    <div className="w-1.5 h-1.5 bg-slate-400 rounded-full mt-2 flex-shrink-0" />
+                    <div className="w-1.5 h-1.5 bg-green-500 dark:bg-slate-400 rounded-full mt-2 flex-shrink-0" />
                     참고할 만한 사례나 예시가 있다면 첨부해주세요
                   </li>
                   <li className="flex items-start gap-2">
-                    <div className="w-1.5 h-1.5 bg-slate-400 rounded-full mt-2 flex-shrink-0" />
+                    <div className="w-1.5 h-1.5 bg-green-500 dark:bg-slate-400 rounded-full mt-2 flex-shrink-0" />
                     연락 가능한 시간대를 명시해주세요
                   </li>
                 </ul>

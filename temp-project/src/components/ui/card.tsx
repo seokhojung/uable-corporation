@@ -8,7 +8,7 @@ interface CardProps {
 }
 
 export const Card = ({ children, className = '', onClick }: CardProps) => {
-  const baseClasses = 'bg-slate-800 rounded-lg border border-slate-700 shadow-sm transition-all duration-200 hover:shadow-md hover:-translate-y-1'
+  const baseClasses = 'bg-white dark:bg-slate-800 rounded-lg border border-gray-200 dark:border-slate-700 shadow-sm transition-all duration-200 hover:shadow-md hover:-translate-y-1'
   const classes = `${baseClasses} ${className}`
 
   if (onClick) {

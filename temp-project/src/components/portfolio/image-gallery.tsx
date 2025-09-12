@@ -17,13 +17,13 @@ export const ImageGallery = ({ images }: ImageGalleryProps) => {
   // 빈 갤러리 처리
   if (!images || images.length === 0) {
     return (
-      <div className="text-center py-12 text-slate-400">
+      <div className="text-center py-12 text-gray-600 dark:text-slate-400">
         <div className="max-w-md mx-auto">
-          <div className="w-16 h-16 mx-auto mb-4 rounded-full bg-slate-700 flex items-center justify-center">
+          <div className="w-16 h-16 mx-auto mb-4 rounded-full bg-gray-200 dark:bg-slate-700 flex items-center justify-center">
             <span className="text-2xl">🖼️</span>
           </div>
           <p className="text-lg font-medium mb-2">갤러리 이미지 준비 중</p>
-          <p className="text-sm text-slate-500">프로젝트 이미지가 곧 추가될 예정입니다.</p>
+          <p className="text-sm text-gray-500 dark:text-slate-500">프로젝트 이미지가 곧 추가될 예정입니다.</p>
         </div>
       </div>
     )
@@ -81,7 +81,7 @@ export const ImageGallery = ({ images }: ImageGalleryProps) => {
         {selectedImageIndex !== null && (
           <div className="relative">
             {/* 메인 이미지 */}
-            <div className="relative aspect-video bg-slate-900">
+            <div className="relative aspect-video bg-white dark:bg-slate-900">
               <Image
                 src={images[selectedImageIndex].src}
                 alt={images[selectedImageIndex].alt}
@@ -95,13 +95,13 @@ export const ImageGallery = ({ images }: ImageGalleryProps) => {
                 <>
                   <button
                     onClick={prevImage}
-                    className="absolute left-4 top-1/2 -translate-y-1/2 bg-slate-900/80 hover:bg-slate-800 text-slate-100 p-3 rounded-full transition-colors"
+                    className="absolute left-4 top-1/2 -translate-y-1/2 bg-gray-900/80 dark:bg-slate-900/80 hover:bg-gray-800 dark:hover:bg-slate-800 text-white dark:text-slate-100 p-3 rounded-full transition-colors"
                   >
                     <ChevronLeft className="w-6 h-6" />
                   </button>
                   <button
                     onClick={nextImage}
-                    className="absolute right-4 top-1/2 -translate-y-1/2 bg-slate-900/80 hover:bg-slate-800 text-slate-100 p-3 rounded-full transition-colors"
+                    className="absolute right-4 top-1/2 -translate-y-1/2 bg-gray-900/80 dark:bg-slate-900/80 hover:bg-gray-800 dark:hover:bg-slate-800 text-white dark:text-slate-100 p-3 rounded-full transition-colors"
                   >
                     <ChevronRight className="w-6 h-6" />
                   </button>
@@ -110,18 +110,18 @@ export const ImageGallery = ({ images }: ImageGalleryProps) => {
             </div>
             
             {/* 이미지 정보 */}
-            <div className="p-6 bg-slate-800">
-              <h3 className="text-lg font-semibold text-slate-100 mb-2">
+            <div className="p-6 bg-gray-100 dark:bg-slate-800">
+              <h3 className="text-lg font-semibold text-gray-900 dark:text-slate-100 mb-2">
                 {images[selectedImageIndex].alt}
               </h3>
-              <p className="text-sm text-slate-400">
+              <p className="text-sm text-gray-600 dark:text-slate-400">
                 {selectedImageIndex + 1} / {images.length}
               </p>
             </div>
             
             {/* 썸네일 네비게이션 */}
             {images.length > 1 && (
-              <div className="p-4 bg-slate-800 border-t border-slate-700">
+              <div className="p-4 bg-gray-100 dark:bg-slate-800 border-t border-gray-300 dark:border-slate-700">
                 <div className="flex gap-2 overflow-x-auto pb-2">
                   {images.map((image, index) => (
                     <button
@@ -131,7 +131,7 @@ export const ImageGallery = ({ images }: ImageGalleryProps) => {
                         flex-shrink-0 w-16 h-16 rounded-md overflow-hidden border-2 transition-all
                         ${index === selectedImageIndex 
                           ? 'border-blue-500 scale-110' 
-                          : 'border-slate-600 hover:border-slate-400'}
+                          : 'border-gray-300 dark:border-slate-600 hover:border-gray-400 dark:hover:border-slate-400'}
                       `}
                     >
                       <Image

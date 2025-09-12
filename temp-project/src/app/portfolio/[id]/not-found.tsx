@@ -6,18 +6,18 @@ import { Button } from '@/components/ui/button'
 
 export default function NotFound() {
   return (
-    <div className="min-h-screen bg-slate-900 flex items-center justify-center">
+    <div className="min-h-screen bg-white dark:bg-slate-900 flex items-center justify-center">
       <Container>
         <div className="max-w-md mx-auto text-center">
-          <div className="w-24 h-24 bg-slate-700 rounded-full flex items-center justify-center mx-auto mb-6">
-            <Search className="w-12 h-12 text-slate-400" />
+          <div className="w-24 h-24 bg-gray-200 dark:bg-slate-700 rounded-full flex items-center justify-center mx-auto mb-6">
+            <Search className="w-12 h-12 text-gray-500 dark:text-slate-400" />
           </div>
           
-          <h1 className="text-2xl font-bold text-slate-100 mb-4">
+          <h1 className="text-2xl font-bold text-gray-900 dark:text-slate-100 mb-4">
             프로젝트를 찾을 수 없습니다
           </h1>
           
-          <p className="text-slate-300 mb-8">
+          <p className="text-gray-600 dark:text-slate-300 mb-8">
             요청하신 프로젝트가 존재하지 않거나 삭제되었습니다.
             다른 프로젝트들을 확인해보세요.
           </p>

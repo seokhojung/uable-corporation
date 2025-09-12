@@ -18,7 +18,7 @@ export const ProjectDetails = ({ detailContent }: ProjectDetailsProps) => {
   }
 
   return (
-    <section className="py-12 bg-slate-900">
+    <section className="py-12 bg-white dark:bg-slate-900">
       <Container>
         <div className="max-w-7xl mx-auto">
           {/* 임팩트 통계 - 모든 정보를 하나로 통합 */}

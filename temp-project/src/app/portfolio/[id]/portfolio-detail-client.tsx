@@ -77,14 +77,14 @@ export function PortfolioDetailClient({ project }: PortfolioDetailClientProps) {
   }
 
   return (
-    <div className="min-h-screen bg-slate-900">
+    <div className="min-h-screen bg-white dark:bg-slate-900">
       {/* 상단 네비게이션 */}
-      <section className="bg-slate-800 border-b border-slate-700">
+      <section className="bg-gray-50 dark:bg-slate-800 border-b border-gray-200 dark:border-slate-700">
         <Container>
           <div className="py-4">
             <Link 
               href="/portfolio" 
-              className="inline-flex items-center text-slate-300 hover:text-slate-100 transition-colors"
+              className="inline-flex items-center text-gray-600 dark:text-slate-300 hover:text-gray-900 dark:hover:text-slate-100 transition-colors"
             >
               <ArrowLeft className="w-4 h-4 mr-2" />
               포트폴리오로 돌아가기
@@ -94,7 +94,7 @@ export function PortfolioDetailClient({ project }: PortfolioDetailClientProps) {
       </section>
 
       {/* 프로젝트 헤더 */}
-      <section ref={headerRef} className="py-12 bg-gradient-to-br from-slate-900 to-slate-800 animate-slideUp">
+      <section ref={headerRef} className="py-12 bg-gradient-to-br from-gray-50 to-gray-100 dark:from-slate-900 dark:to-slate-800 animate-slideUp">
         <Container>
           <div className="grid lg:grid-cols-2 gap-8 lg:gap-16 items-center">
             {/* 프로젝트 정보 */}
@@ -111,27 +111,27 @@ export function PortfolioDetailClient({ project }: PortfolioDetailClientProps) {
                 )}
               </div>
               
-              <h1 className="text-4xl lg:text-5xl font-bold text-slate-100 mb-4">
+              <h1 className="text-4xl lg:text-5xl font-bold text-gray-900 dark:text-slate-100 mb-4">
                 {project.title}
               </h1>
               
-              <p className="text-lg text-slate-300 mb-6 leading-relaxed">
+              <p className="text-lg text-gray-600 dark:text-slate-300 mb-6 leading-relaxed">
                 {project.description}
               </p>
 
               {/* 프로젝트 메타데이터 */}
               <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 mb-6">
-                <div className="flex items-center text-slate-400">
+                <div className="flex items-center text-gray-500 dark:text-slate-400">
                   <Calendar className="w-4 h-4 mr-2" />
                   <span className="text-sm">
                     {project.duration.start} - {project.duration.end}
                   </span>
                 </div>
-                <div className="flex items-center text-slate-400">
+                <div className="flex items-center text-gray-500 dark:text-slate-400">
                   <Users className="w-4 h-4 mr-2" />
                   <span className="text-sm">{project.teamSize}명</span>
                 </div>
-                <div className="flex items-center text-slate-400">
+                <div className="flex items-center text-gray-500 dark:text-slate-400">
                   <Award className="w-4 h-4 mr-2" />
                   <span className="text-sm">{project.role}</span>
                 </div>
@@ -139,7 +139,7 @@ export function PortfolioDetailClient({ project }: PortfolioDetailClientProps) {
 
               {/* 기술 스택 */}
               <div className="mb-6">
-                <h3 className="text-lg font-semibold text-slate-200 mb-3">사용 기술</h3>
+                <h3 className="text-lg font-semibold text-gray-800 dark:text-slate-200 mb-3">사용 기술</h3>
                 <div className="flex flex-wrap gap-2">
                   {project.technologies.map((tech) => (
                     <Badge key={tech} variant="secondary">
@@ -192,9 +192,9 @@ export function PortfolioDetailClient({ project }: PortfolioDetailClientProps) {
 
       {/* 프로젝트 이미지 갤러리 */}
       <div ref={galleryRef} className="animate-slideUp">
-        <section className="py-12 bg-slate-800">
+        <section className="py-12 bg-gray-50 dark:bg-slate-800">
           <Container>
-            <h2 className="text-2xl font-bold text-slate-100 mb-8">프로젝트 갤러리</h2>
+            <h2 className="text-2xl font-bold text-gray-900 dark:text-slate-100 mb-8">프로젝트 갤러리</h2>
             <ImageGallery images={project.images} />
           </Container>
         </section>
@@ -202,13 +202,13 @@ export function PortfolioDetailClient({ project }: PortfolioDetailClientProps) {
 
       {/* 프로젝트 영상 */}
       {project.videos && project.videos.length > 0 && (
-        <section className="py-12 bg-slate-900">
+        <section className="py-12 bg-white dark:bg-slate-900">
           <Container>
-            <h2 className="text-2xl font-bold text-slate-100 mb-8">프로젝트 영상</h2>
+            <h2 className="text-2xl font-bold text-gray-900 dark:text-slate-100 mb-8">프로젝트 영상</h2>
             <div className="space-y-8">
               {project.videos.map((video, index) => (
                 <div key={index} className="space-y-4">
-                  <div className="relative aspect-video bg-slate-700 rounded-lg overflow-hidden shadow-2xl border border-slate-700">
+                  <div className="relative aspect-video bg-gray-200 dark:bg-slate-700 rounded-lg overflow-hidden shadow-2xl border border-gray-300 dark:border-slate-700">
                                          <video
                        src={video.src}
                        className="w-full h-full object-cover"
@@ -269,7 +269,7 @@ export function PortfolioDetailClient({ project }: PortfolioDetailClientProps) {
                     
                     {/* 영상 제목 오버레이 */}
                     <div className="absolute top-6 left-6">
-                      <div className="bg-black/50 backdrop-blur-sm text-white px-4 py-2 rounded-lg">
+                      <div className="bg-black/50 dark:bg-black/50 backdrop-blur-sm text-white px-4 py-2 rounded-lg">
                         <h3 className="text-lg font-semibold">{video.alt}</h3>
                       </div>
                     </div>
@@ -282,17 +282,17 @@ export function PortfolioDetailClient({ project }: PortfolioDetailClientProps) {
       )}
 
       {/* 주요 성과 */}
-      <section ref={achievementsRef} className="py-12 bg-slate-900">
+      <section ref={achievementsRef} className="py-12 bg-white dark:bg-slate-900">
         <Container>
-          <h2 className="text-2xl font-bold text-slate-100 mb-8">주요 성과</h2>
+          <h2 className="text-2xl font-bold text-gray-900 dark:text-slate-100 mb-8">주요 성과</h2>
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
             {project.achievements.map((achievement, index) => (
               <Card key={index} className="p-6">
                 <div className="flex items-start">
-                  <div className="w-8 h-8 bg-slate-700 rounded-full flex items-center justify-center mr-4 mt-1">
-                    <span className="text-slate-300 text-sm font-semibold">{index + 1}</span>
+                  <div className="w-8 h-8 bg-green-500 dark:bg-slate-700 rounded-full flex items-center justify-center mr-4 mt-1">
+                    <span className="text-white dark:text-slate-300 text-sm font-semibold">{index + 1}</span>
                   </div>
-                  <p className="text-slate-300 leading-relaxed">{achievement}</p>
+                  <p className="text-gray-700 dark:text-slate-300 leading-relaxed">{achievement}</p>
                 </div>
               </Card>
             ))}
@@ -301,9 +301,9 @@ export function PortfolioDetailClient({ project }: PortfolioDetailClientProps) {
       </section>
 
       {/* 다른 프로젝트 */}
-      <section ref={relatedRef} className="py-12 bg-slate-800">
+      <section ref={relatedRef} className="py-12 bg-gray-50 dark:bg-slate-800">
         <Container>
-          <h2 className="text-2xl font-bold text-slate-100 mb-8">다른 프로젝트 둘러보기</h2>
+          <h2 className="text-lg font-bold text-gray-900 dark:text-slate-100 mb-8">다른 프로젝트 둘러보기</h2>
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
             {portfolioProjects
               .filter(p => p.id !== project.id)
@@ -320,8 +320,8 @@ export function PortfolioDetailClient({ project }: PortfolioDetailClientProps) {
                       />
                     </div>
                     <div className="p-4">
-                      <h3 className="font-semibold text-slate-200 mb-2">{relatedProject.title}</h3>
-                      <p className="text-sm text-slate-400 line-clamp-2">{relatedProject.shortDescription}</p>
+                      <h3 className="text-xl font-medium text-gray-900 dark:text-slate-200 mb-2">{relatedProject.title}</h3>
+                      <p className="text-sm text-gray-600 dark:text-slate-400 line-clamp-2">{relatedProject.shortDescription}</p>
                     </div>
                   </Link>
                 </Card>

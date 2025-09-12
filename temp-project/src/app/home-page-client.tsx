@@ -115,31 +115,31 @@ export function HomePageClient() {
       <section className="relative min-h-screen md:h-[90vh] lg:h-[85vh] flex items-center justify-center overflow-hidden bg-gradient-to-br from-gray-50 via-white to-gray-50 dark:from-slate-900 dark:via-slate-800 dark:to-slate-900 md:pt-0">
         {/* 배경 요소 */}
         <div className="absolute inset-0 overflow-hidden">
-                     <div className="absolute top-20 right-20 w-72 h-72 opacity-20 filter brightness-0" style={{animation: 'pulse 4s ease-in-out infinite'}}>
+                     <div className="absolute top-20 right-20 w-72 h-72 opacity-20" style={{animation: 'pulse 4s ease-in-out infinite'}}>
             <Image
               src="/UABLE-logo.png"
               alt="Uable Logo Background"
               width={288}
               height={288}
-              className="object-contain max-w-full max-h-full w-auto h-auto"
+              className="object-contain max-w-full max-h-full w-auto h-auto filter sepia-[0.3] hue-rotate-[120deg] saturate-[0.6] brightness-[0.8] dark:brightness-0"
             />
           </div>
-                     <div className="absolute bottom-20 left-20 w-96 h-96 opacity-10 filter brightness-0" style={{animation: 'pulse 6s ease-in-out infinite', animationDelay: '1s'}}>
+                     <div className="absolute bottom-20 left-20 w-96 h-96 opacity-10" style={{animation: 'pulse 6s ease-in-out infinite', animationDelay: '1s'}}>
             <Image
               src="/UABLE-logo.png"
               alt="Uable Logo Background"
               width={384}
               height={384}
-              className="object-contain max-w-full max-h-full w-auto h-auto"
+              className="object-contain max-w-full max-h-full w-auto h-auto filter sepia-[0.3] hue-rotate-[120deg] saturate-[0.6] brightness-[0.8] dark:brightness-0"
             />
           </div>
-                     <div className="absolute top-1/2 left-1/4 w-48 h-48 opacity-15 filter brightness-0" style={{animation: 'pulse 5s ease-in-out infinite', animationDelay: '2s'}}>
+                     <div className="absolute top-1/2 left-1/4 w-48 h-48 opacity-15" style={{animation: 'pulse 5s ease-in-out infinite', animationDelay: '2s'}}>
             <Image
               src="/UABLE-logo.png"
               alt="Uable Logo Background"
               width={192}
               height={192}
-              className="object-contain max-w-full max-h-full w-auto h-auto"
+              className="object-contain max-w-full max-h-full w-auto h-auto filter sepia-[0.3] hue-rotate-[120deg] saturate-[0.6] brightness-[0.8] dark:brightness-0"
             />
           </div>
         </div>
@@ -158,7 +158,7 @@ export function HomePageClient() {
               <h1 className="text-4xl lg:text-6xl xl:text-6xl font-bold text-gray-900 dark:text-slate-100 mb-8 leading-tight">
                 고객에게 필요한
                 <br />
-                <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-purple-600 dark:from-slate-300 dark:to-slate-400">
+                <span className="text-transparent bg-clip-text bg-gradient-to-r from-green-600 to-teal-600 dark:from-slate-300 dark:to-slate-400">
                   제품은 모두 다릅니다.
                 </span>
               </h1>
@@ -166,20 +166,20 @@ export function HomePageClient() {
               {/* 서브헤드라인 */}
               <p className="text-xl lg:text-2xl text-gray-600 dark:text-slate-300 mb-12 max-w-2xl mx-auto lg:mx-0 leading-relaxed">
                 공정에 타협하지 않고 고객에게 필요한 제품을 전개하는 브랜드의 도전에{' '}
-                <span className="font-semibold text-blue-600 dark:text-slate-300">Uable</span>이 함께하겠습니다.
+                <span className="font-semibold text-green-400 dark:text-green-300">Uable</span>이 함께하겠습니다.
               </p>
 
               {/* CTA 버튼들 */}
               <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start mb-12">
                 <Link href="/portfolio">
-                  <Button size="lg" className="text-lg px-12 py-8 bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 dark:from-slate-600 dark:to-slate-700 dark:hover:from-slate-700 dark:hover:to-slate-800 shadow-lg text-white">
+                  <Button size="lg" className="text-lg px-12 py-4 bg-gradient-to-r from-green-600 to-teal-600 hover:from-green-700 hover:to-teal-700 dark:from-slate-600 dark:to-slate-700 dark:hover:from-slate-700 dark:hover:to-slate-800 shadow-lg text-white">
                     포트폴리오 보기
                     {/* <ArrowRight className="w-5 h-5 ml-2" /> */}
                   </Button>
                 </Link>
 
                 <Link href="https://befunweb.vercel.app/">
-                <Button variant="outline" size="lg" className="text-lg px-12 py-8 border-gray-300 dark:border-slate-600 text-gray-700 dark:text-slate-200 hover:bg-gray-100 dark:hover:bg-slate-700">
+                <Button variant="outline" size="lg" className="text-lg px-12 py-4 border-gray-300 dark:border-slate-600 text-gray-700 dark:text-slate-200 hover:bg-gray-100 dark:hover:bg-slate-700">
                   {/* <Play className="w-5 h-5 mr-2" /> */}
                   컨피규레이터 보기
                 </Button>
@@ -251,7 +251,7 @@ export function HomePageClient() {
             </Badge>
             <h2 className="text-4xl lg:text-6xl xl:text-6xl font-bold text-gray-900 dark:text-slate-100 mb-8 leading-tight">
               체험하고 구매하는{' '}
-              <br /> <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-purple-600 dark:from-slate-300 dark:to-slate-400">
+              <br /> <span className="text-transparent bg-clip-text bg-gradient-to-r from-green-600 to-teal-600 dark:from-slate-300 dark:to-slate-400">
                 3D 제품 컨피규레이터
               </span>
             </h2>
@@ -398,7 +398,7 @@ export function HomePageClient() {
           
           <div className="text-center">
             <Link href="/portfolio">
-              <Button size="lg" className="bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 dark:from-slate-600 dark:to-slate-700 dark:hover:from-slate-700 dark:hover:to-slate-800">
+              <Button size="lg" className="bg-gradient-to-r from-green-600 to-teal-600 hover:from-green-700 hover:to-teal-700 dark:from-slate-600 dark:to-slate-700 dark:hover:from-slate-700 dark:hover:to-slate-800 text-white">
                 전체 포트폴리오 보기
                 <ArrowRight className="w-5 h-5 ml-2" />
               </Button>
@@ -424,7 +424,7 @@ export function HomePageClient() {
           
           <div className="grid md:grid-cols-3 gap-8">
             <div className="bg-white dark:bg-slate-800 rounded-2xl p-8 shadow-lg border border-gray-200 dark:border-slate-700 text-center">
-              <div className="w-16 h-16 bg-gradient-to-r from-blue-600 to-purple-600 dark:from-slate-600 dark:to-slate-700 rounded-full flex items-center justify-center mx-auto mb-6">
+              <div className="w-16 h-16 bg-gradient-to-r from-green-600 to-teal-600 dark:from-slate-600 dark:to-slate-700 rounded-full flex items-center justify-center mx-auto mb-6">
                 <span className="text-2xl font-bold text-white dark:text-slate-100">01</span>
               </div>
               <h3 className="text-2xl font-bold text-gray-900 dark:text-slate-100 mb-4">기획 & 견적 미팅</h3>
@@ -438,7 +438,7 @@ export function HomePageClient() {
             </div>
             
             <div className="bg-white dark:bg-slate-800 rounded-2xl p-8 shadow-lg border border-gray-200 dark:border-slate-700 text-center">
-              <div className="w-16 h-16 bg-gradient-to-r from-blue-600 to-purple-600 dark:from-slate-600 dark:to-slate-700 rounded-full flex items-center justify-center mx-auto mb-6">
+              <div className="w-16 h-16 bg-gradient-to-r from-green-600 to-teal-600 dark:from-slate-600 dark:to-slate-700 rounded-full flex items-center justify-center mx-auto mb-6">
                 <span className="text-2xl font-bold text-white dark:text-slate-100">02</span>
               </div>
               <h3 className="text-2xl font-bold text-gray-900 dark:text-slate-100 mb-4">디자인 & 개발</h3>
@@ -452,7 +452,7 @@ export function HomePageClient() {
             </div>
             
             <div className="bg-white dark:bg-slate-800 rounded-2xl p-8 shadow-lg border border-gray-200 dark:border-slate-700 text-center">
-              <div className="w-16 h-16 bg-gradient-to-r from-blue-600 to-purple-600 dark:from-slate-600 dark:to-slate-700 rounded-full flex items-center justify-center mx-auto mb-6">
+              <div className="w-16 h-16 bg-gradient-to-r from-green-600 to-teal-600 dark:from-slate-600 dark:to-slate-700 rounded-full flex items-center justify-center mx-auto mb-6">
                 <span className="text-2xl font-bold text-white dark:text-slate-100">03</span>
               </div>
               <h3 className="text-2xl font-bold text-gray-900 dark:text-slate-100 mb-4">배포 & 유지보수</h3>
@@ -472,21 +472,18 @@ export function HomePageClient() {
       <section ref={effectsSectionRef} className="py-32 bg-white dark:bg-slate-800 animate-effects-section">
         <div className="w-full max-w-7xl mx-auto px-4 lg:px-8 xl:px-12">
           {/* 헤드라인 섹션 */}
-          <div className="max-w-5xl mx-auto mb-20 ">
-            <div className="flex items-center mb-6">
-              <div className="w-4 h-4 bg-gray-400 dark:bg-slate-400 rounded mr-3"></div>
-              <Badge variant="outline" className="text-gray-600 dark:text-slate-300 border-gray-300 dark:border-slate-600">
-                도입 효과
-              </Badge>
-            </div>
+          <div className="max-w-4xl mx-auto text-center mb-16">
+            <Badge variant="primary" className="mb-6">
+              도입 효과
+            </Badge>
             <h2 className="text-3xl lg:text-6xl xl:text-2xl font-bold text-gray-900 dark:text-slate-100 mb-8 leading-tight text-center">
               무한한 구성과, 개인화 옵션의 제품은{' '}
-              <span className="text-gray-600 dark:text-slate-300">
+              <span className="text-green-600 dark:text-green-400">
                 기존의 방법으로 판매가 어렵습니다.
               </span>
               <br />
               3D 컨피규레이터로 문제를 해결하고{' '}
-              <span className="text-gray-600 dark:text-slate-300">
+              <span className="text-green-600 dark:text-green-400">
                 매출 상승을 직접 경험하세요.
               </span>
             </h2>
@@ -527,7 +524,7 @@ export function HomePageClient() {
       </section>
 
       {/* CTA Section - 다크 테마 */}
-      <section className="py-32 bg-gradient-to-r from-gray-100 via-gray-200 to-gray-100 dark:from-slate-700 dark:via-slate-800 dark:to-slate-900">
+      <section className="py-32 bg-gray-50 dark:bg-gradient-to-r dark:from-slate-700 dark:via-slate-800 dark:to-slate-900">
         <div className="w-full max-w-7xl mx-auto px-4 lg:px-8 xl:px-12">
           <div ref={ctaContentRef} className="max-w-4xl mx-auto text-center animate-cta-content">
             <h2 className="text-3xl lg:text-5xl font-bold text-gray-900 dark:text-slate-100 mb-8">
@@ -538,13 +535,13 @@ export function HomePageClient() {
             </p>
             <div className="flex flex-col sm:flex-row gap-6 justify-center">
               <Link href="/portfolio">
-                <Button size="lg" variant="secondary" className="text-lg px-10 py-4 bg-white dark:bg-slate-100 text-gray-900 dark:text-slate-900 hover:bg-gray-100 dark:hover:bg-slate-200">
+                <Button size="lg" className="text-lg px-10 py-4 bg-gradient-to-r from-green-600 to-teal-600 hover:from-green-700 hover:to-teal-700 text-white shadow-lg shadow-green-500/25 hover:shadow-xl hover:shadow-green-500/30 transition-all duration-300">
                   포트폴리오 보기
                   <ArrowRight className="w-5 h-5 ml-2" />
                 </Button>
               </Link>
               <Link href="/contact">
-                <Button size="lg" variant="outline" className="text-lg px-10 py-4 border-2 border-gray-300 dark:border-slate-300 text-gray-900 dark:text-slate-100 hover:bg-gray-100 dark:hover:bg-slate-800 hover:text-gray-900 dark:hover:text-slate-200">
+                <Button size="lg" variant="outline" className="text-lg px-10 py-4 border-2 border-green-600 dark:border-green-400 text-green-600 dark:text-green-400 hover:bg-green-50 dark:hover:bg-green-900/20 hover:border-green-700 dark:hover:border-green-300 transition-all duration-300">
                   문의하기
                 </Button>
               </Link>

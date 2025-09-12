@@ -90,7 +90,7 @@ export function ImpactStats({ detailContent }: ImpactStatsProps) {
   if (stats.length === 0) return null
   
   return (
-    <section className="py-16 bg-slate-900">
+    <section className="py-16 bg-white dark:bg-slate-900">
       <div className="max-w-6xl mx-auto px-4">
         {/* 솔루션 개요 */}
         <motion.div
@@ -100,11 +100,11 @@ export function ImpactStats({ detailContent }: ImpactStatsProps) {
           transition={{ duration: 0.8 }}
           className="text-center mb-16"
         >
-          <h2 className="text-3xl font-bold text-slate-100 mb-6">
+          <h2 className="text-3xl font-bold text-gray-900 dark:text-slate-100 mb-6">
             프로젝트 임팩트
           </h2>
-          <div className="bg-slate-800/50 rounded-2xl p-8 border border-slate-700 max-w-4xl mx-auto">
-            <p className="text-slate-300 leading-relaxed text-lg">
+          <div className="bg-gray-50 dark:bg-slate-800/50 rounded-2xl p-8 border border-gray-200 dark:border-slate-700 max-w-4xl mx-auto">
+            <p className="text-gray-700 dark:text-slate-300 leading-relaxed text-lg">
               {detailContent.background}
             </p>
           </div>
@@ -122,7 +122,7 @@ export function ImpactStats({ detailContent }: ImpactStatsProps) {
                 delay: index * 0.15,
                 ease: [0.4, 0, 0.2, 1]
               }}
-              className="bg-slate-800/80 backdrop-blur-sm rounded-2xl p-8 border border-slate-700 hover:border-slate-600 hover:bg-slate-800/90 transition-all duration-300"
+              className="bg-gray-50 dark:bg-slate-800/80 backdrop-blur-sm rounded-2xl p-8 border border-gray-200 dark:border-slate-700 hover:border-gray-300 dark:hover:border-slate-600 hover:bg-gray-100 dark:hover:bg-slate-800/90 transition-all duration-300"
             >
               {/* 큰 숫자 */}
               <div className="relative mb-6">
@@ -137,19 +137,19 @@ export function ImpactStats({ detailContent }: ImpactStatsProps) {
                   }}
                   className="text-center"
                 >
-                  <div className="text-6xl lg:text-7xl font-semibold text-slate-100 mb-2 tracking-tight">
+                  <div className="text-6xl lg:text-7xl font-semibold text-gray-900 dark:text-slate-100 mb-2 tracking-tight">
                     {stat.value}
                   </div>
-                  <div className="w-12 h-px bg-slate-600 mx-auto opacity-65"></div>
+                  <div className="w-12 h-px bg-gray-400 dark:bg-slate-600 mx-auto opacity-65"></div>
                 </motion.div>
               </div>
               
               {/* 제목과 설명 */}
               <div className="text-center space-y-3">
-                <h3 className="text-lg font-semibold text-slate-100">
+                <h3 className="text-lg font-semibold text-gray-900 dark:text-slate-100">
                   {stat.title}
                 </h3>
-                <p className="text-sm text-slate-400 leading-relaxed">
+                <p className="text-sm text-gray-600 dark:text-slate-400 leading-relaxed">
                   {stat.description}
                 </p>
               </div>
@@ -163,12 +163,12 @@ export function ImpactStats({ detailContent }: ImpactStatsProps) {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.8, delay: 0.6 }}
-          className="mt-16 bg-gradient-to-br from-slate-800 to-slate-700 rounded-2xl p-8 text-center border border-slate-600"
+          className="mt-16 bg-gradient-to-br from-gray-100 to-gray-200 dark:from-slate-800 dark:to-slate-700 rounded-2xl p-8 text-center border border-gray-300 dark:border-slate-600"
         >
-          <h3 className="text-xl font-semibold text-slate-100 mb-4">
+          <h3 className="text-xl font-semibold text-gray-900 dark:text-slate-100 mb-4">
             비즈니스 성과
           </h3>
-          <p className="text-slate-200 text-base leading-relaxed max-w-4xl mx-auto">
+          <p className="text-gray-700 dark:text-slate-200 text-base leading-relaxed max-w-4xl mx-auto">
             {detailContent.impact}
           </p>
         </motion.div>

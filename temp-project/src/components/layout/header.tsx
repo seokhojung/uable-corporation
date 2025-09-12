@@ -21,7 +21,7 @@ export const Header = () => {
 
   return (
     <header className={applyThemeClasses(
-      `sticky top-0 z-50 bg-slate-800/20 backdrop-blur-lg border-b border-slate-700/30 shadow-lg transition-all duration-300 ${mobileMenuOpen ? 'min-h-80 lg:min-h-20' : 'min-h-16 lg:min-h-20'}`,
+      `sticky top-0 z-50 bg-slate-800/20 backdrop-blur-lg border-b border-slate-700/30 shadow-sm transition-all duration-300 ${mobileMenuOpen ? 'min-h-80 lg:min-h-20' : 'min-h-16 lg:min-h-20'}`,
       isThemeSystemEnabled
     )}>
       <nav className="mx-auto flex max-w-7xl items-center justify-between p-6 lg:px-8" aria-label="Global">
@@ -68,8 +68,8 @@ export const Header = () => {
           ))}
           {/* 테마 토글 버튼 - 데스크톱 */}
           <ThemeToggle className="ml-2" />
-          <Button className={applyThemeClasses(
-            "bg-gradient-to-r from-slate-600 to-slate-700 hover:from-slate-700 hover:to-slate-800 shadow-lg hover:shadow-xl transition-all duration-300",
+          <Button variant="primary" className={applyThemeClasses(
+            "!bg-gradient-to-r !from-emerald-500 !to-green-500 hover:!from-emerald-600 hover:!to-green-600 !text-white shadow-lg shadow-emerald-500/25 hover:shadow-xl hover:shadow-emerald-500/40 transition-all duration-300",
             isThemeSystemEnabled
           )}>
             <Link href="/contact">Contact</Link>

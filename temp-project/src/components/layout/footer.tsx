@@ -5,7 +5,6 @@ import Link from 'next/link'
 import Image from 'next/image'
 import { Mail, Phone, MapPin, Linkedin, Twitter, Github } from 'lucide-react'
 import { portfolioProjects } from '@/data/portfolio'
-import { applyThemeClasses } from '@/lib/theme-class-mapping'
 
 const footerLinks = {
   company: [
@@ -32,8 +31,7 @@ const socialLinks = [
 ]
 
 export const Footer = () => {
-  const isThemeSystemEnabled = process.env.NEXT_PUBLIC_THEME_SYSTEM !== 'false'
-  
+    
   // 대표 여부 우선 정렬 후 최신 업데이트 순, 최대 6개 노출
   const projectLinks = (portfolioProjects || [])
     .slice()
@@ -55,8 +53,8 @@ export const Footer = () => {
           backgroundImage: `radial-gradient(circle at 1px 1px, rgba(255,255,255,0.15) 1px, transparent 0)`,
           backgroundSize: '40px 40px'
         }}></div>
-        <div className="absolute top-20 right-20 w-96 h-96 bg-gradient-to-r from-slate-600/10 to-slate-500/10 rounded-full blur-3xl"></div>
-        <div className="absolute bottom-20 left-20 w-80 h-80 bg-gradient-to-r from-slate-500/10 to-slate-400/10 rounded-full blur-3xl"></div>
+        <div className="absolute top-20 right-20 w-96 h-96 bg-gradient-to-r from-blue-600/10 to-blue-500/10 dark:from-slate-600/10 dark:to-slate-500/10 rounded-full blur-3xl"></div>
+        <div className="absolute bottom-20 left-20 w-80 h-80 bg-gradient-to-r from-blue-500/10 to-blue-400/10 dark:from-slate-500/10 dark:to-slate-400/10 rounded-full blur-3xl"></div>
       </div>
       
       <div className="relative z-10 container mx-auto px-4 sm:px-6 lg:px-8 py-16">
@@ -64,7 +62,7 @@ export const Footer = () => {
         {/* 회사 정보 */}
         <div>
           <div className="flex items-center space-x-3 mb-6">
-            <div className="w-12 h-12 flex items-center justify-center shadow-lg overflow-hidden">
+            <div className="w-12 h-12 flex items-center justify-center overflow-hidden">
               <Image
                 src="/UABLE-logo.png"
                 alt="Uable Corporation Logo"
@@ -75,31 +73,31 @@ export const Footer = () => {
               />
             </div>
             <div>
-              <span className="text-2xl font-bold bg-gradient-to-r from-slate-300 to-slate-400 bg-clip-text text-transparent">Uable Corporation</span>
-              <p className={applyThemeClasses("text-sm text-slate-400", isThemeSystemEnabled)}>혁신적인 디지털 솔루션</p>
+              <span className="text-2xl font-bold bg-gradient-to-r from-gray-800 to-gray-600 dark:from-slate-300 dark:to-slate-400 bg-clip-text text-transparent">Uable Corporation</span>
+              <p className="text-sm text-gray-600 dark:text-slate-400">혁신적인 디지털 솔루션</p>
             </div>
           </div>
-          <p className={applyThemeClasses("text-slate-300 mb-6 max-w-md", isThemeSystemEnabled)}>
+          <p className="text-gray-700 dark:text-slate-300 mb-6 max-w-md">
             혁신적인 디지털 솔루션을 제공하여 비즈니스의 성장을 돕습니다. 
             최신 기술과 창의적인 디자인으로 고객의 비전을 현실로 만듭니다.
           </p>
           
           {/* 연락처 정보 */}
           <div className="space-y-4">
-            <div className="flex items-center space-x-3 text-slate-300 hover:text-slate-100 transition-colors group">
-              <div className="w-8 h-8 bg-gradient-to-r from-slate-600/20 to-slate-500/20 rounded-lg flex items-center justify-center group-hover:scale-110 transition-transform">
+            <div className="flex items-center space-x-3 text-gray-600 dark:text-slate-300 hover:text-gray-900 dark:hover:text-slate-100 transition-colors group">
+              <div className="w-8 h-8 bg-gradient-to-r from-emerald-500/20 to-green-400/20 dark:from-slate-600/20 dark:to-slate-500/20 rounded-lg flex items-center justify-center group-hover:scale-110 transition-transform">
                 <Mail className="w-4 h-4" />
               </div>
               <span>admin@uable.co.kr</span>
             </div>
-            <div className="flex items-center space-x-3 text-slate-300 hover:text-slate-100 transition-colors group">
-              <div className="w-8 h-8 bg-gradient-to-r from-slate-500/20 to-slate-400/20 rounded-lg flex items-center justify-center group-hover:scale-110 transition-transform">
+            <div className="flex items-center space-x-3 text-gray-600 dark:text-slate-300 hover:text-gray-900 dark:hover:text-slate-100 transition-colors group">
+              <div className="w-8 h-8 bg-gradient-to-r from-emerald-500/20 to-green-400/20 dark:from-slate-500/20 dark:to-slate-400/20 rounded-lg flex items-center justify-center group-hover:scale-110 transition-transform">
                 <Phone className="w-4 h-4" />
               </div>
               <span>02-557-6637</span>
             </div>
-            <div className="flex items-center space-x-3 text-slate-300 hover:text-slate-100 transition-colors group">
-              <div className="w-8 h-8 bg-gradient-to-r from-slate-500/20 to-slate-400/20 rounded-lg flex items-center justify-center group-hover:scale-110 transition-transform">
+            <div className="flex items-center space-x-3 text-gray-600 dark:text-slate-300 hover:text-gray-900 dark:hover:text-slate-100 transition-colors group">
+              <div className="w-8 h-8 bg-gradient-to-r from-emerald-500/20 to-green-400/20 dark:from-slate-500/20 dark:to-slate-400/20 rounded-lg flex items-center justify-center group-hover:scale-110 transition-transform">
                 <MapPin className="w-4 h-4" />
               </div>
               <span>서울 강남구 언주로97길 7 5F</span>
@@ -109,34 +107,34 @@ export const Footer = () => {
 
         {/* 회사 + 지원 */}
         <div>
-          <h3 className={applyThemeClasses("text-lg font-semibold mb-6 text-slate-100", isThemeSystemEnabled)}>회사</h3>
+          <h3 className="text-lg font-semibold mb-6 text-gray-900 dark:text-slate-100">회사</h3>
           <ul className="space-y-3">
             {footerLinks.company.map((link) => (
               <li key={link.href}>
                 <Link
                   href={link.href}
-                  className={applyThemeClasses("text-slate-300 hover:text-slate-100 transition-colors relative group", isThemeSystemEnabled)}
+                  className="text-gray-600 dark:text-slate-300 hover:text-gray-900 dark:hover:text-slate-100 transition-colors relative group"
                 >
                   <span className="relative">
                     {link.label}
-                    <span className="absolute -bottom-0.5 left-0 w-0 h-0.5 bg-gradient-to-r from-slate-300 to-slate-400 transition-all duration-300 group-hover:w-full"></span>
+                    <span className="absolute -bottom-0.5 left-0 w-0 h-0.5 bg-gradient-to-r from-gray-700 to-gray-600 dark:from-slate-300 dark:to-slate-400 transition-all duration-300 group-hover:w-full"></span>
                   </span>
                 </Link>
               </li>
             ))}
           </ul>
 
-          <h3 className={applyThemeClasses("text-lg font-semibold mt-10 mb-6 text-slate-100", isThemeSystemEnabled)}>지원</h3>
+          <h3 className="text-lg font-semibold mt-10 mb-6 text-gray-900 dark:text-slate-100">지원</h3>
           <ul className="space-y-3">
             {footerLinks.support.map((link) => (
               <li key={link.href}>
                 <Link
                   href={link.href}
-                  className={applyThemeClasses("text-slate-300 hover:text-slate-100 transition-colors relative group", isThemeSystemEnabled)}
+                  className="text-gray-600 dark:text-slate-300 hover:text-gray-900 dark:hover:text-slate-100 transition-colors relative group"
                 >
                   <span className="relative">
                     {link.label}
-                    <span className="absolute -bottom-0.5 left-0 w-0 h-0.5 bg-gradient-to-r from-slate-300 to-slate-400 transition-all duration-300 group-hover:w-full"></span>
+                    <span className="absolute -bottom-0.5 left-0 w-0 h-0.5 bg-gradient-to-r from-gray-700 to-gray-600 dark:from-slate-300 dark:to-slate-400 transition-all duration-300 group-hover:w-full"></span>
                   </span>
                 </Link>
               </li>
@@ -146,17 +144,17 @@ export const Footer = () => {
 
         {/* 프로젝트 */}
         <div>
-          <h3 className={applyThemeClasses("text-lg font-semibold mb-6 text-slate-100", isThemeSystemEnabled)}>프로젝트</h3>
+          <h3 className="text-lg font-semibold mb-6 text-gray-900 dark:text-slate-100">프로젝트</h3>
           <ul className="space-y-3">
             {(projectLinks.length ? projectLinks : [{ label: '포트폴리오 전체 보기', href: '/portfolio' }]).map((link) => (
               <li key={link.href}>
                 <Link
                   href={link.href}
-                  className={applyThemeClasses("text-slate-300 hover:text-slate-100 transition-colors relative group", isThemeSystemEnabled)}
+                  className="text-gray-600 dark:text-slate-300 hover:text-gray-900 dark:hover:text-slate-100 transition-colors relative group"
                 >
                   <span className="relative">
                     {link.label}
-                    <span className="absolute -bottom-0.5 left-0 w-0 h-0.5 bg-gradient-to-r from-slate-300 to-slate-400 transition-all duration-300 group-hover:w-full"></span>
+                    <span className="absolute -bottom-0.5 left-0 w-0 h-0.5 bg-gradient-to-r from-gray-700 to-gray-600 dark:from-slate-300 dark:to-slate-400 transition-all duration-300 group-hover:w-full"></span>
                   </span>
                 </Link>
               </li>
@@ -166,9 +164,9 @@ export const Footer = () => {
        </div>
 
        {/* 하단 섹션 */}
-       <div className="border-t border-slate-700 mt-8 pt-8">
+       <div className="border-t border-gray-300 dark:border-slate-700 mt-8 pt-8">
          <div className="flex flex-col md:flex-row justify-between items-center">
-           <p className="text-slate-400 text-sm">
+           <p className="text-gray-600 dark:text-slate-400 text-sm">
              © 2025 Uable Corporation. All rights reserved.
            </p>
            
@@ -178,7 +176,7 @@ export const Footer = () => {
                <Link
                  key={link.label}
                  href={link.href}
-                 className="text-slate-400 hover:text-slate-100 transition-colors"
+                 className="text-gray-600 dark:text-slate-400 hover:text-gray-900 dark:hover:text-slate-100 transition-colors"
                  aria-label={link.label}
                >
                  <link.icon className="w-5 h-5" />

@@ -199,6 +199,52 @@ export const portfolioProjects: PortfolioProject[] = [
       ],
       impact: "도입 기업들의 실제 성과: 온라인 가구 판매 전환율 60% 상승, 제품 반품률 40% 감소, 고객 문의 시간 50% 단축을 기록했습니다. '집에 딱 맞네요!'라는 고객 만족 후기가 90% 이상이며, 특히 소파, 침대, 책상 등 대형 가구 카테고리에서 매출 증가 효과가 뚜렷합니다. 영업팀은 '크기 문의', '색상 문의' 등 반복적인 질문이 크게 줄어 신규 고객 발굴에 집중할 수 있게 되었습니다. 앱 출시 후 3개월 내 투자비용 회수, 연간 매출 80% 증가라는 놀라운 ROI를 달성하고 있습니다."
     },
+    visualMetrics: {
+      coreValues: [
+        {
+          label: 'AR 트래킹 정확도',
+          value: 94,
+          unit: '%',
+          type: 'donut',
+          color: '#0ea5e9',
+          description: 'ARCore 기반 공간 인식 및 객체 추적 정확도'
+        },
+        {
+          label: '앱 시작 시간',
+          value: 3200,
+          unit: '점',
+          type: 'progress',
+          color: '#22c55e',
+          description: '앱 실행부터 AR 카메라 활성화까지의 시간'
+        },
+        {
+          label: '배치 정확성',
+          value: 89,
+          unit: '%',
+          type: 'gauge',
+          color: '#d946ef',
+          description: '사용자가 원하는 위치에 정확히 객체 배치 성공률'
+        }
+      ],
+      differentiators: [
+        {
+          label: '렌더링 최적화',
+          value: 45,
+          unit: 'fps',
+          type: 'speedometer',
+          color: '#ef4444',
+          description: '모바일 환경에서 안정적인 AR 렌더링 성능'
+        },
+        {
+          label: '배터리 효율성',
+          value: 85,
+          unit: '%',
+          type: 'bar',
+          color: '#22c55e',
+          description: '기존 AR 앱 대비 배터리 소모량 15% 절약'
+        }
+      ]
+    },
     featured: true,
     createdAt: '2023-09-10',
     updatedAt: '2024-01-15'

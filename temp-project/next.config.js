@@ -4,8 +4,8 @@ const nextConfig = {
   },
   // 동적 라우팅을 위한 설정
   trailingSlash: false,
-  // 정적 생성을 위한 설정
-  output: 'export',
+  // 정적 생성을 위한 설정 (임시 비활성화)
+  // output: 'export',
   // 이미지 최적화 설정
   images: {
     unoptimized: true, // 정적 export를 위해 이미지 최적화 비활성화

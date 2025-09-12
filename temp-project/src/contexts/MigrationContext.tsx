@@ -190,23 +190,6 @@ export const useNewComponent = (componentName: string): boolean => {
  * Development helper component to display migration status
  */
 export const MigrationDebugger: React.FC = () => {
-  const { getMigrationStatus } = useMigrationContext()
-  
-  if (process.env.NODE_ENV !== 'development') {
-    return null
-  }
-
-  const status = getMigrationStatus()
-  
-  return (
-    <div className="fixed bottom-4 right-4 bg-slate-800 border border-slate-600 rounded-lg p-3 text-xs text-slate-300 z-50">
-      <div className="font-bold mb-2">UI Migration Status</div>
-      {Object.entries(status).map(([component, migrated]) => (
-        <div key={component} className="flex items-center gap-2">
-          <span className={`w-2 h-2 rounded-full ${migrated ? 'bg-green-500' : 'bg-gray-500'}`} />
-          <span>{component}: {migrated ? 'New' : 'Legacy'}</span>
-        </div>
-      ))}
-    </div>
-  )
+  // Migration completed - debugger disabled
+  return null
 }

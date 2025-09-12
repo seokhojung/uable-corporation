@@ -4,6 +4,8 @@ import './globals.css'
 import { Header } from '@/components/layout/header'
 import { Footer } from '@/components/layout/footer'
 import SkipLink from '@/components/ui/skip-link'
+import { MigrationProvider } from '@/contexts/MigrationContext'
+import { ThemeProvider } from '@/contexts/ThemeContext'
 
 const inter = Inter({ subsets: ['latin'] })
 
@@ -86,8 +88,59 @@ export default function RootLayout({
   children: React.ReactNode
 }) {
   return (
-    <html lang="ko" className="scroll-smooth">
+    <html lang="ko" className="scroll-smooth" suppressHydrationWarning>
       <head>
+        {/* No-Flash 스크립트: 페이지 로드 시 깜빡임 방지 */}
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `
+              (function() {
+                try {
+                  var theme = localStorage.getItem('theme')
+                  if (!theme) {
+                    // 기본값은 다크 모드 (기존 디자인 유지)
+                    theme = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'dark'
+                  }
+                  
+                  // Tailwind 클래스 적용
+                  document.documentElement.classList.toggle('dark', theme === 'dark')
+                  document.documentElement.setAttribute('data-theme', theme)
+                  
+                  // CSS 변수 적용 (성능 최적화)
+                  var cssVariables = {
+                    '--color-background': theme === 'dark' ? '#0f172a' : '#ffffff',
+                    '--color-foreground': theme === 'dark' ? '#f1f5f9' : '#0f172a',
+                    '--color-muted': theme === 'dark' ? '#1e293b' : '#f8fafc',
+                    '--color-muted-foreground': theme === 'dark' ? '#94a3b8' : '#64748b',
+                    '--color-border': theme === 'dark' ? '#334155' : '#e2e8f0',
+                    '--color-input': theme === 'dark' ? '#1e293b' : '#ffffff',
+                    '--color-primary': theme === 'dark' ? '#64748b' : '#475569',
+                    '--color-primary-foreground': theme === 'dark' ? '#0f172a' : '#f8fafc'
+                  }
+                  
+                  Object.entries(cssVariables).forEach(function(entry) {
+                    document.documentElement.style.setProperty(entry[0], entry[1])
+                  })
+                  
+                } catch (e) {
+                  // localStorage 접근 실패시 다크 모드 기본 적용
+                  document.documentElement.classList.add('dark')
+                  document.documentElement.setAttribute('data-theme', 'dark')
+                  
+                  // 다크 모드 CSS 변수 설정
+                  document.documentElement.style.setProperty('--color-background', '#0f172a')
+                  document.documentElement.style.setProperty('--color-foreground', '#f1f5f9')
+                  document.documentElement.style.setProperty('--color-muted', '#1e293b')
+                  document.documentElement.style.setProperty('--color-muted-foreground', '#94a3b8')
+                  document.documentElement.style.setProperty('--color-border', '#334155')
+                  document.documentElement.style.setProperty('--color-input', '#1e293b')
+                  document.documentElement.style.setProperty('--color-primary', '#64748b')
+                  document.documentElement.style.setProperty('--color-primary-foreground', '#0f172a')
+                }
+              })()
+            `,
+          }}
+        />
         <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
         <meta name="theme-color" content="#2563eb" />
         <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -197,15 +250,22 @@ export default function RootLayout({
           }}
         />
       </head>
-      <body className={inter.className}>
-        <SkipLink />
-        <div className="flex min-h-screen flex-col">
-          <Header />
-          <main id="main-content" className="flex-1">
-            {children}
-          </main>
-          <Footer />
-        </div>
+      <body 
+        className={`${inter.className} bg-white dark:bg-slate-900 text-slate-900 dark:text-slate-100 transition-colors duration-200`}
+        suppressHydrationWarning
+      >
+        <MigrationProvider>
+          <ThemeProvider>
+            <SkipLink />
+            <div className="flex min-h-screen flex-col">
+              <Header />
+              <main id="main-content" className="flex-1">
+                {children}
+              </main>
+              <Footer />
+            </div>
+          </ThemeProvider>
+        </MigrationProvider>
       </body>
     </html>
   )
