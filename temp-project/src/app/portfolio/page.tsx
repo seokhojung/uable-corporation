@@ -1,11 +1,11 @@
 'use client'
 
 // src/app/portfolio/page.tsx
-import { Badge } from '@/components/ui/badge'
 import { PortfolioCard } from '@/components/portfolio/portfolio-card'
 import { TechScroll } from '@/components/ui/tech-scroll'
+import { ProductsSection } from '@/components/products/products-section'
 import { portfolioProjects } from '@/data/portfolio'
-import { Star, Globe, Code, Award } from 'lucide-react'
+import { Star, Award } from 'lucide-react'
 import Image from 'next/image'
 import { useEffect, useRef } from 'react'
 
@@ -29,6 +29,7 @@ export default function PortfolioPage() {
   // 애니메이션을 위한 ref들
   const heroContentRef = useRef<HTMLDivElement>(null)
   const techCardsRef = useRef<HTMLDivElement>(null)
+  const productsSectionRef = useRef<HTMLDivElement>(null)
   const projectsHeaderRef = useRef<HTMLDivElement>(null)
   const projectsCardsRef = useRef<HTMLDivElement>(null)
 
@@ -50,6 +51,7 @@ export default function PortfolioPage() {
     const sections = [
       heroContentRef.current,
       techCardsRef.current,
+      productsSectionRef.current,
       projectsHeaderRef.current,
       projectsCardsRef.current
     ]
@@ -157,6 +159,19 @@ export default function PortfolioPage() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div ref={techCardsRef} className="animate-service-cards">
             <TechScroll technologies={techStacks} />
+          </div>
+        </div>
+      </section>
+
+      {/* 자체 제품 섹션 */}
+      <section className="py-16 bg-white dark:bg-slate-900">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div ref={productsSectionRef} className="animate-service-cards">
+            <ProductsSection 
+              title="우리의 핵심 제품"
+              description={`포트폴리오 프로젝트를 통해 완성한 자체 제품들을 소개합니다.
+실제 고객들이 사용하고 검증받은 혁신적인 3D 솔루션입니다.`}
+            />
           </div>
         </div>
       </section>

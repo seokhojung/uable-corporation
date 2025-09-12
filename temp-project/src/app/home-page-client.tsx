@@ -11,6 +11,7 @@ import { CountUp } from '@/components/ui/count-up'
 import { ServiceScroll } from '@/components/ui/service-scroll'
 import { PortfolioCard } from '@/components/portfolio/portfolio-card'
 import { WebGLGallery } from '@/components/webgl/webgl-gallery'
+import { ProductsSection } from '@/components/products/products-section'
 
 const stats = [
   { label: '완료 프로젝트', value: '150+', icon: Award },
@@ -32,6 +33,7 @@ export function HomePageClient() {
   const heroVisualRef = useRef<HTMLDivElement>(null)
   const serviceHeaderRef = useRef<HTMLDivElement>(null)
   const serviceCardsRef = useRef<HTMLDivElement>(null)
+  const productsSectionRef = useRef<HTMLDivElement>(null)
   const portfolioSectionRef = useRef<HTMLDivElement>(null)
   const webglSectionRef = useRef<HTMLDivElement>(null)
   const processSectionRef = useRef<HTMLDivElement>(null)
@@ -98,6 +100,7 @@ export function HomePageClient() {
       heroVisualRef.current,
       serviceHeaderRef.current,
       serviceCardsRef.current,
+      productsSectionRef.current,
       portfolioSectionRef.current,
       webglSectionRef.current,
       processSectionRef.current,
@@ -371,6 +374,19 @@ export function HomePageClient() {
                 </div>
               </div>
             </div>
+          </div>
+        </div>
+      </section>
+
+      {/* 자체 제품 섹션 */}
+      <section className="py-32 bg-white dark:bg-slate-900">
+        <div className="w-full max-w-7xl mx-auto px-4 lg:px-8 xl:px-12">
+          <div ref={productsSectionRef} className="animate-service-cards">
+            <ProductsSection 
+              title="우리의 핵심 제품"
+              description={`실제 프로젝트를 통해 검증된 자체 제품들을 소개합니다.
+고객들의 비즈니스 성장을 이끌어내는 혁신적인 3D 솔루션입니다.`}
+            />
           </div>
         </div>
       </section>

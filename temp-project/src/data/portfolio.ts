@@ -306,10 +306,10 @@ export const portfolioProjects: PortfolioProject[] = [
   {
     id: 'interactive-space-tour',
     title: '인터렉티브 공간 투어',
-    description: '엔스케이프와 Unity를 활용한 설치형 인터렉티브 공간 투어 시스템입니다. 고해상도 3D 환경에서 사용자가 직접 공간을 탐색하고 상호작용할 수 있는 몰입형 경험을 제공합니다.',
+    description: '언리얼 엔진을 활용한 설치형 인터렉티브 공간 투어 시스템입니다. 고해상도 3D 환경에서 사용자가 직접 공간을 탐색하고 상호작용할 수 있는 몰입형 경험을 제공합니다.',
     shortDescription: '인터렉티브 공간 투어 시스템',
     category: 'interactive-installation',
-    technologies: ['Enscape', 'Unity', 'C#', '3D Rendering', 'Interactive Design'],
+    technologies: ['Unreal Engine', 'C++', 'Blueprint', '3D Rendering', 'Interactive Design'],
     duration: {
       start: '2023-11',
       end: '2024-02'
