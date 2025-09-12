@@ -6,7 +6,8 @@ export default function WebGLTestPage() {
   const [isModalOpen, setIsModalOpen] = useState(false)
 
   const openWebGL = () => {
-    setIsModalOpen(true)
+    // 새 탭에서 직접 열기 - 가장 확실한 방법
+    window.open('/webgl/webtoon/index.html', '_blank', 'width=1200,height=800')
   }
 
   const closeModal = () => {
