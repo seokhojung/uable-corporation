@@ -169,7 +169,7 @@ export default function PortfolioPage() {
           <div ref={productsSectionRef} className="animate-service-cards">
             <ProductsSection 
               title="우리의 핵심 제품"
-              description={`포트폴리오 프로젝트를 통해 완성한 자체 제품들을 소개합니다.
+              description={`유에이블 코퍼레이션이 완성한 자체 제품들을 소개합니다.
 실제 고객들이 사용하고 검증받은 혁신적인 3D 솔루션입니다.`}
             />
           </div>

@@ -384,7 +384,7 @@ export function HomePageClient() {
           <div ref={productsSectionRef} className="animate-service-cards">
             <ProductsSection 
               title="우리의 핵심 제품"
-              description={`실제 프로젝트를 통해 검증된 자체 제품들을 소개합니다.
+              description={`유에이블 코퍼레이션이 완성한 자체 제품들을 소개합니다.
 고객들의 비즈니스 성장을 이끌어내는 혁신적인 3D 솔루션입니다.`}
             />
           </div>

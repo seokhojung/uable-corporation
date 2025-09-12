@@ -4,7 +4,6 @@
 import { useState } from 'react'
 import { motion } from 'framer-motion'
 import { Container } from '@/components/ui/container'
-import { Button } from '@/components/ui/button'
 import { Badge } from '@/components/ui/badge'
 import { Card } from '@/components/ui/card'
 import { 
@@ -19,7 +18,6 @@ import {
   Building,
   MessageSquare
 } from 'lucide-react'
-import type { InquiryData, InquiryCategory } from '@/types/inquiry'
 
 // 문의 카테고리 옵션 - 영문 value로 변경하여 Formspree 호환성 개선
 const categoryOptions: { value: string; label: string; description: string; displayName: string }[] = [
@@ -175,7 +173,7 @@ export default function ContactPage() {
         }
       })
 
-      const responseData = await response.json()
+      await response.json()
 
       if (response.ok) {
         setSubmitStatus('success')
@@ -192,7 +190,7 @@ export default function ContactPage() {
         setSubmitStatus('error')
         setErrors({ submit: '문의 전송에 실패했습니다. 잠시 후 다시 시도해주세요.' })
       }
-    } catch (error) {
+    } catch {
       setSubmitStatus('error')
       setErrors({ submit: '네트워크 오류가 발생했습니다. 잠시 후 다시 시도해주세요.' })
     } finally {
