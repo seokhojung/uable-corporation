@@ -73,13 +73,6 @@ export function WebGLGallery({
                     WebGL
                   </Badge>
                 </div>
-                {bundle.size && (
-                  <div className="absolute top-4 right-4">
-                    <Badge variant="secondary" className="bg-black bg-opacity-60 text-white">
-                      {bundle.size}
-                    </Badge>
-                  </div>
-                )}
               </div>
 
               {/* 카드 정보 */}
@@ -101,7 +94,7 @@ export function WebGLGallery({
                     </Badge>
                   ))}
                 </div>
-                <Button className="w-full bg-blue-600 hover:bg-blue-700 text-white">
+                <Button className="w-full bg-emerald-600 hover:bg-emerald-700 text-white">
                   체험하기
                 </Button>
               </div>

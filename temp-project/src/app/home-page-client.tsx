@@ -432,7 +432,7 @@ export function HomePageClient() {
           />
           
           <div className="text-center">
-            <Link href="/webgl-test">
+            <Link href="/webgl">
               <Button size="lg" className="bg-gradient-to-r from-green-600 to-teal-600 hover:from-green-700 hover:to-teal-700 dark:from-slate-600 dark:to-slate-700 dark:hover:from-slate-700 dark:hover:to-slate-800 text-white">
                 전체 3D 갤러리 보기
                 <ArrowRight className="w-5 h-5 ml-2" />

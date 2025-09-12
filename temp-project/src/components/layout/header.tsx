@@ -12,6 +12,7 @@ import Image from 'next/image'
 const navigation = [
   { name: 'Home', href: '/' },
   { name: 'Portfolio', href: '/portfolio' },
+  { name: 'WebGL', href: '/webgl' },
 ]
 
 export const Header = () => {
