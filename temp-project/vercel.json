@@ -16,12 +16,6 @@
       "destination": "/portfolio/[id]"
     }
   ],
-  "routes": [
-    {
-      "src": "/webgl/(.*)",
-      "dest": "/webgl/$1"
-    }
-  ],
   "headers": [
     {
       "source": "/(.*)",
