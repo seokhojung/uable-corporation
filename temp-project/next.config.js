@@ -2,6 +2,16 @@
 const nextConfig = {
   experimental: {
   },
+  // WebGL 정적 파일들을 강제로 정적 파일로 처리
+  async rewrites() {
+    return [
+      // /webgl 경로는 정적 파일로 직접 서빙
+      {
+        source: '/webgl/:path*',
+        destination: '/webgl/:path*',
+      },
+    ]
+  },
   // 동적 라우팅을 위한 설정
   trailingSlash: false,
   // 정적 생성을 위한 설정 (임시 비활성화)
