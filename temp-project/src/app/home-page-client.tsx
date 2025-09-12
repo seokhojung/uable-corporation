@@ -10,6 +10,7 @@ import { portfolioProjects } from '@/data/portfolio'
 import { CountUp } from '@/components/ui/count-up'
 import { ServiceScroll } from '@/components/ui/service-scroll'
 import { PortfolioCard } from '@/components/portfolio/portfolio-card'
+import { WebGLGallery } from '@/components/webgl/webgl-gallery'
 
 const stats = [
   { label: '완료 프로젝트', value: '150+', icon: Award },
@@ -32,6 +33,7 @@ export function HomePageClient() {
   const serviceHeaderRef = useRef<HTMLDivElement>(null)
   const serviceCardsRef = useRef<HTMLDivElement>(null)
   const portfolioSectionRef = useRef<HTMLDivElement>(null)
+  const webglSectionRef = useRef<HTMLDivElement>(null)
   const processSectionRef = useRef<HTMLDivElement>(null)
   const effectsSectionRef = useRef<HTMLDivElement>(null)
   const ctaContentRef = useRef<HTMLDivElement>(null)
@@ -97,6 +99,7 @@ export function HomePageClient() {
       serviceHeaderRef.current,
       serviceCardsRef.current,
       portfolioSectionRef.current,
+      webglSectionRef.current,
       processSectionRef.current,
       effectsSectionRef.current,
       ctaContentRef.current
@@ -400,6 +403,38 @@ export function HomePageClient() {
             <Link href="/portfolio">
               <Button size="lg" className="bg-gradient-to-r from-green-600 to-teal-600 hover:from-green-700 hover:to-teal-700 dark:from-slate-600 dark:to-slate-700 dark:hover:from-slate-700 dark:hover:to-slate-800 text-white">
                 전체 포트폴리오 보기
+                <ArrowRight className="w-5 h-5 ml-2" />
+              </Button>
+            </Link>
+          </div>
+        </div>
+      </section>
+
+      {/* WebGL 3D 체험 섹션 */}
+      <section ref={webglSectionRef} className="py-32 bg-white dark:bg-slate-800 animate-webgl-section">
+        <div className="w-full max-w-7xl mx-auto px-4 lg:px-8 xl:px-12">
+          <div className="max-w-4xl mx-auto text-center mb-16">
+            <Badge variant="outline" className="mb-6">
+              3D 체험 갤러리
+            </Badge>
+            <h2 className="text-3xl lg:text-6xl font-bold text-gray-900 dark:text-slate-100 mb-6">
+              실감나는 3D 공간을 직접 체험하세요
+            </h2>
+            <p className="text-xl text-gray-600 dark:text-slate-300 mb-8">
+              다양한 분야의 인터랙티브 3D 환경을 WebGL로 구현한 실제 사례들입니다.
+              <br />클릭 한 번으로 몰입감 있는 3D 세계를 경험해보세요.
+            </p>
+          </div>
+          
+          <WebGLGallery 
+            maxItems={3}
+            className="mb-12"
+          />
+          
+          <div className="text-center">
+            <Link href="/webgl-test">
+              <Button size="lg" className="bg-gradient-to-r from-green-600 to-teal-600 hover:from-green-700 hover:to-teal-700 dark:from-slate-600 dark:to-slate-700 dark:hover:from-slate-700 dark:hover:to-slate-800 text-white">
+                전체 3D 갤러리 보기
                 <ArrowRight className="w-5 h-5 ml-2" />
               </Button>
             </Link>
