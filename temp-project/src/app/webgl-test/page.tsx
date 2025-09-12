@@ -6,8 +6,8 @@ export default function WebGLTestPage() {
   const [isModalOpen, setIsModalOpen] = useState(false)
 
   const openWebGL = () => {
-    // 새 탭에서 직접 열기 - 가장 확실한 방법
-    window.open('/webgl/webtoon/index.html', '_blank', 'width=1200,height=800')
+    // public 루트에서 직접 접근
+    window.open('/webtoon-webgl/index.html', '_blank', 'width=1200,height=800')
   }
 
   const closeModal = () => {
@@ -109,11 +109,11 @@ export default function WebGLTestPage() {
         <div className="text-center mt-8">
           <p className="text-gray-600 mb-4">또는 직접 접근:</p>
           <a 
-            href="/webgl/webtoon/index.html" 
+            href="/webtoon-webgl/index.html" 
             target="_blank"
             className="text-blue-600 hover:text-blue-800 underline"
           >
-            /webgl/webtoon/index.html
+            /webtoon-webgl/index.html
           </a>
         </div>
       </div>
