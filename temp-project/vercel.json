@@ -22,7 +22,7 @@
       "headers": [
         {
           "key": "X-Frame-Options",
-          "value": "DENY"
+          "value": "SAMEORIGIN"
         },
         {
           "key": "X-Content-Type-Options",
@@ -31,6 +31,24 @@
         {
           "key": "Referrer-Policy",
           "value": "origin-when-cross-origin"
+        }
+      ]
+    },
+    {
+      "source": "/webgl/(.*).buf",
+      "headers": [
+        {
+          "key": "Content-Type",
+          "value": "application/octet-stream"
+        }
+      ]
+    },
+    {
+      "source": "/webgl/(.*).wasm",
+      "headers": [
+        {
+          "key": "Content-Type",
+          "value": "application/wasm"
         }
       ]
     }
