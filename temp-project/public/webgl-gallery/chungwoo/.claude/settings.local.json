@@ -1,0 +1,17 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(timeout 3 curl -I http://localhost:8000)",
+      "Bash(start http://localhost:8000)",
+      "Bash(timeout 10 curl -s http://localhost:8000)",
+      "Read(//c/Users/apf_temp_admin/**)",
+      "Bash(python:*)",
+      "Bash(curl:*)",
+      "Bash(where python)",
+      "Bash(where node)",
+      "Bash(npx serve:*)"
+    ],
+    "deny": [],
+    "ask": []
+  }
+}

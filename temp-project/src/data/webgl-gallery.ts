@@ -25,11 +25,12 @@ export const webglBundles: WebGLBundle[] = [
   {
     id: 'chungwoo',
     title: '청우 프로젝트',
-    description: '청우 관련 3D 공간 체험',
+    description: '레트로 아케이드 게임이 있는 인터랙티브 3D 공간',
     path: '/webgl-gallery/chungwoo/index.html',
-    size: '249MB',
-    tags: ['프로젝트', '건축'],
-    status: 'development' // 아직 추가 안함
+    thumbnail: '/webgl-gallery/chungwoo/2022-10-07-09-33-02/thumbnail.jpg',
+    size: '180MB',
+    tags: ['아케이드', '레트로', '게임', '3D공간'],
+    status: 'active'
   },
   {
     id: 'home',
