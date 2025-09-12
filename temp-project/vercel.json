@@ -16,6 +16,12 @@
       "destination": "/portfolio/[id]"
     }
   ],
+  "routes": [
+    {
+      "src": "/webgl/(.*)",
+      "dest": "/webgl/$1"
+    }
+  ],
   "headers": [
     {
       "source": "/(.*)",
@@ -49,6 +55,33 @@
         {
           "key": "Content-Type",
           "value": "application/wasm"
+        }
+      ]
+    },
+    {
+      "source": "/webgl/(.*).css",
+      "headers": [
+        {
+          "key": "Content-Type",
+          "value": "text/css"
+        }
+      ]
+    },
+    {
+      "source": "/webgl/(.*).js",
+      "headers": [
+        {
+          "key": "Content-Type",
+          "value": "application/javascript"
+        }
+      ]
+    },
+    {
+      "source": "/webgl/(.*).svg",
+      "headers": [
+        {
+          "key": "Content-Type", 
+          "value": "image/svg+xml"
         }
       ]
     }
