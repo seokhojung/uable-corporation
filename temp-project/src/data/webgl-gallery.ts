@@ -35,26 +35,32 @@ export const webglBundles: WebGLBundle[] = [
   {
     id: 'home',
     title: '홈 갤러리',
-    description: '홈 공간 3D 투어',
+    description: '모던하고 아늑한 주거 공간의 3D 투어',
     path: '/webgl-gallery/home/index.html',
-    tags: ['홈', '주거공간'],
-    status: 'development'
+    thumbnail: '/webgl-gallery/home/2022-10-06-17-05-32/thumbnail.jpg',
+    size: '120MB',
+    tags: ['주거공간', '홈', '인테리어'],
+    status: 'active'
   },
   {
     id: 'office',
     title: '오피스 공간',
-    description: '현대적인 오피스 공간 체험',
+    description: '현대적이고 효율적인 오피스 공간 체험',
     path: '/webgl-gallery/office/index.html',
-    tags: ['오피스', '업무공간'],
-    status: 'development'
+    thumbnail: '/webgl-gallery/office/2022-10-18-14-24-28/thumbnail.jpg',
+    size: '95MB',
+    tags: ['오피스', '업무공간', '비즈니스'],
+    status: 'active'
   },
   {
     id: 'parking',
     title: '주차장',
-    description: '지하 주차장 3D 공간',
+    description: '지하 주차장의 현실적인 3D 공간',
     path: '/webgl-gallery/parking/index.html',
-    tags: ['주차장', '인프라'],
-    status: 'development'
+    thumbnail: '/webgl-gallery/parking/2022-10-13-10-10-09/thumbnail.jpg',
+    size: '85MB',
+    tags: ['주차장', '지하시설', '인프라'],
+    status: 'active'
   }
 ]
 
