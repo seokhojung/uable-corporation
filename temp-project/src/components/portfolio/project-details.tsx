@@ -2,7 +2,7 @@
 
 import React from 'react'
 import { Container } from '@/components/ui/container'
-import { Badge } from '@/components/ui/badge'
+import { Badge } from '@/components/primitives/Badge'
 import { CheckCircle, Star, Award, TrendingUp } from 'lucide-react'
 import { PortfolioProject } from '@/types/portfolio'
 import { ImpactStats } from './impact-stats'

@@ -1,7 +1,7 @@
 'use client'
 
 import { useRef, useEffect } from 'react'
-import { Badge } from '@/components/ui/badge'
+import { Badge } from '@/components/primitives/Badge'
 import { PortfolioCard } from '@/components/portfolio/portfolio-card'
 import { TechScroll } from '@/components/ui/tech-scroll'
 import { PortfolioProject } from '@/types/portfolio'

@@ -1,7 +1,7 @@
 'use client'
 
-import { Badge } from '@/components/ui/badge'
-import { Button } from '@/components/ui/button'
+import { Badge } from '@/components/primitives/Badge'
+import { Button } from '@/components/primitives/Button'
 import { CheckCircle, Play } from 'lucide-react'
 import Link from 'next/link'
 import { products } from '@/data/products'

@@ -2,8 +2,8 @@
 'use client'
 
 import { ArrowRight, Play, Star, Users, Award } from 'lucide-react'
-import { Button } from '@/components/ui/button'
-import { Badge } from '@/components/ui/badge'
+import { Button } from '@/components/primitives/Button'
+import { Badge } from '@/components/primitives/Badge'
 import Link from 'next/link'
 import Image from 'next/image'
 import { useState, useEffect } from 'react'

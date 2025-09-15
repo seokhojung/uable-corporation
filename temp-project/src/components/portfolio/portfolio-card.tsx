@@ -3,8 +3,8 @@
 
 // import { motion } from 'framer-motion'
 import { ExternalLink, Mail, Calendar, Users, Award } from 'lucide-react'
-import { Badge } from '@/components/ui/badge'
-import { Button } from '@/components/ui/button'
+import { Badge } from '@/components/primitives/Badge'
+import { Button } from '@/components/primitives/Button'
 import Link from 'next/link'
 import Image from 'next/image'
 import { PortfolioProject } from '@/types/portfolio'

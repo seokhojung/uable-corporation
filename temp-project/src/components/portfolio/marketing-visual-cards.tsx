@@ -2,8 +2,8 @@
 
 import React from 'react'
 import { motion } from 'framer-motion'
-import { Card } from '@/components/ui/card'
-import { Badge } from '@/components/ui/badge'
+import { Card } from '@/components/primitives/Card'
+import { Badge } from '@/components/primitives/Badge'
 import { CheckCircle, Target, Zap, TrendingUp } from 'lucide-react'
 
 interface MarketingVisualCardsProps {

@@ -2,10 +2,10 @@
 'use client'
 
 import { Box, Smartphone, Palette, Zap, Globe, Shield } from 'lucide-react'
-import { Card } from '@/components/ui/card'
+import { Card } from '@/components/primitives/Card'
 import { Container } from '@/components/ui/container'
-import { Badge } from '@/components/ui/badge'
-import { Button } from '@/components/ui/button'
+import { Badge } from '@/components/primitives/Badge'
+import { Button } from '@/components/primitives/Button'
 import Link from 'next/link'
 
 const solutions = [

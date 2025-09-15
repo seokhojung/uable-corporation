@@ -3,7 +3,7 @@
 import React, { useState } from 'react'
 import Image from 'next/image'
 import { ChevronLeft, ChevronRight } from 'lucide-react'
-import { Card } from '@/components/ui/card'
+import { Card } from '@/components/primitives/Card'
 import { Modal } from '@/components/ui/modal'
 import { PortfolioProject } from '@/types/portfolio'
 

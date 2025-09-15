@@ -3,7 +3,7 @@
 import Link from 'next/link'
 import { useEffect } from 'react'
 import { Container } from '@/components/ui/container'
-import { Button } from '@/components/ui/button'
+import { Button } from '@/components/primitives/Button'
 import { Home, ArrowLeft, AlertCircle } from 'lucide-react'
 
 export default function NotFound() {

@@ -1,8 +1,8 @@
 'use client'
 
 import { getActiveWebGLBundles } from '@/data/webgl-gallery'
-import { Badge } from '@/components/ui/badge'
-import { Button } from '@/components/ui/button'
+import { Badge } from '@/components/primitives/Badge'
+import { Button } from '@/components/primitives/Button'
 
 interface WebGLGalleryProps {
   title?: string

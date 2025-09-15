@@ -1,8 +1,8 @@
 'use client'
 
 import { useState } from 'react'
-import { Badge } from '@/components/ui/badge'
-import { Button } from '@/components/ui/button'
+import { Badge } from '@/components/primitives/Badge'
+import { Button } from '@/components/primitives/Button'
 import { ArrowRight, Code, Lightbulb, Rocket, Box } from 'lucide-react'
 import { ProductsSection } from '@/components/products/products-section'
 

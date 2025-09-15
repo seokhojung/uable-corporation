@@ -4,7 +4,7 @@ import { useEffect, useRef, useState } from 'react'
 import { ChevronRight, Calendar, Users } from 'lucide-react'
 import Image from 'next/image'
 import Link from 'next/link'
-import { Badge } from '@/components/ui/badge'
+import { Badge } from '@/components/primitives/Badge'
 import { portfolioProjects } from '@/data/portfolio'
 import { applyThemeClasses } from '@/lib/theme-class-mapping'
 

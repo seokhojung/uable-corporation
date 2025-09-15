@@ -4,8 +4,8 @@
 import { useState } from 'react'
 import { motion } from 'framer-motion'
 import { Container } from '@/components/ui/container'
-import { Badge } from '@/components/ui/badge'
-import { Card } from '@/components/ui/card'
+import { Badge } from '@/components/primitives/Badge'
+import { Card } from '@/components/primitives/Card'
 import { 
   Mail, 
   Phone, 

@@ -2,9 +2,9 @@
 'use client'
 
 import { AlertTriangle, Users, Globe, TrendingDown, Clock, Shield } from 'lucide-react'
-import { Card } from '@/components/ui/card'
+import { Card } from '@/components/primitives/Card'
 import { Container } from '@/components/ui/container'
-import { Badge } from '@/components/ui/badge'
+import { Badge } from '@/components/primitives/Badge'
 
 const problems = [
   {
