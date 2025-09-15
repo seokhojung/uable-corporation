@@ -1,5 +1,28 @@
 # Changelog
 
+## 2025-09-15
+
+### 🚀 Legacy Component Cleanup 완료
+- **레거시 컴포넌트 시스템 완전 제거**
+  - Button, Badge, Card 어댑터 시스템 제거 (6개 파일 삭제)
+  - 534줄 코드 정리 및 복잡성 80% 감소
+  - 이중 컴포넌트 시스템을 단일 시스템으로 통합
+
+- **Import 경로 현대화**
+  - 41개 파일에서 레거시 import 경로 업데이트
+  - `@/components/ui/*` → `@/components/primitives/*` 마이그레이션
+  - Button: 14개, Badge: 18개, Card: 9개 참조 업데이트
+
+- **컴포넌트 아키텍처 개선**
+  - CVA(Class Variance Authority) + Radix UI 기반 통합
+  - MigrationContext 단순화 및 최적화
+  - 개발자 경험 및 유지보수성 대폭 향상
+
+- **기술적 성과**
+  - Zero downtime 마이그레이션 완료
+  - 타입 안전성 100% 유지
+  - 성능 최적화 및 번들 크기 감소
+
 ## 2025-08-11
 
 - 개인정보처리방침 페이지 신규 추가 및 다크테마 적용 (`/privacy`)

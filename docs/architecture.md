@@ -15,6 +15,7 @@
 
 | 날짜 | 버전 | 설명 | 작성자 |
 | :--- | :--- | :--- | :--- |
+| 2025-09-15 | 2.0 | 레거시 컴포넌트 제거 완료 및 현재 구조 반영 | Claude Code |
 | 2025-08-04 | 1.1 | 종합 검토를 통해 구조 개선안 반영 | Winston (Architect) |
 | 2025-08-04 | 1.0 | 아키텍처 문서 작성 시작 | Winston (Architect) |
 
@@ -24,7 +25,7 @@
 
 ### **기술 요약 (Technical Summary)**
 
-본 프로젝트는 **Vercel 플랫폼**에 최적화된 **Next.js 풀스택 프레임워크**를 사용하여 구축합니다. 전체 코드는 **모노레포(Monorepo)** 구조로 관리되며, 그 안에서 **공개용 웹사이트(`web`)** 와 **내부용 대시보드(`admin`)** 를 별도의 애플리케이션으로 분리하여 성능과 유지보수성을 극대화합니다. 백엔드는 **서버리스 함수**로 구현되며, 데이터는 **Prisma(ORM)** 를 통해 **Vercel Postgres**에 저장합니다. 이 아키텍처는 고성능의 동적 웹사이트를 **무료 플랜**으로 운영해야 하는 핵심 제약 조건을 만족시키는 가장 현대적이고 실용적인 접근 방식입니다.
+본 프로젝트는 **Next.js 14 App Router**를 기반으로 한 **단일 애플리케이션** 구조로 구축됩니다. **3D/AR/WebXR 포트폴리오 웹사이트**로서 Shapespark WebGL 번들을 통합하여 몰입형 3D 경험을 제공합니다. UI 시스템은 **CVA(Class Variance Authority) + Radix UI** 기반의 **현대적 컴포넌트 아키텍처**를 사용하며, 레거시 제거 작업을 통해 **단일 컴포넌트 시스템**으로 완전히 정리되었습니다. 이 아키텍처는 높은 성능과 개발자 경험을 제공하면서도 확장 가능한 3D 웹 기술 쇼케이스 플랫폼을 구현합니다.
 
 ### **플랫폼 및 인프라 (Platform and Infrastructure)**
 
@@ -37,30 +38,38 @@
 
 ### **리포지토리 구조 (Repository Structure)**
 
-  * **구조:** **모노레포 (Monorepo)**
-  * **모노레포 도구:** **npm Workspaces**
+  * **구조:** **단일 Next.js 애플리케이션**
+  * **프로젝트 루트:** `temp-project/`
+  * **패키지 관리:** **npm**
 
 ### **아키텍처 다이어그램 (Architecture Diagram)**
 
 ```mermaid
 graph TD
-    subgraph " "
-        Visitor --> WebApp["공개용 웹사이트 (apps/web)"];
-        Admin --> AdminApp["관리자 대시보드 (apps/admin)"];
-    
-        WebApp -- 문의 제출 --> API["API 계층 (Serverless Functions)"];
-        AdminApp -- 데이터 요청 --> API;
-    
-        API --> Prisma["Prisma ORM (데이터 추상화)"];
-        Prisma --> DB["Vercel Postgres DB"];
+    subgraph "Uable Corporation Website"
+        Visitor --> WebApp["Next.js 14 App Router<br/>(temp-project/)"];
+
+        WebApp --> Pages["라우팅 시스템"];
+        Pages --> Home["홈페이지 (/)"];
+        Pages --> Portfolio["포트폴리오 (/portfolio)"];
+        Pages --> WebGL["WebGL 갤러리 (/webgl)"];
+        Pages --> Contact["문의하기 (/contact)"];
+
+        WebApp --> Components["컴포넌트 시스템"];
+        Components --> Primitives["@/components/primitives<br/>(CVA + Radix UI)"];
+        Components --> Legacy["@/components/ui<br/>(기타 컴포넌트)"];
+
+        WebGL --> Shapespark["Shapespark WebGL 번들"];
+        Contact --> Forms["React Hook Form + Zod"];
     end
 ```
 
 ### **아키텍처 패턴 (Architectural Patterns)**
 
-  * **Jamstack 아키텍처:** 최고의 성능, 높은 보안, 뛰어난 확장성 제공.
-  * **서버리스 함수 (Serverless Functions):** 비용 효율성 및 인프라 관리 부담 최소화.
-  * **컴포넌트 기반 UI (Component-Based UI):** 개발 효율성, 유지보수 용이성 확보.
+  * **Single Page Application (SPA):** Next.js App Router를 통한 클라이언트 사이드 라우팅
+  * **컴포넌트 기반 아키텍처:** CVA + Radix UI 기반 현대적 컴포넌트 시스템
+  * **Design System:** 단일 컴포넌트 시스템으로 통일된 UI/UX
+  * **3D 웹 통합:** Shapespark WebGL 번들을 통한 몰입형 3D 경험
 
 -----
 
@@ -69,14 +78,14 @@ graph TD
 | 카테고리 | 기술 | 버전 | 목적 | 선택 근거 |
 | :--- | :--- | :--- | :--- | :--- |
 | **언어** | TypeScript | 5.5.x | 전체 개발 언어 | 코드 안정성 및 개발 생산성 극대화 |
-| **프론트엔드 프레임워크** | Next.js | 15.x.x | 웹/관리자 앱 개발 | React 기반, 성능 최적화 및 풀스택 개발에 가장 이상적 |
-| **UI 라이브러리** | Radix UI | 2.x.x | 헤드리스 UI 컴포넌트 | 디자인 자유도를 100% 보장하면서 기능성과 접근성을 제공 |
-| **CSS 프레임워크** | Tailwind CSS | 3.5.x | 스타일링 | 빠른 속도와 일관된 스타일링, 커스텀 디자인 구현에 용이 |
-| **상태 관리** | Zustand | 4.5.x | 프론트엔드 상태 관리 | 간단하고 가벼우며, 최소한의 코드로 상태 관리 가능 |
-| **백엔드 프레임워크** | Next.js API Routes | 15.x.x | 서버리스 API 개발 | Next.js에 내장된 기능으로, Vercel 배포 시 자동 최적화 |
-| **데이터베이스** | Vercel Postgres | 최신 | 문의 내역 저장 | Vercel 플랫폼과 완벽하게 통합되며, 무료 플랜 제공 |
-| **ORM** | Prisma | 5.15.x | 데이터베이스 추상화 | DB 변경 유연성 확보 및 안전한 데이터베이스 접근 |
-| **인증** | NextAuth.js | 5.x.x | 관리자 페이지 인증 | Next.js와의 통합이 매우 간편하고, 보안 기능이 강력함 |
+| **프론트엔드 프레임워크** | Next.js | 14.2.31 | 웹사이트 개발 | App Router, React 18 기반 최신 아키텍처 |
+| **UI 시스템** | CVA + Radix UI | 1.x.x + 1.x.x | 컴포넌트 아키텍처 | Class Variance Authority와 Radix의 조합으로 확장성 있는 디자인 시스템 구축 |
+| **CSS 프레임워크** | Tailwind CSS | 3.4.x | 스타일링 | 유틸리티 우선 CSS, 커스텀 디자인 구현에 용이 |
+| **애니메이션** | Framer Motion | 11.x.x | UI 애니메이션 | 부드러운 전환 효과 및 인터랙션 |
+| **폼 관리** | React Hook Form + Zod | 7.x.x + 3.x.x | 폼 상태 관리 및 검증 | 타입 안전한 폼 검증 및 높은 성능 |
+| **3D 통합** | Shapespark | - | WebGL 3D 경험 | 몰입형 3D 쇼룸 및 가상 공간 구현 |
+| **상태 관리** | React Context | React 18 | 테마 및 마이그레이션 상태 | 라이트웨이트 상태 관리 |
+| **개발 도구** | ESLint + TypeScript | 5.5.x | 코드 품질 관리 | 타입 안전성 및 코드 일관성 확보 |
 | **단위/통합 테스트** | Jest, RTL | 29.x.x | 코드 품질 보증 | React/Next.js 생태계의 표준 테스트 도구 |
 | **E2E 테스트** | Playwright | 1.45.x | 사용자 시나리오 테스트 | 실제 브라우저 환경에서 사용자 흐름을 자동 테스트 |
 | **CI/CD 및 호스팅** | Vercel | N/A | 빌드/배포/호스팅 | Next.js 프로젝트를 위한 가장 최적화된 원클릭 솔루션 |

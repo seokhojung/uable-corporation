@@ -96,17 +96,51 @@ graph TD
 
 -----
 
-## **6. 디자인 시스템 (Design System)**
+## **6. 컴포넌트 아키텍처 (Component Architecture)**
+
+### **현대적 컴포넌트 시스템 (2025-09-15 현재)**
+
+  * **기반 기술:** CVA(Class Variance Authority) + Radix UI
+  * **컴포넌트 구조:**
+      * **`@/components/primitives/`**: 현대적 컴포넌트 시스템
+        - Button, Badge, Card, Input, Modal, Select, Tabs 등
+        - TypeScript 완전 지원, 접근성 내장
+      * **`@/components/ui/`**: 특수 목적 컴포넌트
+        - Charts, Container, ThemeToggle 등
+      * **`@/components/layout/`**: 레이아웃 컴포넌트
+        - Header, Footer 등
+      * **`@/components/sections/`**: 페이지 섹션 컴포넌트
+        - Hero, Problem, Solution 등
+
+### **컴포넌트 패턴**
+
+  * **Variant Pattern**: CVA를 통한 다양한 스타일 변형 지원
+  * **Compound Pattern**: Card + CardHeader + CardContent 등
+  * **Polymorphic Pattern**: asChild prop을 통한 유연한 렌더링
+  * **Forward Ref Pattern**: DOM 요소 접근을 위한 ref 전달
+
+### **상태 관리**
+
+  * **테마 상태**: React Context를 통한 다크/라이트 모드
+  * **폼 상태**: React Hook Form + Zod 검증
+  * **컴포넌트 상태**: 로컬 useState 및 useReducer
+
+-----
+
+## **7. 디자인 시스템 (Design System)**
 
   * **색상:** 다크 모드 기반 (차콜, 오프화이트, 테크 블루 포인트)
   * **타이포그래피:**
       * **헤드라인:** `IBM Plex Sans KR` (산세리프)
       * **본문:** `Noto Sans KR` (산세리프)
-  * **버튼:** 주요 버튼(Primary), 보조 버튼(Secondary) 2종 정의
+  * **컴포넌트 변형:**
+      * **Button:** primary, secondary, ghost, outline 등
+      * **Badge:** default, success, warning, error 등
+      * **Card:** default, elevated, outlined, ghost, glass 등
 
 -----
 
-## **7. 애니메이션 및 성능**
+## **8. 애니메이션 및 성능**
 
   * **원칙:** 핵심 요소에만 임팩트 있는 효과를, 나머지는 절제된 효과를 사용
   * **프로세스:** 모든 효과는 개발 중 지속적인 성능 테스트를 거쳐 승인 후 적용
