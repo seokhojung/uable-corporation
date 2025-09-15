@@ -178,9 +178,9 @@ export function HomePageClient() {
               {/* CTA 버튼들 */}
               <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start mb-12">
                 <Link href="/portfolio">
-                  <Button size="lg" className="text-lg px-12 py-4 bg-gradient-to-r from-green-600 to-teal-600 hover:from-green-700 hover:to-teal-700 dark:from-slate-600 dark:to-slate-700 dark:hover:from-slate-700 dark:hover:to-slate-800 shadow-lg text-white">
+                  <Button size="lg" className="text-lg px-12 py-4 bg-gradient-to-r from-green-600 to-teal-600 hover:from-green-700 hover:to-teal-700 text-white shadow-lg shadow-green-500/25 hover:shadow-xl hover:shadow-green-500/30 transition-all duration-300">
                     포트폴리오 보기
-                    {/* <ArrowRight className="w-5 h-5 ml-2" /> */}
+                    <ArrowRight className="w-5 h-5 ml-2" />
                   </Button>
                 </Link>
 
@@ -417,7 +417,7 @@ export function HomePageClient() {
           
           <div className="text-center">
             <Link href="/portfolio">
-              <Button size="lg" className="bg-gradient-to-r from-green-600 to-teal-600 hover:from-green-700 hover:to-teal-700 dark:from-slate-600 dark:to-slate-700 dark:hover:from-slate-700 dark:hover:to-slate-800 text-white">
+              <Button size="lg" className="text-lg px-12 py-4 bg-gradient-to-r from-green-600 to-teal-600 hover:from-green-700 hover:to-teal-700 text-white shadow-lg shadow-green-500/25 hover:shadow-xl hover:shadow-green-500/30 transition-all duration-300">
                 전체 포트폴리오 보기
                 <ArrowRight className="w-5 h-5 ml-2" />
               </Button>
@@ -449,7 +449,7 @@ export function HomePageClient() {
           
           <div className="text-center">
             <Link href="/webgl">
-              <Button size="lg" className="bg-gradient-to-r from-green-600 to-teal-600 hover:from-green-700 hover:to-teal-700 dark:from-slate-600 dark:to-slate-700 dark:hover:from-slate-700 dark:hover:to-slate-800 text-white">
+              <Button size="lg" className="text-lg px-12 py-4 bg-gradient-to-r from-green-600 to-teal-600 hover:from-green-700 hover:to-teal-700 text-white shadow-lg shadow-green-500/25 hover:shadow-xl hover:shadow-green-500/30 transition-all duration-300">
                 전체 3D 갤러리 보기
                 <ArrowRight className="w-5 h-5 ml-2" />
               </Button>
@@ -586,7 +586,7 @@ export function HomePageClient() {
             </p>
             <div className="flex flex-col sm:flex-row gap-6 justify-center">
               <Link href="/portfolio">
-                <Button size="lg" className="text-lg px-10 py-4 bg-gradient-to-r from-green-600 to-teal-600 hover:from-green-700 hover:to-teal-700 text-white shadow-lg shadow-green-500/25 hover:shadow-xl hover:shadow-green-500/30 transition-all duration-300">
+                <Button size="lg" className="text-lg px-12 py-4 bg-gradient-to-r from-green-600 to-teal-600 hover:from-green-700 hover:to-teal-700 text-white shadow-lg shadow-green-500/25 hover:shadow-xl hover:shadow-green-500/30 transition-all duration-300">
                   포트폴리오 보기
                   <ArrowRight className="w-5 h-5 ml-2" />
                 </Button>
