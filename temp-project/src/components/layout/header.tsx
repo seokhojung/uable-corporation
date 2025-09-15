@@ -83,7 +83,7 @@ export const Header = () => {
         <div className="lg:hidden">
           <div className="fixed inset-0 z-50" />
           <div className={applyThemeClasses(
-            "fixed inset-y-0 right-0 z-50 w-full overflow-y-auto bg-slate-800/90 backdrop-blur-lg px-6 py-6 sm:max-w-sm sm:ring-1 sm:ring-slate-700/30",
+            "fixed inset-y-0 right-0 z-50 w-full overflow-y-auto bg-white/95 dark:bg-slate-800/90 backdrop-blur-lg px-6 py-6 sm:max-w-sm sm:ring-1 sm:ring-gray-200 dark:sm:ring-slate-700/30",
             isThemeSystemEnabled
           )}>
             <div className="flex items-center justify-between">
@@ -102,7 +102,7 @@ export const Header = () => {
               <button
                 type="button"
                 className={applyThemeClasses(
-                  "-m-2.5 rounded-md p-2.5 text-slate-300",
+                  "-m-2.5 rounded-md p-2.5 text-gray-700 dark:text-slate-300 hover:bg-gray-100 dark:hover:bg-slate-700/50",
                   isThemeSystemEnabled
                 )}
                 onClick={() => setMobileMenuOpen(false)}
@@ -113,7 +113,7 @@ export const Header = () => {
             </div>
             <div className="mt-6 flow-root">
               <div className={applyThemeClasses(
-                "-my-6 divide-y divide-slate-700/30",
+                "-my-6 divide-y divide-gray-200 dark:divide-slate-700/30",
                 isThemeSystemEnabled
               )}>
                 <div className="space-y-2 py-6">
@@ -122,7 +122,7 @@ export const Header = () => {
                       key={item.name}
                       href={item.href}
                       className={applyThemeClasses(
-                        "-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-slate-100 hover:bg-slate-700/50",
+                        "-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-gray-900 dark:text-slate-100 hover:bg-gray-100 dark:hover:bg-slate-700/50",
                         isThemeSystemEnabled
                       )}
                       onClick={() => setMobileMenuOpen(false)}
@@ -135,7 +135,7 @@ export const Header = () => {
                   {/* 테마 토글 버튼 - 모바일 */}
                   <div className="flex items-center justify-between">
                     <span className={applyThemeClasses(
-                      "text-sm font-medium text-slate-300",
+                      "text-sm font-medium text-gray-700 dark:text-slate-300",
                       isThemeSystemEnabled
                     )}>테마</span>
                     <ThemeToggle />
