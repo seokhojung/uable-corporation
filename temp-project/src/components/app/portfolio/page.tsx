@@ -64,36 +64,6 @@ export default function PortfolioPage() {
     <div className="min-h-screen bg-slate-900">
       {/* 히어로 섹션 - 메인 페이지와 동일한 스타일 */}
       <section className="relative min-h-screen md:h-[90vh] lg:h-[85vh] flex items-center justify-center overflow-hidden bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900">
-        {/* 배경 요소 */}
-        <div className="absolute inset-0 overflow-hidden">
-          <div className="absolute top-20 right-20 w-72 h-72 opacity-20 filter brightness-0" style={{animation: 'pulse 4s ease-in-out infinite'}}>
-            <Image
-              src="/UABLE-logo.png"
-              alt="Uable Logo Background"
-              width={288}
-              height={288}
-              className="w-full h-full object-contain"
-            />
-          </div>
-          <div className="absolute bottom-20 left-20 w-96 h-96 opacity-10 filter brightness-0" style={{animation: 'pulse 6s ease-in-out infinite', animationDelay: '1s'}}>
-            <Image
-              src="/UABLE-logo.png"
-              alt="Uable Logo Background"
-              width={384}
-              height={384}
-              className="w-full h-full object-contain"
-            />
-          </div>
-          <div className="absolute top-1/2 left-1/4 w-48 h-48 opacity-15 filter brightness-0" style={{animation: 'pulse 5s ease-in-out infinite', animationDelay: '2s'}}>
-            <Image
-              src="/UABLE-logo.png"
-              alt="Uable Logo Background"
-              width={192}
-              height={192}
-              className="w-full h-full object-contain"
-            />
-          </div>
-        </div>
 
         <div className="relative z-10 w-full max-w-7xl mx-auto px-4 lg:px-8 xl:px-12">
           <div ref={heroContentRef} className="text-center animate-hero-content">

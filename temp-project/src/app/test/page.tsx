@@ -11,8 +11,9 @@ export default function TestPage() {
 
   const sections = [
     { id: 'hero', name: '히어로 섹션', icon: Rocket },
-    { id: 'feature', name: '기능 섹션', icon: Lightbulb }, 
+    { id: 'feature', name: '기능 섹션', icon: Lightbulb },
     { id: 'demo', name: '데모 섹션', icon: Code },
+    { id: 'colors', name: '신규 색상 테스트', icon: Box },
     { id: 'products', name: '자체 제품', icon: Box },
   ]
 
@@ -129,6 +130,160 @@ export default function TestPage() {
                       <Button variant="ghost" className="w-full">고스트 버튼</Button>
                     </div>
                   </div>
+                </div>
+              </div>
+            </div>
+          </section>
+        )}
+
+        {/* 신규 색상 팔레트 테스트 */}
+        {activeSection === 'colors' && (
+          <section className="py-16 space-y-8">
+            {/* 다크모드 배경 테스트 */}
+            <div className="bg-custom-bg-100 dark:bg-custom-bg-100 rounded-lg p-8">
+              <div className="text-center mb-8">
+                <Badge variant="primary" className="bg-primary-100 text-custom-text-100 border-primary-100">
+                  신규 브랜드 색상 시스템
+                </Badge>
+                <h2 className="text-3xl font-bold text-custom-text-100 mt-4 mb-2">
+                  다크모드 최적화 색상 테스트
+                </h2>
+                <p className="text-custom-text-200">
+                  새로운 브랜드 색상 팔레트로 구현된 다크모드 디자인을 확인해보세요.
+                </p>
+              </div>
+
+              {/* 색상 팔레트 그리드 */}
+              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-8">
+                {/* Primary Colors */}
+                <div className="bg-custom-bg-200 rounded-lg p-6">
+                  <h3 className="text-custom-text-100 font-semibold mb-4">Primary Colors</h3>
+                  <div className="space-y-3">
+                    <div className="bg-primary-100 h-12 rounded flex items-center justify-center">
+                      <span className="text-white font-medium">#2E8B57</span>
+                    </div>
+                    <div className="bg-primary-200 h-12 rounded flex items-center justify-center">
+                      <span className="text-white font-medium">#61bc84</span>
+                    </div>
+                    <div className="bg-primary-300 h-12 rounded flex items-center justify-center">
+                      <span className="text-gray-800 font-medium">#c6ffe6</span>
+                    </div>
+                  </div>
+                </div>
+
+                {/* Accent Colors */}
+                <div className="bg-custom-bg-200 rounded-lg p-6">
+                  <h3 className="text-custom-text-100 font-semibold mb-4">Accent Colors</h3>
+                  <div className="space-y-3">
+                    <div className="bg-accent-100 h-12 rounded flex items-center justify-center">
+                      <span className="text-white font-medium">#8FBC8F</span>
+                    </div>
+                    <div className="bg-accent-200 h-12 rounded flex items-center justify-center">
+                      <span className="text-white font-medium">#345e37</span>
+                    </div>
+                    <div className="h-12 rounded bg-gradient-to-r from-accent-100 to-accent-200 flex items-center justify-center">
+                      <span className="text-white font-medium">Gradient</span>
+                    </div>
+                  </div>
+                </div>
+
+                {/* Background Colors */}
+                <div className="bg-custom-bg-200 rounded-lg p-6">
+                  <h3 className="text-custom-text-100 font-semibold mb-4">Background Colors</h3>
+                  <div className="space-y-3">
+                    <div className="bg-custom-bg-100 h-12 rounded border border-custom-bg-300 flex items-center justify-center">
+                      <span className="text-custom-text-200 font-medium">#1E1E1E</span>
+                    </div>
+                    <div className="bg-custom-bg-200 h-12 rounded border border-custom-bg-300 flex items-center justify-center">
+                      <span className="text-custom-text-200 font-medium">#2d2d2d</span>
+                    </div>
+                    <div className="bg-custom-bg-300 h-12 rounded flex items-center justify-center">
+                      <span className="text-custom-text-200 font-medium">#454545</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              {/* 버튼 테스트 */}
+              <div className="bg-custom-bg-200 rounded-lg p-6 mb-6">
+                <h3 className="text-custom-text-100 font-semibold mb-4">Button Variations</h3>
+                <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-4">
+                  <Button className="bg-primary-100 hover:bg-primary-200 text-custom-text-100">
+                    Primary
+                  </Button>
+                  <Button className="bg-accent-200 hover:bg-accent-100 text-custom-text-100">
+                    Accent
+                  </Button>
+                  <Button variant="outline" className="border-primary-100 text-primary-100 hover:bg-primary-100 hover:text-custom-text-100">
+                    Outline
+                  </Button>
+                  <Button className="bg-gradient-to-r from-primary-100 to-accent-200 text-custom-text-100">
+                    Gradient
+                  </Button>
+                </div>
+              </div>
+
+              {/* 카드 컴포넌트 테스트 */}
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <div className="bg-custom-bg-200 border border-custom-bg-300 rounded-lg p-6">
+                  <div className="flex items-center mb-4">
+                    <div className="w-12 h-12 bg-primary-100 rounded-lg flex items-center justify-center mr-4">
+                      <Lightbulb className="w-6 h-6 text-custom-text-100" />
+                    </div>
+                    <div>
+                      <h4 className="text-custom-text-100 font-semibold">Feature Card</h4>
+                      <p className="text-custom-text-200 text-sm">새로운 색상 적용</p>
+                    </div>
+                  </div>
+                  <p className="text-custom-text-200 mb-4">
+                    새로운 브랜드 색상을 적용한 카드 컴포넌트입니다. 다크모드에 최적화된 색상으로 가독성과 브랜드 일관성을 제공합니다.
+                  </p>
+                  <Button variant="outline" className="border-primary-200 text-primary-200 hover:bg-primary-200 hover:text-custom-text-100">
+                    자세히 보기
+                  </Button>
+                </div>
+
+                <div className="bg-custom-bg-200 border border-custom-bg-300 rounded-lg p-6">
+                  <div className="flex items-center mb-4">
+                    <div className="w-12 h-12 bg-accent-200 rounded-lg flex items-center justify-center mr-4">
+                      <Code className="w-6 h-6 text-custom-text-100" />
+                    </div>
+                    <div>
+                      <h4 className="text-custom-text-100 font-semibold">Code Component</h4>
+                      <p className="text-custom-text-200 text-sm">액센트 색상 적용</p>
+                    </div>
+                  </div>
+                  <p className="text-custom-text-200 mb-4">
+                    액센트 색상을 활용한 컴포넌트입니다. 강조가 필요한 요소에 사용하여 시각적 하이어라키를 구성할 수 있습니다.
+                  </p>
+                  <Button className="bg-accent-200 hover:bg-accent-100 text-custom-text-100">
+                    실행하기
+                  </Button>
+                </div>
+              </div>
+            </div>
+
+            {/* 색상 가이드 */}
+            <div className="bg-white dark:bg-slate-800 rounded-lg p-6">
+              <h3 className="text-lg font-semibold text-gray-900 dark:text-slate-100 mb-4">
+                색상 사용 가이드
+              </h3>
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-6 text-sm">
+                <div>
+                  <h4 className="font-medium text-gray-900 dark:text-slate-100 mb-2">Primary Colors</h4>
+                  <ul className="space-y-1 text-gray-600 dark:text-slate-300">
+                    <li>• primary-100: 메인 브랜드 색상, 주요 버튼</li>
+                    <li>• primary-200: 호버 상태, 보조 요소</li>
+                    <li>• primary-300: 밝은 배경, 강조 텍스트</li>
+                  </ul>
+                </div>
+                <div>
+                  <h4 className="font-medium text-gray-900 dark:text-slate-100 mb-2">Accent Colors</h4>
+                  <ul className="space-y-1 text-gray-600 dark:text-slate-300">
+                    <li>• accent-100: 부드러운 강조, 보조 버튼</li>
+                    <li>• accent-200: 강한 강조, 액션 버튼</li>
+                    <li>• 그라디언트 조합으로 고급 효과 연출</li>
+                  </ul>
                 </div>
               </div>
             </div>

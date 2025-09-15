@@ -70,8 +70,7 @@ export const PortfolioCard = ({ project, index }: PortfolioCardProps) => {
           {project.featured && (
             <div className="absolute top-4 right-4">
               <Badge variant="primary" className="bg-green-600/90 dark:bg-slate-600/90 text-white dark:text-slate-100 border-green-500/30 dark:border-slate-500/30 shadow-lg backdrop-blur-sm">
-                <Award className="w-3 h-3 mr-1" />
-                추천
+                <Award className="w-3 h-3" />
               </Badge>
             </div>
           )}
@@ -146,19 +145,19 @@ export const PortfolioCard = ({ project, index }: PortfolioCardProps) => {
           {/* 액션 버튼들 */}
           <div className="flex items-center gap-2">
             <Link href={`/portfolio/${project.id}`} className="flex-1">
-              <Button size="sm" className="w-full">
+              <Button size="sm" className="w-full bg-gradient-to-r from-green-600 to-teal-600 hover:from-green-700 hover:to-teal-700 text-white shadow-lg shadow-green-500/25 hover:shadow-xl hover:shadow-green-500/30 transition-all duration-300">
                 자세히 보기
               </Button>
             </Link>
             {project.links.demo && (
-              <Button  size="sm" variant="outline">
+              <Button size="sm" variant="outline" className="border-gray-300 dark:border-slate-600 text-gray-700 dark:text-slate-300 hover:bg-gray-100 dark:hover:bg-slate-700 hover:border-gray-400 dark:hover:border-slate-500">
                 <a href={project.links.demo} target="_blank" rel="noopener noreferrer">
                   <ExternalLink className="w-4 h-4" />
                 </a>
               </Button>
             )}
             {project.links.contact && (
-              <Button  size="sm" variant="outline">
+              <Button size="sm" variant="outline" className="border-gray-300 dark:border-slate-600 text-gray-700 dark:text-slate-300 hover:bg-gray-100 dark:hover:bg-slate-700 hover:border-gray-400 dark:hover:border-slate-500">
                 <a href={project.links.contact} target="_blank" rel="noopener noreferrer">
                   <Mail className="w-4 h-4" />
                 </a>

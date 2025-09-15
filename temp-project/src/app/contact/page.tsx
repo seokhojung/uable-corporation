@@ -208,7 +208,7 @@ export default function ContactPage() {
           transition={{ duration: 0.8 }}
           className="py-16 text-center"
         >
-          <Badge variant="primary" className="mb-4">
+          <Badge variant="primary" className="mb-4 bg-gradient-to-r from-green-600 to-teal-600 text-white border-green-500">
             문의하기
           </Badge>
           <h1 className="text-4xl lg:text-5xl font-bold text-gray-900 dark:text-slate-100 mb-6">

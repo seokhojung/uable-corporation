@@ -119,36 +119,6 @@ export function HomePageClient() {
     <main className="min-h-screen bg-white dark:bg-slate-900">
       {/* Hero Section - VIVAR 스타일 참고 */}
       <section className="relative min-h-screen md:h-[90vh] lg:h-[85vh] flex items-center justify-center overflow-hidden bg-gradient-to-br from-gray-50 via-white to-gray-50 dark:from-slate-900 dark:via-slate-800 dark:to-slate-900 md:pt-0">
-        {/* 배경 요소 */}
-        <div className="absolute inset-0 overflow-hidden">
-                     <div className="absolute top-20 right-20 w-72 h-72 opacity-20" style={{animation: 'pulse 4s ease-in-out infinite'}}>
-            <Image
-              src="/UABLE-logo.png"
-              alt="Uable Logo Background"
-              width={288}
-              height={288}
-              className="object-contain max-w-full max-h-full w-auto h-auto filter sepia-[0.3] hue-rotate-[120deg] saturate-[0.6] brightness-[0.8] dark:brightness-0"
-            />
-          </div>
-                     <div className="absolute bottom-20 left-20 w-96 h-96 opacity-10" style={{animation: 'pulse 6s ease-in-out infinite', animationDelay: '1s'}}>
-            <Image
-              src="/UABLE-logo.png"
-              alt="Uable Logo Background"
-              width={384}
-              height={384}
-              className="object-contain max-w-full max-h-full w-auto h-auto filter sepia-[0.3] hue-rotate-[120deg] saturate-[0.6] brightness-[0.8] dark:brightness-0"
-            />
-          </div>
-                     <div className="absolute top-1/2 left-1/4 w-48 h-48 opacity-15" style={{animation: 'pulse 5s ease-in-out infinite', animationDelay: '2s'}}>
-            <Image
-              src="/UABLE-logo.png"
-              alt="Uable Logo Background"
-              width={192}
-              height={192}
-              className="object-contain max-w-full max-h-full w-auto h-auto filter sepia-[0.3] hue-rotate-[120deg] saturate-[0.6] brightness-[0.8] dark:brightness-0"
-            />
-          </div>
-        </div>
 
         <div className="relative z-10 w-full max-w-7xl mx-auto px-4 lg:px-8 xl:px-12">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-16 items-center">
@@ -178,9 +148,8 @@ export function HomePageClient() {
               {/* CTA 버튼들 */}
               <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start mb-12">
                 <Link href="/portfolio">
-                  <Button size="lg" className="text-lg px-12 py-4 bg-gradient-to-r from-green-600 to-teal-600 hover:from-green-700 hover:to-teal-700 text-white shadow-lg shadow-green-500/25 hover:shadow-xl hover:shadow-green-500/30 transition-all duration-300">
+                  <Button size="lg" className="text-lg px-16 py-4 bg-gradient-to-r from-green-600 to-teal-600 hover:from-green-700 hover:to-teal-700 text-white shadow-lg shadow-green-500/25 hover:shadow-xl hover:shadow-green-500/30 transition-all duration-300">
                     포트폴리오 보기
-                    <ArrowRight className="w-5 h-5 ml-2" />
                   </Button>
                 </Link>
 
@@ -252,7 +221,7 @@ export function HomePageClient() {
       <section className="py-32 bg-gradient-to-br from-gray-50 via-white to-gray-50 dark:from-slate-900 dark:via-slate-800 dark:to-slate-900">
         <div className="w-full max-w-7xl mx-auto px-4 lg:px-8 xl:px-12">
           <div ref={serviceHeaderRef} className="max-w-4xl mx-auto text-center mb-16 animate-service-header">
-            <Badge variant="outline" className="mb-8 px-6 py-3 text-lg">
+            <Badge variant="outline" className="mb-6 text-emerald-600 dark:text-emerald-400 border-emerald-300">
               서비스 소개
             </Badge>
             <h2 className="text-4xl lg:text-6xl xl:text-6xl font-bold text-gray-900 dark:text-slate-100 mb-8 leading-tight">
@@ -395,7 +364,7 @@ export function HomePageClient() {
       <section ref={portfolioSectionRef} className="py-32 bg-gradient-to-br from-gray-50 via-white to-gray-50 dark:from-slate-900 dark:via-slate-800 dark:to-slate-900 animate-portfolio-section">
         <div className="w-full max-w-7xl mx-auto px-4 lg:px-8 xl:px-12">
           <div className="max-w-4xl mx-auto text-center mb-16">
-            <Badge variant="outline" className="mb-6">
+            <Badge variant="outline" className="mb-6 text-emerald-600 dark:text-emerald-400 border-emerald-300">
               프로젝트 포트폴리오
             </Badge>
             <h2 className="text-3xl lg:text-6xl font-bold text-gray-900 dark:text-slate-100 mb-6">
@@ -417,9 +386,8 @@ export function HomePageClient() {
           
           <div className="text-center">
             <Link href="/portfolio">
-              <Button size="lg" className="text-lg px-12 py-4 bg-gradient-to-r from-green-600 to-teal-600 hover:from-green-700 hover:to-teal-700 text-white shadow-lg shadow-green-500/25 hover:shadow-xl hover:shadow-green-500/30 transition-all duration-300">
+              <Button size="lg" className="text-lg px-16 py-4 bg-gradient-to-r from-green-600 to-teal-600 hover:from-green-700 hover:to-teal-700 text-white shadow-lg shadow-green-500/25 hover:shadow-xl hover:shadow-green-500/30 transition-all duration-300">
                 전체 포트폴리오 보기
-                <ArrowRight className="w-5 h-5 ml-2" />
               </Button>
             </Link>
           </div>
@@ -430,7 +398,7 @@ export function HomePageClient() {
       <section ref={webglSectionRef} className="py-32 bg-white dark:bg-slate-800 animate-webgl-section">
         <div className="w-full max-w-7xl mx-auto px-4 lg:px-8 xl:px-12">
           <div className="max-w-4xl mx-auto text-center mb-16">
-            <Badge variant="outline" className="mb-6">
+            <Badge variant="outline" className="mb-6 text-emerald-600 dark:text-emerald-400 border-emerald-300">
               3D 체험 갤러리
             </Badge>
             <h2 className="text-3xl lg:text-6xl font-bold text-gray-900 dark:text-slate-100 mb-6">
@@ -449,9 +417,8 @@ export function HomePageClient() {
           
           <div className="text-center">
             <Link href="/webgl">
-              <Button size="lg" className="text-lg px-12 py-4 bg-gradient-to-r from-green-600 to-teal-600 hover:from-green-700 hover:to-teal-700 text-white shadow-lg shadow-green-500/25 hover:shadow-xl hover:shadow-green-500/30 transition-all duration-300">
+              <Button size="lg" className="text-lg px-16 py-4 bg-gradient-to-r from-green-600 to-teal-600 hover:from-green-700 hover:to-teal-700 text-white shadow-lg shadow-green-500/25 hover:shadow-xl hover:shadow-green-500/30 transition-all duration-300">
                 전체 3D 갤러리 보기
-                <ArrowRight className="w-5 h-5 ml-2" />
               </Button>
             </Link>
           </div>
@@ -462,7 +429,7 @@ export function HomePageClient() {
       <section ref={processSectionRef} className="py-32 bg-gradient-to-br from-gray-50 via-white to-gray-50 dark:from-slate-900 dark:via-slate-800 dark:to-slate-900 animate-process-section">
         <div className="w-full max-w-7xl mx-auto px-4 lg:px-8 xl:px-12">
           <div className="max-w-4xl mx-auto text-center mb-16">
-            <Badge variant="primary" className="mb-6">
+            <Badge variant="primary" className="mb-6 bg-gradient-to-r from-green-600 to-teal-600 text-white border-green-500">
               도입 절차
             </Badge>
             <h2 className="text-3xl lg:text-5xl font-bold text-gray-900 dark:text-slate-100 mb-6">
@@ -524,7 +491,7 @@ export function HomePageClient() {
         <div className="w-full max-w-7xl mx-auto px-4 lg:px-8 xl:px-12">
           {/* 헤드라인 섹션 */}
           <div className="max-w-4xl mx-auto text-center mb-16">
-            <Badge variant="primary" className="mb-6">
+            <Badge variant="primary" className="mb-6 bg-gradient-to-r from-green-600 to-teal-600 text-white border-green-500">
               도입 효과
             </Badge>
             <h2 className="text-3xl lg:text-6xl xl:text-2xl font-bold text-gray-900 dark:text-slate-100 mb-8 leading-tight text-center">
@@ -586,9 +553,8 @@ export function HomePageClient() {
             </p>
             <div className="flex flex-col sm:flex-row gap-6 justify-center">
               <Link href="/portfolio">
-                <Button size="lg" className="text-lg px-12 py-4 bg-gradient-to-r from-green-600 to-teal-600 hover:from-green-700 hover:to-teal-700 text-white shadow-lg shadow-green-500/25 hover:shadow-xl hover:shadow-green-500/30 transition-all duration-300">
+                <Button size="lg" className="text-lg px-16 py-4 bg-gradient-to-r from-green-600 to-teal-600 hover:from-green-700 hover:to-teal-700 text-white shadow-lg shadow-green-500/25 hover:shadow-xl hover:shadow-green-500/30 transition-all duration-300">
                   포트폴리오 보기
-                  <ArrowRight className="w-5 h-5 ml-2" />
                 </Button>
               </Link>
               <Link href="/contact">

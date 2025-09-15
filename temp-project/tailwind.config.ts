@@ -6,9 +6,29 @@ module.exports = {
   ],
   theme: {
     extend: {
-      // Design System Colors (02 guide compliant)
-      // 기본 Tailwind 색상 시스템 사용
-      // Design tokens는 다크 모드를 지원하지 않아 제거
+      // Custom Brand Colors
+      colors: {
+        primary: {
+          100: '#2E8B57', // Sea Green
+          200: '#61bc84', // Light Sea Green
+          300: '#c6ffe6', // Very Light Green
+        },
+        accent: {
+          100: '#8FBC8F', // Dark Sea Green
+          200: '#345e37', // Dark Forest Green
+        },
+        custom: {
+          text: {
+            100: '#FFFFFF', // Pure White
+            200: '#e0e0e0', // Light Gray
+          },
+          bg: {
+            100: '#1E1E1E', // Very Dark Gray
+            200: '#2d2d2d', // Dark Gray
+            300: '#454545', // Medium Dark Gray
+          }
+        }
+      },
       
       // Typography system
       fontFamily: {

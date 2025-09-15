@@ -96,7 +96,7 @@ export function ProductsSection({
                       {product.buttons.primary.text}
                     </Button>
                   )}
-                  <Button variant="outline" asChild className="flex-1">
+                  <Button variant="outline" asChild className="flex-1 border-gray-300 dark:border-slate-600 text-gray-700 dark:text-slate-300 hover:bg-gray-100 dark:hover:bg-slate-700 hover:border-gray-400 dark:hover:border-slate-500">
                     <Link href={product.buttons.secondary.href}>
                       {product.buttons.secondary.text}
                     </Link>
