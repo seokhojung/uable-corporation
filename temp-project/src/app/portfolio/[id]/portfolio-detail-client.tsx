@@ -13,13 +13,16 @@ import { PortfolioProject } from '@/types/portfolio'
 import { PORTFOLIO_CATEGORIES } from '@/types/portfolio'
 import { ImageGallery } from '@/components/portfolio/image-gallery'
 import { ProjectDetails } from '@/components/portfolio/project-details'
+import { usePortfolioDetailTheme } from '@/lib/portfolio-detail-theme-utils'
 
 interface PortfolioDetailClientProps {
   project: PortfolioProject
 }
 
 export function PortfolioDetailClient({ project }: PortfolioDetailClientProps) {
-  
+  // 안전한 테마 시스템 사용
+  const themeClasses = usePortfolioDetailTheme()
+
   // 영상 컨트롤 상태
   const [videoStates, setVideoStates] = useState<{ [key: number]: { isPlaying: boolean; isMuted: boolean } }>({})
 
@@ -77,14 +80,14 @@ export function PortfolioDetailClient({ project }: PortfolioDetailClientProps) {
   }
 
   return (
-    <div className="min-h-screen bg-white dark:bg-slate-900">
+    <div className={`min-h-screen ${themeClasses.pageBackground}`}>
       {/* 상단 네비게이션 */}
-      <section className="bg-gray-50 dark:bg-slate-800 border-b border-gray-200 dark:border-slate-700">
+      <section className={`${themeClasses.navBackground} border-b ${themeClasses.navBorder}`}>
         <Container>
           <div className="py-4">
-            <Link 
-              href="/portfolio" 
-              className="inline-flex items-center text-gray-600 dark:text-slate-300 hover:text-gray-900 dark:hover:text-slate-100 transition-colors"
+            <Link
+              href="/portfolio"
+              className={`inline-flex items-center ${themeClasses.navText} transition-colors`}
             >
               <ArrowLeft className="w-4 h-4 mr-2" />
               포트폴리오로 돌아가기
@@ -94,44 +97,45 @@ export function PortfolioDetailClient({ project }: PortfolioDetailClientProps) {
       </section>
 
       {/* 프로젝트 헤더 */}
-      <section ref={headerRef} className="py-12 bg-gradient-to-br from-gray-50 to-gray-100 dark:from-slate-900 dark:to-slate-800 animate-slideUp">
+      <section ref={headerRef} className={`py-12 ${themeClasses.headerBackground} animate-slideUp`}>
         <Container>
           <div className="grid lg:grid-cols-2 gap-8 lg:gap-16 items-center">
             {/* 프로젝트 정보 */}
             <div>
               <div className="mb-4">
-                <Badge variant="primary" className="mb-2">
-                  {category?.label}
-                </Badge>
-                {project.featured && (
-                  <Badge variant="outline" className="ml-2">
-                    <Award className="w-3 h-3 mr-1" />
-                    추천 프로젝트
+                <div className="flex items-center gap-2 mb-2">
+                  <Badge variant="primary" className={themeClasses.categoryBadge}>
+                    {category?.label}
                   </Badge>
-                )}
+                  {project.featured && (
+                    <Badge variant="outline" className={themeClasses.featuredBadge}>
+                      <Award className="w-3 h-3" />
+                    </Badge>
+                  )}
+                </div>
               </div>
-              
-              <h1 className="text-4xl lg:text-5xl font-bold text-gray-900 dark:text-slate-100 mb-4">
+
+              <h1 className={`text-4xl lg:text-5xl font-bold ${themeClasses.projectTitle} mb-4`}>
                 {project.title}
               </h1>
-              
-              <p className="text-lg text-gray-600 dark:text-slate-300 mb-6 leading-relaxed">
+
+              <p className={`text-lg ${themeClasses.projectDescription} mb-6 leading-relaxed`}>
                 {project.description}
               </p>
 
               {/* 프로젝트 메타데이터 */}
               <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 mb-6">
-                <div className="flex items-center text-gray-500 dark:text-slate-400">
+                <div className={`flex items-center ${themeClasses.metaText}`}>
                   <Calendar className="w-4 h-4 mr-2" />
                   <span className="text-sm">
                     {project.duration.start} - {project.duration.end}
                   </span>
                 </div>
-                <div className="flex items-center text-gray-500 dark:text-slate-400">
+                <div className={`flex items-center ${themeClasses.metaText}`}>
                   <Users className="w-4 h-4 mr-2" />
                   <span className="text-sm">{project.teamSize}명</span>
                 </div>
-                <div className="flex items-center text-gray-500 dark:text-slate-400">
+                <div className={`flex items-center ${themeClasses.metaText}`}>
                   <Award className="w-4 h-4 mr-2" />
                   <span className="text-sm">{project.role}</span>
                 </div>
@@ -139,10 +143,10 @@ export function PortfolioDetailClient({ project }: PortfolioDetailClientProps) {
 
               {/* 기술 스택 */}
               <div className="mb-6">
-                <h3 className="text-lg font-semibold text-gray-800 dark:text-slate-200 mb-3">사용 기술</h3>
+                <h3 className={`text-lg font-semibold ${themeClasses.projectTitle} mb-3`}>사용 기술</h3>
                 <div className="flex flex-wrap gap-2">
                   {project.technologies.map((tech) => (
-                    <Badge key={tech} variant="secondary">
+                    <Badge key={tech} variant="secondary" className={themeClasses.techBadge}>
                       {tech}
                     </Badge>
                   ))}
@@ -152,14 +156,14 @@ export function PortfolioDetailClient({ project }: PortfolioDetailClientProps) {
               {/* 액션 버튼 */}
               <div className="flex flex-wrap gap-3">
                 {project.links.demo && (
-                  <Button asChild>
+                  <Button asChild className={themeClasses.primaryButton}>
                     <a href={project.links.demo} target="_blank" rel="noopener noreferrer">
                       <ExternalLink className="w-4 h-4 mr-2" />
                       데모 보기
                     </a>
                   </Button>
                 )}
-                <Button variant="outline" asChild>
+                <Button variant="outline" asChild className={themeClasses.secondaryButton}>
                   <Link href={project.links.contact || '/contact'}>
                     <Mail className="w-4 h-4 mr-2" />
                     문의하기
@@ -170,7 +174,7 @@ export function PortfolioDetailClient({ project }: PortfolioDetailClientProps) {
 
             {/* 프로젝트 썸네일 */}
             <div className="relative">
-              <Card className="overflow-hidden">
+              <Card className={`overflow-hidden ${themeClasses.heroImageCard}`}>
                 <Image
                   src={project.thumbnail.src}
                   alt={project.thumbnail.alt}
@@ -192,9 +196,9 @@ export function PortfolioDetailClient({ project }: PortfolioDetailClientProps) {
 
       {/* 프로젝트 이미지 갤러리 */}
       <div ref={galleryRef} className="animate-slideUp">
-        <section className="py-12 bg-gray-50 dark:bg-slate-800">
+        <section className={`py-12 ${themeClasses.galleryBackground}`}>
           <Container>
-            <h2 className="text-2xl font-bold text-gray-900 dark:text-slate-100 mb-8">프로젝트 갤러리</h2>
+            <h2 className={`text-2xl font-bold ${themeClasses.galleryTitle} mb-8`}>프로젝트 갤러리</h2>
             <ImageGallery images={project.images} />
           </Container>
         </section>
@@ -202,9 +206,9 @@ export function PortfolioDetailClient({ project }: PortfolioDetailClientProps) {
 
       {/* 프로젝트 영상 */}
       {project.videos && project.videos.length > 0 && (
-        <section className="py-12 bg-white dark:bg-slate-900">
+        <section className={`py-12 ${themeClasses.videoBackground}`}>
           <Container>
-            <h2 className="text-2xl font-bold text-gray-900 dark:text-slate-100 mb-8">프로젝트 영상</h2>
+            <h2 className={`text-2xl font-bold ${themeClasses.videoTitle} mb-8`}>프로젝트 영상</h2>
             <div className="space-y-8">
               {project.videos.map((video, index) => (
                 <div key={index} className="space-y-4">
@@ -282,17 +286,17 @@ export function PortfolioDetailClient({ project }: PortfolioDetailClientProps) {
       )}
 
       {/* 주요 성과 */}
-      <section ref={achievementsRef} className="py-12 bg-white dark:bg-slate-900">
+      <section ref={achievementsRef} className={`py-12 ${themeClasses.achievementBackground}`}>
         <Container>
-          <h2 className="text-2xl font-bold text-gray-900 dark:text-slate-100 mb-8">주요 성과</h2>
+          <h2 className={`text-2xl font-bold ${themeClasses.galleryTitle} mb-8`}>주요 성과</h2>
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
             {project.achievements.map((achievement, index) => (
-              <Card key={index} className="p-6">
-                <div className="flex items-start">
-                  <div className="w-8 h-8 bg-green-500 dark:bg-slate-700 rounded-full flex items-center justify-center mr-4 mt-1">
-                    <span className="text-white dark:text-slate-300 text-sm font-semibold">{index + 1}</span>
+              <Card key={index} className={`p-6 ${themeClasses.achievementCard}`}>
+                <div className="flex items-center">
+                  <div className={`w-8 h-8 bg-green-500 rounded-full flex items-center justify-center mr-4`}>
+                    <span className={`${themeClasses.achievementNumber} text-sm font-semibold`}>{index + 1}</span>
                   </div>
-                  <p className="text-gray-700 dark:text-slate-300 leading-relaxed">{achievement}</p>
+                  <p className={`${themeClasses.achievementText} leading-relaxed`}>{achievement}</p>
                 </div>
               </Card>
             ))}
@@ -301,15 +305,15 @@ export function PortfolioDetailClient({ project }: PortfolioDetailClientProps) {
       </section>
 
       {/* 다른 프로젝트 */}
-      <section ref={relatedRef} className="py-12 bg-gray-50 dark:bg-slate-800">
+      <section ref={relatedRef} className={`py-12 ${themeClasses.relatedBackground}`}>
         <Container>
-          <h2 className="text-lg font-bold text-gray-900 dark:text-slate-100 mb-8">다른 프로젝트 둘러보기</h2>
+          <h2 className={`text-lg font-bold ${themeClasses.relatedTitle} mb-8`}>다른 프로젝트 둘러보기</h2>
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
             {portfolioProjects
               .filter(p => p.id !== project.id)
               .slice(0, 5)
               .map((relatedProject) => (
-                <Card key={relatedProject.id} className="overflow-hidden hover:scale-105 transition-transform">
+                <Card key={relatedProject.id} className={`${themeClasses.relatedCard} overflow-hidden hover:scale-105 transition-transform`}>
                   <Link href={`/portfolio/${relatedProject.id}`}>
                     <div className="relative aspect-video">
                       <Image
@@ -320,8 +324,8 @@ export function PortfolioDetailClient({ project }: PortfolioDetailClientProps) {
                       />
                     </div>
                     <div className="p-4">
-                      <h3 className="text-xl font-medium text-gray-900 dark:text-slate-200 mb-2">{relatedProject.title}</h3>
-                      <p className="text-sm text-gray-600 dark:text-slate-400 line-clamp-2">{relatedProject.shortDescription}</p>
+                      <h3 className={`text-xl font-medium ${themeClasses.relatedCardText} mb-2`}>{relatedProject.title}</h3>
+                      <p className={`text-sm ${themeClasses.relatedCardDescription} line-clamp-2`}>{relatedProject.shortDescription}</p>
                     </div>
                   </Link>
                 </Card>

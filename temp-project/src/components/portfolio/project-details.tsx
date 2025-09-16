@@ -6,19 +6,23 @@ import { Badge } from '@/components/primitives/Badge'
 import { CheckCircle, Star, Award, TrendingUp } from 'lucide-react'
 import { PortfolioProject } from '@/types/portfolio'
 import { ImpactStats } from './impact-stats'
+import { usePortfolioDetailTheme } from '@/lib/portfolio-detail-theme-utils'
 
 interface ProjectDetailsProps {
   detailContent?: PortfolioProject['detailContent']
 }
 
 export const ProjectDetails = ({ detailContent }: ProjectDetailsProps) => {
+  // 안전한 테마 시스템 사용
+  const themeClasses = usePortfolioDetailTheme()
+
   // detailContent가 없으면 렌더링하지 않음
   if (!detailContent) {
     return null
   }
 
   return (
-    <section className="py-12 bg-white dark:bg-slate-900">
+    <section className={`py-12 ${themeClasses.statsBackground}`}>
       <Container>
         <div className="max-w-7xl mx-auto">
           {/* 임팩트 통계 - 모든 정보를 하나로 통합 */}

@@ -6,7 +6,7 @@ import Image from 'next/image'
 import Link from 'next/link'
 import { Badge } from '@/components/primitives/Badge'
 import { portfolioProjects } from '@/data/portfolio'
-import { applyThemeClasses } from '@/lib/theme-class-mapping'
+import { useTheme } from '@/contexts/ThemeContext'
 
 interface ServiceScrollProps {
   className?: string
@@ -39,7 +39,7 @@ export const ServiceScroll = ({ className = '', speed = 1 }: ServiceScrollProps)
   const scrollRef = useRef<HTMLDivElement>(null)
   const [translateY, setTranslateY] = useState(0)
   const animationRef = useRef<number>()
-  const isThemeSystemEnabled = process.env.NEXT_PUBLIC_THEME_SYSTEM !== 'false'
+  const { theme } = useTheme()
 
   useEffect(() => {
     const scrollElement = scrollRef.current
@@ -110,7 +110,12 @@ export const ServiceScroll = ({ className = '', speed = 1 }: ServiceScrollProps)
   }, [speed])
 
   return (
-    <div className={`${applyThemeClasses("overflow-hidden bg-gradient-to-br from-slate-900 to-slate-800 rounded-3xl p-8 border border-slate-700 shadow-xl", isThemeSystemEnabled)} ${className}`}>
+    <div className={`overflow-hidden rounded-3xl p-8 shadow-xl ${
+      theme === 'light' ? 'bg-gradient-to-br from-gray-100 to-gray-200 border border-gray-300' :
+      theme === 'dark' ? 'bg-gradient-to-br from-slate-900 to-slate-800 border border-slate-700' :
+      theme === 'brand' ? 'bg-gradient-to-br from-custom-bg-200 to-custom-bg-300 border border-primary-100/20' :
+      'bg-gradient-to-br from-slate-900 to-slate-800 border border-slate-700'
+    } ${className}`}>
       <div 
         ref={scrollRef}
         style={{ 
@@ -122,11 +127,21 @@ export const ServiceScroll = ({ className = '', speed = 1 }: ServiceScrollProps)
         <div className="space-y-8">
           {portfolioProjects.map((project, index) => (
             <Link key={`first-${project.id}`} href={`/portfolio/${project.id}`}>
-              <div className={applyThemeClasses("bg-slate-800 rounded-2xl p-6 border border-slate-700 shadow-sm hover:shadow-lg transition-all duration-300 hover:scale-105 cursor-pointer group", isThemeSystemEnabled)}>
+              <div className={`rounded-2xl p-6 shadow-sm hover:shadow-lg transition-all duration-300 hover:scale-105 cursor-pointer group ${
+                theme === 'light' ? 'bg-white border border-gray-200' :
+                theme === 'dark' ? 'bg-slate-800 border border-slate-700' :
+                theme === 'brand' ? 'bg-custom-bg-200 border border-primary-100/20' :
+                'bg-slate-800 border border-slate-700'
+              }`}>
                 <div className="flex items-start space-x-4 mb-4">
                   <div className="flex-1">
                     <div className="flex items-center gap-2 mb-2">
-                      <Badge variant="outline" className={applyThemeClasses("text-xs bg-slate-700 text-slate-200 border-slate-600", isThemeSystemEnabled)}>
+                      <Badge variant="outline" className={`text-xs ${
+                        theme === 'light' ? 'bg-gray-100 text-gray-700 border-gray-300' :
+                        theme === 'dark' ? 'bg-slate-700 text-slate-200 border-slate-600' :
+                        theme === 'brand' ? 'bg-primary-100/10 text-primary-200 border-primary-100/20' :
+                        'bg-slate-700 text-slate-200 border-slate-600'
+                      }`}>
                         {getCategoryLabel(project.category)}
                       </Badge>
                       {project.featured && (
@@ -135,13 +150,28 @@ export const ServiceScroll = ({ className = '', speed = 1 }: ServiceScrollProps)
                         </Badge>
                       )}
                     </div>
-                    <h3 className={applyThemeClasses("text-lg font-semibold text-slate-100 mb-1 group-hover:text-slate-300 transition-colors", isThemeSystemEnabled)}>
+                    <h3 className={`text-lg font-semibold mb-1 group-hover:opacity-80 transition-colors ${
+                      theme === 'light' ? 'text-gray-900' :
+                      theme === 'dark' ? 'text-slate-100' :
+                      theme === 'brand' ? 'text-custom-text-100' :
+                      'text-slate-100'
+                    }`}>
                       {project.title}
                     </h3>
-                    <p className={applyThemeClasses("text-slate-300 text-sm line-clamp-2 mb-3", isThemeSystemEnabled)}>{project.shortDescription}</p>
+                    <p className={`text-sm line-clamp-2 mb-3 ${
+                      theme === 'light' ? 'text-gray-600' :
+                      theme === 'dark' ? 'text-slate-300' :
+                      theme === 'brand' ? 'text-custom-text-200' :
+                      'text-slate-300'
+                    }`}>{project.shortDescription}</p>
                     
                     {/* 프로젝트 메타 정보 */}
-                    <div className={applyThemeClasses("flex items-center gap-4 text-xs text-slate-400", isThemeSystemEnabled)}>
+                    <div className={`flex items-center gap-4 text-xs ${
+                      theme === 'light' ? 'text-gray-500' :
+                      theme === 'dark' ? 'text-slate-400' :
+                      theme === 'brand' ? 'text-custom-text-200' :
+                      'text-slate-400'
+                    }`}>
                       <div className="flex items-center gap-1">
                         <Calendar className="w-3 h-3" />
                         <span>{formatDuration(project.duration.start, project.duration.end)}</span>
@@ -152,7 +182,12 @@ export const ServiceScroll = ({ className = '', speed = 1 }: ServiceScrollProps)
                       </div>
                     </div>
                   </div>
-                  <ChevronRight className={applyThemeClasses("w-5 h-5 text-slate-400 group-hover:text-slate-300 transition-colors", isThemeSystemEnabled)} />
+                  <ChevronRight className={`w-5 h-5 group-hover:opacity-80 transition-colors ${
+                    theme === 'light' ? 'text-gray-400' :
+                    theme === 'dark' ? 'text-slate-400' :
+                    theme === 'brand' ? 'text-custom-text-200' :
+                    'text-slate-400'
+                  }`} />
                 </div>
                 
                 {/* 프로젝트 썸네일 */}
@@ -189,11 +224,21 @@ export const ServiceScroll = ({ className = '', speed = 1 }: ServiceScrollProps)
         <div className="space-y-8">
           {portfolioProjects.map((project, index) => (
             <Link key={`second-${project.id}`} href={`/portfolio/${project.id}`}>
-              <div className={applyThemeClasses("bg-slate-800 rounded-2xl p-6 border border-slate-700 shadow-sm hover:shadow-lg transition-all duration-300 hover:scale-105 cursor-pointer group", isThemeSystemEnabled)}>
+              <div className={`rounded-2xl p-6 shadow-sm hover:shadow-lg transition-all duration-300 hover:scale-105 cursor-pointer group ${
+                theme === 'light' ? 'bg-white border border-gray-200' :
+                theme === 'dark' ? 'bg-slate-800 border border-slate-700' :
+                theme === 'brand' ? 'bg-custom-bg-200 border border-primary-100/20' :
+                'bg-slate-800 border border-slate-700'
+              }`}>
                 <div className="flex items-start space-x-4 mb-4">
                   <div className="flex-1">
                     <div className="flex items-center gap-2 mb-2">
-                      <Badge variant="outline" className={applyThemeClasses("text-xs bg-slate-700 text-slate-200 border-slate-600", isThemeSystemEnabled)}>
+                      <Badge variant="outline" className={`text-xs ${
+                        theme === 'light' ? 'bg-gray-100 text-gray-700 border-gray-300' :
+                        theme === 'dark' ? 'bg-slate-700 text-slate-200 border-slate-600' :
+                        theme === 'brand' ? 'bg-primary-100/10 text-primary-200 border-primary-100/20' :
+                        'bg-slate-700 text-slate-200 border-slate-600'
+                      }`}>
                         {getCategoryLabel(project.category)}
                       </Badge>
                       {project.featured && (
@@ -202,13 +247,28 @@ export const ServiceScroll = ({ className = '', speed = 1 }: ServiceScrollProps)
                         </Badge>
                       )}
                     </div>
-                    <h3 className={applyThemeClasses("text-lg font-semibold text-slate-100 mb-1 group-hover:text-slate-300 transition-colors", isThemeSystemEnabled)}>
+                    <h3 className={`text-lg font-semibold mb-1 group-hover:opacity-80 transition-colors ${
+                      theme === 'light' ? 'text-gray-900' :
+                      theme === 'dark' ? 'text-slate-100' :
+                      theme === 'brand' ? 'text-custom-text-100' :
+                      'text-slate-100'
+                    }`}>
                       {project.title}
                     </h3>
-                    <p className={applyThemeClasses("text-slate-300 text-sm line-clamp-2 mb-3", isThemeSystemEnabled)}>{project.shortDescription}</p>
+                    <p className={`text-sm line-clamp-2 mb-3 ${
+                      theme === 'light' ? 'text-gray-600' :
+                      theme === 'dark' ? 'text-slate-300' :
+                      theme === 'brand' ? 'text-custom-text-200' :
+                      'text-slate-300'
+                    }`}>{project.shortDescription}</p>
                     
                     {/* 프로젝트 메타 정보 */}
-                    <div className={applyThemeClasses("flex items-center gap-4 text-xs text-slate-400", isThemeSystemEnabled)}>
+                    <div className={`flex items-center gap-4 text-xs ${
+                      theme === 'light' ? 'text-gray-500' :
+                      theme === 'dark' ? 'text-slate-400' :
+                      theme === 'brand' ? 'text-custom-text-200' :
+                      'text-slate-400'
+                    }`}>
                       <div className="flex items-center gap-1">
                         <Calendar className="w-3 h-3" />
                         <span>{formatDuration(project.duration.start, project.duration.end)}</span>
@@ -219,7 +279,12 @@ export const ServiceScroll = ({ className = '', speed = 1 }: ServiceScrollProps)
                       </div>
                     </div>
                   </div>
-                  <ChevronRight className={applyThemeClasses("w-5 h-5 text-slate-400 group-hover:text-slate-300 transition-colors", isThemeSystemEnabled)} />
+                  <ChevronRight className={`w-5 h-5 group-hover:opacity-80 transition-colors ${
+                    theme === 'light' ? 'text-gray-400' :
+                    theme === 'dark' ? 'text-slate-400' :
+                    theme === 'brand' ? 'text-custom-text-200' :
+                    'text-slate-400'
+                  }`} />
                 </div>
                 
                 {/* 프로젝트 썸네일 */}
@@ -256,11 +321,21 @@ export const ServiceScroll = ({ className = '', speed = 1 }: ServiceScrollProps)
         <div className="space-y-8">
           {portfolioProjects.map((project, index) => (
             <Link key={`third-${project.id}`} href={`/portfolio/${project.id}`}>
-              <div className={applyThemeClasses("bg-slate-800 rounded-2xl p-6 border border-slate-700 shadow-sm hover:shadow-lg transition-all duration-300 hover:scale-105 cursor-pointer group", isThemeSystemEnabled)}>
+              <div className={`rounded-2xl p-6 shadow-sm hover:shadow-lg transition-all duration-300 hover:scale-105 cursor-pointer group ${
+                theme === 'light' ? 'bg-white border border-gray-200' :
+                theme === 'dark' ? 'bg-slate-800 border border-slate-700' :
+                theme === 'brand' ? 'bg-custom-bg-200 border border-primary-100/20' :
+                'bg-slate-800 border border-slate-700'
+              }`}>
                 <div className="flex items-start space-x-4 mb-4">
                   <div className="flex-1">
                     <div className="flex items-center gap-2 mb-2">
-                      <Badge variant="outline" className={applyThemeClasses("text-xs bg-slate-700 text-slate-200 border-slate-600", isThemeSystemEnabled)}>
+                      <Badge variant="outline" className={`text-xs ${
+                        theme === 'light' ? 'bg-gray-100 text-gray-700 border-gray-300' :
+                        theme === 'dark' ? 'bg-slate-700 text-slate-200 border-slate-600' :
+                        theme === 'brand' ? 'bg-primary-100/10 text-primary-200 border-primary-100/20' :
+                        'bg-slate-700 text-slate-200 border-slate-600'
+                      }`}>
                         {getCategoryLabel(project.category)}
                       </Badge>
                       {project.featured && (
@@ -269,13 +344,28 @@ export const ServiceScroll = ({ className = '', speed = 1 }: ServiceScrollProps)
                         </Badge>
                       )}
                     </div>
-                    <h3 className={applyThemeClasses("text-lg font-semibold text-slate-100 mb-1 group-hover:text-slate-300 transition-colors", isThemeSystemEnabled)}>
+                    <h3 className={`text-lg font-semibold mb-1 group-hover:opacity-80 transition-colors ${
+                      theme === 'light' ? 'text-gray-900' :
+                      theme === 'dark' ? 'text-slate-100' :
+                      theme === 'brand' ? 'text-custom-text-100' :
+                      'text-slate-100'
+                    }`}>
                       {project.title}
                     </h3>
-                    <p className={applyThemeClasses("text-slate-300 text-sm line-clamp-2 mb-3", isThemeSystemEnabled)}>{project.shortDescription}</p>
+                    <p className={`text-sm line-clamp-2 mb-3 ${
+                      theme === 'light' ? 'text-gray-600' :
+                      theme === 'dark' ? 'text-slate-300' :
+                      theme === 'brand' ? 'text-custom-text-200' :
+                      'text-slate-300'
+                    }`}>{project.shortDescription}</p>
                     
                     {/* 프로젝트 메타 정보 */}
-                    <div className={applyThemeClasses("flex items-center gap-4 text-xs text-slate-400", isThemeSystemEnabled)}>
+                    <div className={`flex items-center gap-4 text-xs ${
+                      theme === 'light' ? 'text-gray-500' :
+                      theme === 'dark' ? 'text-slate-400' :
+                      theme === 'brand' ? 'text-custom-text-200' :
+                      'text-slate-400'
+                    }`}>
                       <div className="flex items-center gap-1">
                         <Calendar className="w-3 h-3" />
                         <span>{formatDuration(project.duration.start, project.duration.end)}</span>
@@ -286,7 +376,12 @@ export const ServiceScroll = ({ className = '', speed = 1 }: ServiceScrollProps)
                       </div>
                     </div>
                   </div>
-                  <ChevronRight className={applyThemeClasses("w-5 h-5 text-slate-400 group-hover:text-slate-300 transition-colors", isThemeSystemEnabled)} />
+                  <ChevronRight className={`w-5 h-5 group-hover:opacity-80 transition-colors ${
+                    theme === 'light' ? 'text-gray-400' :
+                    theme === 'dark' ? 'text-slate-400' :
+                    theme === 'brand' ? 'text-custom-text-200' :
+                    'text-slate-400'
+                  }`} />
                 </div>
                 
                 {/* 프로젝트 썸네일 */}

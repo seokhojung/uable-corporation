@@ -1,11 +1,13 @@
 'use client'
 
 import { WebGLGallery } from '@/components/webgl/webgl-gallery'
+import { useWebGLTheme } from '@/lib/webgl-theme-utils'
 
 export default function WebGLTestPage() {
+  const themeClasses = useWebGLTheme()
 
   return (
-    <div className="min-h-screen bg-gray-100 dark:bg-slate-900 py-12">
+    <div className={`min-h-screen ${themeClasses.pageBackground} py-12`}>
       <div className="container mx-auto px-4">
         <WebGLGallery 
           title="3D 체험 갤러리"

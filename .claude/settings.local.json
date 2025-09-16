@@ -39,7 +39,8 @@
       "Bash(else echo \"❌ Card 어댑터 생성 필요\")",
       "Bash(npm run lint:*)",
       "Bash(cat:*)",
-      "Bash(xargs sed:*)"
+      "Bash(xargs sed:*)",
+      "Bash(dir:*)"
     ],
     "deny": [],
     "ask": []
