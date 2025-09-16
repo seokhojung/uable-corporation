@@ -64,7 +64,7 @@ export const CountUp = ({ end, duration = 2000, className = '', suffix = '', dec
         cancelAnimationFrame(animationFrame)
       }
     }
-  }, [isInView, end, duration])
+  }, [isInView, end, duration, decimal])
 
   return (
     <span ref={ref} className={className}>

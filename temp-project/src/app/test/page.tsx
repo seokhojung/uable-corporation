@@ -152,7 +152,7 @@ export default function TestPage() {
                   브랜드 전용 색상 테마
                 </h2>
                 <p className="text-brand-secondary">
-                  테마 토글로 light → dark → brand 순환, data-theme="brand"로 활성화됩니다.
+                  테마 토글로 light → dark → brand 순환, data-theme=&quot;brand&quot;로 활성화됩니다.
                 </p>
               </div>
 

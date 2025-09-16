@@ -63,7 +63,6 @@ const LegacyThemeToggle = ({
         className
       )}
       aria-label={`${nextTheme} 모드로 전환`}
-      aria-pressed={isDark}
       title={`현재: ${isDark ? '다크' : isBrand ? '브랜드' : '라이트'} 모드 (클릭하여 ${nextTheme} 모드로 전환)`}
       role="switch"
       aria-checked={isDark}

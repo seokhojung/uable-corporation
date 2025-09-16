@@ -304,7 +304,7 @@ const FAQAccordion = ({
       
       {searchable && filteredFAQs.length === 0 && (
         <div className="text-center py-8 text-text-muted">
-          No FAQs found matching "{searchTerm}"
+          No FAQs found matching &quot;{searchTerm}&quot;
         </div>
       )}
     </div>
