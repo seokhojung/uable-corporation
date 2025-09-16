@@ -136,6 +136,10 @@ module.exports = {
   },
   // 동적 테마 클래스(applyThemeClasses) 대응: Purge 방지 세이프리스트
   safelist: [
+    // Brand theme selectors
+    {
+      pattern: /data-\[theme=brand\]:.*/,
+    },
     // 테스트용 명시적 클래스들
     'dark',
     'bg-white', 'bg-black', 'bg-gray-50', 'bg-gray-100', 'bg-gray-200', 'bg-gray-300', 'bg-gray-400', 'bg-gray-500', 'bg-gray-600', 'bg-gray-700', 'bg-gray-800', 'bg-gray-900',

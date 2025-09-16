@@ -105,22 +105,41 @@ export default function RootLayout({
                   // Tailwind 클래스 적용
                   document.documentElement.classList.toggle('dark', theme === 'dark')
                   document.documentElement.setAttribute('data-theme', theme)
-                  
-                  // CSS 변수 적용 (성능 최적화)
-                  var cssVariables = {
-                    '--color-background': theme === 'dark' ? '#0f172a' : '#ffffff',
-                    '--color-foreground': theme === 'dark' ? '#f1f5f9' : '#0f172a',
-                    '--color-muted': theme === 'dark' ? '#1e293b' : '#f8fafc',
-                    '--color-muted-foreground': theme === 'dark' ? '#94a3b8' : '#64748b',
-                    '--color-border': theme === 'dark' ? '#334155' : '#e2e8f0',
-                    '--color-input': theme === 'dark' ? '#1e293b' : '#ffffff',
-                    '--color-primary': theme === 'dark' ? '#64748b' : '#475569',
-                    '--color-primary-foreground': theme === 'dark' ? '#0f172a' : '#f8fafc'
+
+                  // CSS 변수 적용 (브랜드 테마 포함)
+                  if (theme === 'brand') {
+                    // 브랜드 테마 CSS 변수 적용
+                    var brandVariables = {
+                      '--primary-100': '#2E8B57',
+                      '--primary-200': '#61bc84',
+                      '--primary-300': '#c6ffe6',
+                      '--accent-100': '#8FBC8F',
+                      '--accent-200': '#345e37',
+                      '--text-100': '#FFFFFF',
+                      '--text-200': '#e0e0e0',
+                      '--bg-100': '#1E1E1E',
+                      '--bg-200': '#2d2d2d',
+                      '--bg-300': '#454545'
+                    }
+                    Object.entries(brandVariables).forEach(function(entry) {
+                      document.documentElement.style.setProperty(entry[0], entry[1])
+                    })
+                  } else {
+                    // 일반 테마 CSS 변수 적용
+                    var cssVariables = {
+                      '--color-background': theme === 'dark' ? '#0f172a' : '#ffffff',
+                      '--color-foreground': theme === 'dark' ? '#f1f5f9' : '#0f172a',
+                      '--color-muted': theme === 'dark' ? '#1e293b' : '#f8fafc',
+                      '--color-muted-foreground': theme === 'dark' ? '#94a3b8' : '#64748b',
+                      '--color-border': theme === 'dark' ? '#334155' : '#e2e8f0',
+                      '--color-input': theme === 'dark' ? '#1e293b' : '#ffffff',
+                      '--color-primary': theme === 'dark' ? '#64748b' : '#475569',
+                      '--color-primary-foreground': theme === 'dark' ? '#0f172a' : '#f8fafc'
+                    }
+                    Object.entries(cssVariables).forEach(function(entry) {
+                      document.documentElement.style.setProperty(entry[0], entry[1])
+                    })
                   }
-                  
-                  Object.entries(cssVariables).forEach(function(entry) {
-                    document.documentElement.style.setProperty(entry[0], entry[1])
-                  })
                   
                 } catch (e) {
                   // localStorage 접근 실패시 다크 모드 기본 적용

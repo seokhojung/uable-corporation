@@ -11,7 +11,7 @@ import {
 /**
  * 테마 타입 정의
  */
-export type Theme = 'light' | 'dark'
+export type Theme = 'light' | 'dark' | 'brand'
 
 /**
  * ThemeContext 인터페이스
@@ -73,13 +73,13 @@ export const ThemeProvider: React.FC<ThemeProviderProps> = ({
     try {
       // No-Flash 스크립트가 이미 설정한 data-theme 속성을 읽음
       const currentTheme = document.documentElement.getAttribute('data-theme') as Theme
-      if (currentTheme && (currentTheme === 'light' || currentTheme === 'dark')) {
+      if (currentTheme && (currentTheme === 'light' || currentTheme === 'dark' || currentTheme === 'brand')) {
         console.log('📖 No-Flash 스크립트에서 테마 복원:', currentTheme)
         setThemeState(currentTheme)
       } else {
         // localStorage에서 직접 읽기 (fallback)
         const savedTheme = localStorage.getItem('theme') as Theme
-        if (savedTheme && (savedTheme === 'light' || savedTheme === 'dark')) {
+        if (savedTheme && (savedTheme === 'light' || savedTheme === 'dark' || savedTheme === 'brand')) {
           console.log('📖 localStorage에서 테마 복원:', savedTheme)
           setThemeState(savedTheme)
           applyCSSVariables(savedTheme)
@@ -112,7 +112,9 @@ export const ThemeProvider: React.FC<ThemeProviderProps> = ({
    */
   const applyTheme = (newTheme: Theme) => {
     if (typeof document !== 'undefined') {
+      // dark 클래스는 dark 테마일 때만
       document.documentElement.classList.toggle('dark', newTheme === 'dark')
+      // data-theme 속성으로 모든 테마 관리
       document.documentElement.setAttribute('data-theme', newTheme)
     }
   }
@@ -143,7 +145,9 @@ export const ThemeProvider: React.FC<ThemeProviderProps> = ({
         // DOM 클래스 적용
         if (typeof document !== 'undefined') {
           console.log('🏷️ Before DOM update - classList:', document.documentElement.classList.toString())
+          // dark 클래스는 dark 테마일 때만 적용
           document.documentElement.classList.toggle('dark', newTheme === 'dark')
+          // data-theme으로 모든 테마 관리 (light, dark, brand)
           document.documentElement.setAttribute('data-theme', newTheme)
           console.log('✅ After DOM update - classList:', document.documentElement.classList.toString())
           console.log('🎯 data-theme attribute:', document.documentElement.getAttribute('data-theme'))
@@ -175,7 +179,7 @@ export const ThemeProvider: React.FC<ThemeProviderProps> = ({
   }
 
   /**
-   * 테마 토글
+   * 테마 토글 (light ↔ dark)
    */
   const toggleTheme = () => {
     console.log('🔄 toggleTheme called - current theme:', theme)

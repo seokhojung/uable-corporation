@@ -5,6 +5,7 @@ import { Badge } from '@/components/primitives/Badge'
 import { Button } from '@/components/primitives/Button'
 import { ArrowRight, Code, Lightbulb, Rocket, Box } from 'lucide-react'
 import { ProductsSection } from '@/components/products/products-section'
+import { BrandThemeToggle } from '@/components/ui/brand-theme-toggle'
 
 export default function TestPage() {
   const [activeSection, setActiveSection] = useState('hero')
@@ -39,6 +40,7 @@ export default function TestPage() {
               </Button>
             ))}
           </div>
+          <BrandThemeToggle />
         </div>
       </div>
 
@@ -139,25 +141,26 @@ export default function TestPage() {
         {/* 신규 색상 팔레트 테스트 */}
         {activeSection === 'colors' && (
           <section className="py-16 space-y-8">
-            {/* 다크모드 배경 테스트 */}
-            <div className="bg-custom-bg-100 dark:bg-custom-bg-100 rounded-lg p-8">
+
+            {/* 브랜드 테마 모드 테스트 */}
+            <div className="bg-brand-dark border border-brand-accent rounded-lg p-8">
               <div className="text-center mb-8">
-                <Badge variant="primary" className="bg-primary-100 text-custom-text-100 border-primary-100">
-                  신규 브랜드 색상 시스템
+                <Badge variant="primary" className="bg-brand-primary text-brand-primary border-brand-accent">
+                  🎨 브랜드 테마 시스템
                 </Badge>
-                <h2 className="text-3xl font-bold text-custom-text-100 mt-4 mb-2">
-                  다크모드 최적화 색상 테스트
+                <h2 className="text-3xl font-bold text-brand-primary mt-4 mb-2">
+                  브랜드 전용 색상 테마
                 </h2>
-                <p className="text-custom-text-200">
-                  새로운 브랜드 색상 팔레트로 구현된 다크모드 디자인을 확인해보세요.
+                <p className="text-brand-secondary">
+                  테마 토글로 light → dark → brand 순환, data-theme="brand"로 활성화됩니다.
                 </p>
               </div>
 
               {/* 색상 팔레트 그리드 */}
               <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-8">
                 {/* Primary Colors */}
-                <div className="bg-custom-bg-200 rounded-lg p-6">
-                  <h3 className="text-custom-text-100 font-semibold mb-4">Primary Colors</h3>
+                <div className="bg-brand-darker rounded-lg p-6">
+                  <h3 className="text-brand-primary font-semibold mb-4">Primary Colors</h3>
                   <div className="space-y-3">
                     <div className="bg-primary-100 h-12 rounded flex items-center justify-center">
                       <span className="text-white font-medium">#2E8B57</span>
@@ -172,8 +175,8 @@ export default function TestPage() {
                 </div>
 
                 {/* Accent Colors */}
-                <div className="bg-custom-bg-200 rounded-lg p-6">
-                  <h3 className="text-custom-text-100 font-semibold mb-4">Accent Colors</h3>
+                <div className="bg-brand-darker rounded-lg p-6">
+                  <h3 className="text-brand-primary font-semibold mb-4">Accent Colors</h3>
                   <div className="space-y-3">
                     <div className="bg-accent-100 h-12 rounded flex items-center justify-center">
                       <span className="text-white font-medium">#8FBC8F</span>
@@ -188,25 +191,25 @@ export default function TestPage() {
                 </div>
 
                 {/* Background Colors */}
-                <div className="bg-custom-bg-200 rounded-lg p-6">
-                  <h3 className="text-custom-text-100 font-semibold mb-4">Background Colors</h3>
+                <div className="bg-brand-darker rounded-lg p-6">
+                  <h3 className="text-brand-primary font-semibold mb-4">Background Colors</h3>
                   <div className="space-y-3">
-                    <div className="bg-custom-bg-100 h-12 rounded border border-custom-bg-300 flex items-center justify-center">
-                      <span className="text-custom-text-200 font-medium">#1E1E1E</span>
+                    <div style={{ backgroundColor: 'var(--bg-100)' }} className="h-12 rounded border border-brand-accent flex items-center justify-center">
+                      <span className="text-brand-secondary font-medium">#1E1E1E</span>
                     </div>
-                    <div className="bg-custom-bg-200 h-12 rounded border border-custom-bg-300 flex items-center justify-center">
-                      <span className="text-custom-text-200 font-medium">#2d2d2d</span>
+                    <div style={{ backgroundColor: 'var(--bg-200)' }} className="h-12 rounded border border-brand-accent flex items-center justify-center">
+                      <span className="text-brand-secondary font-medium">#2d2d2d</span>
                     </div>
-                    <div className="bg-custom-bg-300 h-12 rounded flex items-center justify-center">
-                      <span className="text-custom-text-200 font-medium">#454545</span>
+                    <div style={{ backgroundColor: 'var(--bg-300)' }} className="h-12 rounded flex items-center justify-center">
+                      <span className="text-brand-secondary font-medium">#454545</span>
                     </div>
                   </div>
                 </div>
               </div>
 
               {/* 버튼 테스트 */}
-              <div className="bg-custom-bg-200 rounded-lg p-6 mb-6">
-                <h3 className="text-custom-text-100 font-semibold mb-4">Button Variations</h3>
+              <div className="bg-brand-darker rounded-lg p-6 mb-6">
+                <h3 className="text-brand-primary font-semibold mb-4">브랜드 테마 버튼 변형</h3>
                 <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-4">
                   <Button className="bg-primary-100 hover:bg-primary-200 text-custom-text-100">
                     Primary

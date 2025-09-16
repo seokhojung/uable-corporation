@@ -1,0 +1,138 @@
+/* Brand Theme CSS Variables */
+/* 기존 테마 시스템에 추가되는 새로운 테마 */
+
+[data-theme="brand"] {
+  /* Primary Colors - 당신이 원하는 브랜드 색상 */
+  --primary-100: #2E8B57;
+  --primary-200: #61bc84;
+  --primary-300: #c6ffe6;
+
+  /* Accent Colors */
+  --accent-100: #8FBC8F;
+  --accent-200: #345e37;
+
+  /* Text Colors */
+  --text-100: #FFFFFF;
+  --text-200: #e0e0e0;
+
+  /* Background Colors */
+  --bg-100: #1E1E1E;
+  --bg-200: #2d2d2d;
+  --bg-300: #454545;
+
+  /* 기존 시스템과 호환되는 매핑 */
+  --color-background: var(--bg-100);
+  --color-foreground: var(--text-100);
+  --color-muted: var(--bg-200);
+  --color-accent: var(--accent-100);
+
+  /* Tailwind 호환 색상 */
+  --tw-bg-primary: var(--primary-100);
+  --tw-text-primary: var(--text-100);
+  --tw-bg-secondary: var(--bg-200);
+}
+
+/* 브랜드 테마 전용 유틸리티 클래스 */
+[data-theme="brand"] .bg-brand-primary {
+  background-color: var(--primary-100);
+}
+
+[data-theme="brand"] .bg-brand-secondary {
+  background-color: var(--primary-200);
+}
+
+[data-theme="brand"] .text-brand-primary {
+  color: var(--text-100);
+}
+
+[data-theme="brand"] .text-brand-secondary {
+  color: var(--text-200);
+}
+
+[data-theme="brand"] .bg-brand-dark {
+  background-color: var(--bg-100);
+}
+
+[data-theme="brand"] .bg-brand-darker {
+  background-color: var(--bg-200);
+}
+
+[data-theme="brand"] .border-brand-accent {
+  border-color: var(--accent-100);
+}
+
+/* 기존 컴포넌트와의 호환성 */
+[data-theme="brand"] .bg-background {
+  background-color: var(--bg-100);
+}
+
+[data-theme="brand"] .text-foreground {
+  color: var(--text-100);
+}
+
+[data-theme="brand"] .bg-card {
+  background-color: var(--bg-200);
+}
+
+/* 테스트 페이지와 동일한 클래스들 추가 */
+[data-theme="brand"] .bg-primary-100 {
+  background-color: var(--primary-100);
+}
+
+[data-theme="brand"] .bg-primary-200 {
+  background-color: var(--primary-200);
+}
+
+[data-theme="brand"] .bg-primary-300 {
+  background-color: var(--primary-300);
+}
+
+[data-theme="brand"] .bg-accent-100 {
+  background-color: var(--accent-100);
+}
+
+[data-theme="brand"] .bg-accent-200 {
+  background-color: var(--accent-200);
+}
+
+[data-theme="brand"] .text-primary-100 {
+  color: var(--primary-100);
+}
+
+[data-theme="brand"] .text-primary-200 {
+  color: var(--primary-200);
+}
+
+[data-theme="brand"] .border-primary-100 {
+  border-color: var(--primary-100);
+}
+
+[data-theme="brand"] .border-primary-200 {
+  border-color: var(--primary-200);
+}
+
+[data-theme="brand"] .bg-custom-bg-200 {
+  background-color: var(--bg-200);
+}
+
+[data-theme="brand"] .bg-custom-bg-300 {
+  background-color: var(--bg-300);
+}
+
+[data-theme="brand"] .border-custom-bg-300 {
+  border-color: var(--bg-300);
+}
+
+[data-theme="brand"] .text-custom-text-100 {
+  color: var(--text-100);
+}
+
+[data-theme="brand"] .text-custom-text-200 {
+  color: var(--text-200);
+}
+
+/* 더 어두운 메인 배경 추가 */
+[data-theme="brand"] .bg-custom-bg-100 {
+  background-color: var(--bg-100);
+}
+

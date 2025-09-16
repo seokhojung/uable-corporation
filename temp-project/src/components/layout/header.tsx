@@ -5,6 +5,7 @@ import { useState } from 'react'
 import { Menu, X } from 'lucide-react'
 import { Button } from '@/components/primitives/Button'
 import { ThemeToggle } from '@/components/ui/theme-toggle'
+import { BrandThemeToggle } from '@/components/ui/brand-theme-toggle'
 import { applyThemeClasses } from '@/lib/theme-class-mapping'
 import Link from 'next/link'
 import Image from 'next/image'
@@ -68,7 +69,10 @@ export const Header = () => {
             </Link>
           ))}
           {/* 테마 토글 버튼 - 데스크톱 */}
-          <ThemeToggle className="ml-2" />
+          <div className="flex items-center gap-2 ml-2">
+            <ThemeToggle />
+            <BrandThemeToggle />
+          </div>
           <Button variant="primary" className={applyThemeClasses(
             "!bg-gradient-to-r !from-emerald-500 !to-green-500 hover:!from-emerald-600 hover:!to-green-600 !text-white shadow-lg shadow-emerald-500/25 hover:shadow-xl hover:shadow-emerald-500/40 transition-all duration-300",
             isThemeSystemEnabled
@@ -138,7 +142,10 @@ export const Header = () => {
                       "text-sm font-medium text-gray-700 dark:text-slate-300",
                       isThemeSystemEnabled
                     )}>테마</span>
-                    <ThemeToggle />
+                    <div className="flex items-center gap-2">
+                      <ThemeToggle />
+                      <BrandThemeToggle />
+                    </div>
                   </div>
                   <Button variant="primary" className="w-full">
                     <Link href="/contact">Contact</Link>

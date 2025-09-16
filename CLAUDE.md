@@ -1,83 +1,83 @@
-# CLAUDE.md
+# CLAUDE.md (한글 번역)
 
-This file provides guidance to Claude Code (claude.ai/code) when working with code in this repository.
+이 파일은 Claude Code (claude.ai/code)가 이 저장소의 코드를 작업할 때 필요한 가이드라인을 제공합니다.
 
-## Project Overview
+## 프로젝트 개요
 
-**Uable Corporation** is a 3D/AR/WebXR technology company with a Next.js-based corporate website showcasing their immersive technology capabilities. The project has completed its UI refactoring initiative, successfully migrating to a modern component architecture.
+**Uable Corporation**은 3D/AR/WebXR 기술 회사로, Next.js 기반의 기업 웹사이트를 통해 몰입형 기술 역량을 선보이고 있습니다. 이 프로젝트는 UI 리팩토링 작업을 완료하고, 현대적인 컴포넌트 아키텍처로 성공적으로 마이그레이션하였습니다.
 
-### Key Business Context
-- **Industry**: 3D/AR/WebXR technology solutions
-- **Core Services**: 3D Product Configurators, AR Mobile Apps, WebXR Experiences
-- **Target Stack**: Three.js, React Three Fiber, AR.js, WebXR API
-- **Status**: ✅ Legacy cleanup completed (Sept 2025)
+### 핵심 비즈니스 컨텍스트
+- **산업 분야**: 3D/AR/WebXR 기술 솔루션
+- **핵심 서비스**: 3D 제품 컨피규레이터, AR 모바일 앱, WebXR 경험
+- **기술 스택**: Three.js, React Three Fiber, AR.js, WebXR API
+- **상태**: ✅ 레거시 정리 완료 (2025년 9월)
 
-## Development Commands
+## 개발 명령어
 
 ```bash
-# Development
+# 개발
 cd temp-project
-npm run dev              # Start development server
-npm run build            # Production build
-npm run start            # Start production server
-npm run lint             # ESLint validation
+npm run dev              # 개발 서버 시작
+npm run build            # 프로덕션 빌드
+npm run start            # 프로덕션 서버 시작
+npm run lint             # ESLint 검증
 
-# Windows-specific server management
-npm run dev-safe         # Check server status before dev
-npm run start-server     # Start PowerShell server
-npm run server           # Start PowerShell server (alias)
-npm run server-bg        # Start server in background
-npm run stop-server      # Stop running server
-npm run check-server     # Check server status
+# Windows 전용 서버 관리
+npm run dev-safe         # 개발 시작 전 서버 상태 확인
+npm run start-server     # PowerShell 서버 시작
+npm run server           # PowerShell 서버 시작 (별칭)
+npm run server-bg        # 백그라운드에서 서버 시작
+npm run stop-server      # 실행 중인 서버 중지
+npm run check-server     # 서버 상태 확인
 
-# SEO & Performance
-npm run postbuild        # Generate sitemap after build
+# SEO & 성능
+npm run postbuild        # 빌드 후 사이트맵 생성
 ```
 
-## Architecture Overview
+## 아키텍처 개요
 
-### Current State (Post-Legacy Cleanup)
+### 현재 상태 (레거시 정리 후)
 ```
 temp-project/src/
 ├── app/                 # App Router (Next.js 14)
-│   ├── webgl/          # WebGL gallery dedicated page
-│   ├── portfolio/      # Portfolio detail pages
-│   ├── contact/        # Contact form page
-│   └── privacy/        # Privacy policy page
+│   ├── webgl/          # WebGL 갤러리 전용 페이지
+│   ├── portfolio/      # 포트폴리오 상세 페이지
+│   ├── contact/        # 연락처 양식 페이지
+│   └── privacy/        # 개인정보 처리방침 페이지
 ├── components/
-│   ├── primitives/     # Modern component system (CVA + Radix)
-│   │   ├── Button/     # Button, Badge, Card, Input, Modal, etc.
-│   │   └── index.ts    # Central exports
-│   ├── ui/             # Specialized components (charts, containers)
+│   ├── primitives/     # 현대적 컴포넌트 시스템 (CVA + Radix)
+│   │   ├── Button/     # Button, Badge, Card, Input, Modal 등
+│   │   └── index.ts    # 중앙 익스포트
+│   ├── ui/             # 특수 컴포넌트 (차트, 컨테이너)
 │   ├── layout/         # Header, Footer
-│   ├── sections/       # Page sections (Hero, Problem, Solution)
-│   ├── portfolio/      # Portfolio-specific components
-│   ├── webgl/          # WebGL gallery components
-│   └── seo/           # SEO optimization components
-├── contexts/           # React contexts
-│   ├── ThemeContext.tsx      # Dark/light mode management
-│   └── MigrationContext.tsx  # Simplified post-cleanup
-├── data/               # Static portfolio data
-│   └── webgl-gallery.ts # WebGL bundle management
-├── hooks/              # Custom React hooks
-├── lib/                # Utilities and validation
-├── design-system/      # Design tokens and utilities
-└── styles/             # Global styles
+│   ├── sections/       # 페이지 섹션 (Hero, Problem, Solution)
+│   ├── portfolio/      # 포트폴리오 전용 컴포넌트
+│   ├── webgl/          # WebGL 갤러리 컴포넌트
+│   └── seo/           # SEO 최적화 컴포넌트
+├── contexts/           # React 컨텍스트
+│   ├── ThemeContext.tsx      # 3단계 테마 관리 (light/dark/brand)
+│   └── MigrationContext.tsx  # 정리 후 단순화
+├── data/               # 정적 포트폴리오 데이터
+│   └── webgl-gallery.ts # WebGL 번들 관리
+├── hooks/              # 사용자 정의 React 훅
+├── lib/                # 유틸리티 및 검증
+├── design-system/      # 디자인 토큰 및 유틸리티
+└── styles/             # 글로벌 스타일
 ```
 
-## Component Architecture (Post-Cleanup)
+## 컴포넌트 아키텍처 (정리 후)
 
-**✅ COMPLETED**: Legacy UI migration has been successfully completed. The project now uses a unified component system.
+**✅ 완료**: 레거시 UI 마이그레이션이 성공적으로 완료되었습니다. 이제 프로젝트는 통합된 컴포넌트 시스템을 사용합니다.
 
-### 1. Component System Structure
-All UI components now use a single, modern architecture:
-- **`@/components/primitives/`**: Core components (Button, Badge, Card, Input, Modal, etc.)
-- **`@/components/ui/`**: Specialized components (charts, containers, theme toggle)
-- Import patterns: `import { Button } from '@/components/primitives/Button'`
+### 1. 컴포넌트 시스템 구조
+모든 UI 컴포넌트는 단일하고 현대적인 아키텍처를 사용합니다:
+- **`@/components/primitives/`**: 핵심 컴포넌트 (Button, Badge, Card, Input, Modal 등)
+- **`@/components/ui/`**: 특수 컴포넌트 (차트, 컨테이너, 테마 토글)
+- 임포트 패턴: `import { Button } from '@/components/primitives/Button'`
 
-### 2. Component Standards
+### 2. 컴포넌트 표준
 ```typescript
-// CVA-based component pattern
+// CVA 기반 컴포넌트 패턴
 const buttonVariants = cva("base-classes", {
   variants: {
     variant: { primary: "...", secondary: "..." },
@@ -88,86 +88,141 @@ const buttonVariants = cva("base-classes", {
 interface ButtonProps extends
   React.ButtonHTMLAttributes<HTMLButtonElement>,
   VariantProps<typeof buttonVariants> {
-  asChild?: boolean  // Polymorphic component support
+  asChild?: boolean  // 다형성 컴포넌트 지원
 }
 ```
 
-### 3. Key Architectural Decisions
-- **CVA**: Class Variance Authority for variant management
-- **Radix UI**: Accessible primitives with full customization
-- **Forward Refs**: All components support ref forwarding
-- **TypeScript**: Full type safety with proper interfaces
+### 3. 주요 아키텍처 결정사항
+- **CVA**: 변형 관리를 위한 Class Variance Authority
+- **Radix UI**: 완전한 사용자 정의가 가능한 접근성 기본 요소
+- **Forward Refs**: 모든 컴포넌트가 ref 전달 지원
+- **TypeScript**: 적절한 인터페이스와 완전한 타입 안전성
 
-## Key Dependencies
+## 핵심 의존성
 
-### Core Stack
-- **Framework**: Next.js 14.2.13 (App Router)
+### 핵심 스택
+- **프레임워크**: Next.js 14.2.13 (App Router)
 - **React**: 18.3.1 with TypeScript
-- **Styling**: Tailwind CSS + Framer Motion
-- **Forms**: React Hook Form + Zod validation
-- **3D/WebGL**: Shapespark WebGL bundles integration
+- **스타일링**: Tailwind CSS + Framer Motion
+- **폼**: React Hook Form + Zod 검증
+- **3D/WebGL**: Shapespark WebGL 번들 통합
 
-### UI Architecture
-- **CVA**: Class Variance Authority for variant management
-- **Radix UI**: Accessible primitives (Accordion, Dialog, Select, Slot)
-- **Tailwind Merge**: Dynamic class merging via cn() utility
-- **Lucide React**: Icon system
-- **Framer Motion**: Animations and transitions
+### UI 아키텍처
+- **CVA**: 변형 관리를 위한 Class Variance Authority
+- **Radix UI**: 접근성 기본 요소 (Accordion, Dialog, Select, Slot)
+- **Tailwind Merge**: cn() 유틸리티를 통한 동적 클래스 병합
+- **Lucide React**: 아이콘 시스템
+- **Framer Motion**: 애니메이션 및 전환
 
-### SEO & Analytics
-- **Sitemap**: next-sitemap for automatic generation
-- **Schema**: Structured data for 3D/AR/WebXR keywords
-- **Analytics**: Naver Analytics integration
+### SEO & 분석
+- **사이트맵**: 자동 생성을 위한 next-sitemap
+- **스키마**: 3D/AR/WebXR 키워드에 대한 구조화된 데이터
+- **분석**: 네이버 애널리틱스 통합
 
-## Development Guidelines
+## 개발 가이드라인
 
-### 1. Component Development
-- **Core UI components**: Add to `src/components/primitives/` using CVA + Radix patterns
-- **Specialized components**: Add to `src/components/ui/` for charts, containers, etc.
-- **Always use TypeScript**: Full type safety with proper interfaces
-- **Follow CVA patterns**: Use `cva()` for component variants and styling
+### 1. 컴포넌트 개발
+- **핵심 UI 컴포넌트**: CVA + Radix 패턴을 사용하여 `src/components/primitives/`에 추가
+- **특수 컴포넌트**: 차트, 컨테이너 등을 위해 `src/components/ui/`에 추가
+- **항상 TypeScript 사용**: 적절한 인터페이스와 완전한 타입 안전성
+- **CVA 패턴 따르기**: 컴포넌트 변형 및 스타일링을 위해 `cva()` 사용
 
-### 2. Import Patterns
+### 2. 임포트 패턴
 ```typescript
-// Correct import patterns
+// 올바른 임포트 패턴
 import { Button } from '@/components/primitives/Button'
 import { ThemeToggle } from '@/components/ui/theme-toggle'
 import { cn } from '@/design-system/utils'
 
-// Component usage with variants
-<Button variant="primary" size="lg">Click me</Button>
+// 변형과 함께 컴포넌트 사용
+<Button variant="primary" size="lg">클릭하세요</Button>
 ```
 
-### 3. SEO Considerations
-- Maintain structured data in layout.tsx
-- Include 3D/AR/WebXR keywords in meta tags
-- Use semantic HTML for accessibility
-- Optimize for Korean market (Naver, Google Korea)
+### 3. 테마 인식 개발
+- **세 가지 테마 모두 지원**: light, dark, brand
+- **브랜드 테마 클래스 사용**: `bg-brand-primary`, `text-brand-secondary` 등
+- **테마 전환 테스트**: 모든 테마 상태에서 컴포넌트가 작동하는지 확인
+- **하드코딩된 색상 피하기**: 테마 인식 Tailwind 클래스 사용
 
-## File Structure Conventions
+### 4. SEO 고려사항
+- layout.tsx에서 구조화된 데이터 유지
+- 메타 태그에 3D/AR/WebXR 키워드 포함
+- 접근성을 위한 시맨틱 HTML 사용
+- 한국 시장 최적화 (네이버, 구글 코리아)
 
-### Primitive Components
+### 5. 성능 & WebGL
+- **WebGL 번들 지연 로딩**: 3D 경험을 위해 동적 임포트 사용
+- **이미지 최적화**: 더 나은 성능을 위해 `OptimizedImage` 컴포넌트 사용
+- **모바일 테스트**: WebGL 경험이 모바일 기기에서 작동하는지 확인
+
+## 파일 구조 규칙
+
+### 기본 컴포넌트
 ```
 src/components/primitives/
 ├── Button/
-│   ├── Button.tsx       # Main component with CVA
-│   └── index.ts         # Clean exports
+│   ├── Button.tsx       # CVA가 포함된 메인 컴포넌트
+│   └── index.ts         # 깔끔한 익스포트
 ├── Card/
-│   ├── Card.tsx         # Compound component pattern
+│   ├── Card.tsx         # 복합 컴포넌트 패턴
 │   └── index.ts
 ```
 
-### Specialized Components
+### 특수 컴포넌트
 ```
 src/components/ui/
-├── theme-toggle.tsx     # Theme switching
-├── container.tsx        # Layout containers
-├── *-chart.tsx         # Data visualization
+├── theme-toggle.tsx       # Light/Dark 테마 전환
+├── brand-theme-toggle.tsx # Brand/Light 테마 전환
+├── container.tsx          # 레이아웃 컨테이너
+├── *-chart.tsx           # 데이터 시각화 (bar, circular, donut 등)
+├── service-scroll.tsx     # 스크롤이 있는 서비스 쇼케이스
+└── optimized-image.tsx    # 성능 최적화된 이미지
 ```
 
-## WebGL Integration Architecture
+## 테마 시스템 아키텍처
 
-### WebGL Bundle System
+### 3단계 테마 시스템
+프로젝트는 세 가지 테마를 지원하는 포괄적인 테마 시스템을 구현합니다:
+- **Light**: 표준 밝은 모드
+- **Dark**: 표준 어두운 모드
+- **Brand**: 시 그린 색상 팔레트를 가진 커스텀 브랜드 테마
+
+### 테마 컨텍스트 구조
+```typescript
+export type Theme = 'light' | 'dark' | 'brand'
+
+interface ThemeContextType {
+  theme: Theme
+  setTheme: (theme: Theme) => void
+  toggleTheme: () => void  // 순환: light → dark → brand → light
+  mounted: boolean
+  isTransitioning: boolean
+}
+```
+
+### 테마 토글 컴포넌트
+1. **ThemeToggle** (`theme-toggle.tsx`): 3단계 순환 토글 (light → dark → brand)
+2. **BrandThemeToggle** (`brand-theme-toggle.tsx`): 직접 brand ↔ light 전환
+
+### 브랜드 테마 구현
+- **CSS 변수**: `src/styles/brand-theme.css`에 정의
+- **색상 팔레트**: 시 그린 (#2E8B57), 어두운 배경 (#1E1E1E), 흰색 텍스트
+- **CSS 클래스**: `bg-brand-primary`, `text-brand-primary` 등
+- **데이터 속성**: CSS 타게팅을 위한 `[data-theme="brand"]`
+
+### 사용 패턴
+```typescript
+// 테마 전환
+import { useTheme } from '@/contexts/ThemeContext'
+const { theme, setTheme, toggleTheme } = useTheme()
+
+// 테마 인식 스타일링
+className="bg-white dark:bg-slate-800 bg-brand-darker"
+```
+
+## WebGL 통합 아키텍처
+
+### WebGL 번들 시스템
 ```typescript
 interface WebGLBundle {
   id: string
@@ -180,22 +235,22 @@ interface WebGLBundle {
 }
 ```
 
-### Current WebGL Experiences
-1. **웹툰 스튜디오**: Creative workspace 3D environment
-2. **청우 F&B 쇼룸**: Cruise-themed virtual showroom
-3. **홈 갤러리**: Modern residential space tour
-4. **오피스 공간**: Contemporary office space experience
-5. **주차장**: Realistic underground parking facility
+### 현재 WebGL 경험
+1. **웹툰 스튜디오**: 창작 작업공간 3D 환경
+2. **청우 F&B 쇼룸**: 크루즈 테마 가상 쇼룸
+3. **홈 갤러리**: 현대적 주거 공간 투어
+4. **오피스 공간**: 현대적 사무실 공간 경험
+5. **주차장**: 사실적인 지하 주차시설
 
-### WebGL Component Usage
-- **Gallery Component**: `<WebGLGallery />` for reusable gallery display
-- **Home Integration**: Shows first 3 bundles with "View All" link
-- **Dedicated Page**: `/webgl` for complete WebGL experience showcase
-- **Header Navigation**: Direct access via main navigation menu
+### WebGL 컴포넌트 사용
+- **갤러리 컴포넌트**: 재사용 가능한 갤러리 표시를 위한 `<WebGLGallery />`
+- **홈 통합**: "모두 보기" 링크와 함께 첫 3개 번들 표시
+- **전용 페이지**: 완전한 WebGL 경험 쇼케이스를 위한 `/webgl`
+- **헤더 네비게이션**: 메인 네비게이션 메뉴를 통한 직접 접근
 
-## Business Domain Knowledge
+## 비즈니스 도메인 지식
 
-### Portfolio Data Structure
+### 포트폴리오 데이터 구조
 ```typescript
 interface PortfolioItem {
   id: string
@@ -210,39 +265,56 @@ interface PortfolioItem {
 }
 ```
 
-### 3D/AR/WebGL Specific Components
-- Visual metrics charts (performance data)
-- 3D model previews and galleries
-- Interactive demo sections
-- Technology stack badges
-- **WebGL Gallery System**: Reusable gallery component for Shapespark bundles
-- **WebGL Bundle Management**: Centralized data management for WebGL experiences
+### 3D/AR/WebGL 특수 컴포넌트
+- 시각적 메트릭 차트 (성능 데이터)
+- 3D 모델 미리보기 및 갤러리
+- 인터랙티브 데모 섹션
+- 기술 스택 배지
+- **WebGL 갤러리 시스템**: Shapespark 번들을 위한 재사용 가능한 갤러리 컴포넌트
+- **WebGL 번들 관리**: WebGL 경험을 위한 중앙화된 데이터 관리
 
-### Korean Market Optimization
-- Naver search engine optimization
-- Korean language structured data
-- Mobile-first responsive design
-- Local business schema markup
+### 한국 시장 최적화
+- 네이버 검색 엔진 최적화
+- 한국어 구조화된 데이터
+- 모바일 우선 반응형 디자인
+- 지역 비즈니스 스키마 마크업
 
-## Testing Strategy
+## 테스트 전략
 
-- Component testing with TypeScript type checking
-- Visual regression testing for UI components
-- Validate SEO structured data after changes
-- Performance testing for 3D/WebGL content
-- Cross-browser testing for WebGL compatibility
+- TypeScript 타입 검사를 통한 컴포넌트 테스트
+- UI 컴포넌트의 시각적 회귀 테스트
+- 변경 후 SEO 구조화된 데이터 검증
+- 3D/WebGL 콘텐츠의 성능 테스트
+- WebGL 호환성을 위한 크로스 브라우저 테스트
 
-## Additional Context
+## 추가 컨텍스트
 
-### Specialized Agents
-This repository includes specialized AI agents via `.cursor/rules/` directory for different development roles (dev, architect, analyst, etc.). These can be referenced when working on specific aspects of the project.
+### 전문 에이전트
+이 저장소는 다양한 개발 역할(개발자, 아키텍트, 분석가 등)을 위한 `.cursor/rules/` 디렉토리를 통한 전문 AI 에이전트를 포함합니다. 프로젝트의 특정 측면을 작업할 때 참조할 수 있습니다.
 
-### Documentation
-- **`docs/`**: Comprehensive project documentation including architecture, specifications, and implementation guides
-- **Architecture docs**: Up-to-date post-legacy cleanup architecture information
-- **WebGL Integration**: Detailed guides for 3D experience implementation
+### 문서 구조
+- **`docs/architecture.md`**: 전체 시스템 아키텍처
+- **`docs/Dark-Light-Mode-Toggle/`**: 테마 시스템 구현 가이드 및 워크플로우
+- **`docs/color-system/`**: 브랜드 테마 구현 계획 및 색상 명세
+- **`docs/ui-refactoring/`**: UI 컴포넌트 마이그레이션 및 리팩토링 문서
+- **`docs/webgl-*`**: WebGL 배포 및 관리 가이드
+- **`docs/guides/`**: 개발 가이드 및 모범 사례
 
-### Business Focus
-- Target market: Korean market with Naver SEO optimization
-- Industry: 3D/AR/WebXR technology solutions
-- Core value: Immersive technology showcase and client acquisition
+### 비즈니스 포커스
+- 목표 시장: 네이버 SEO 최적화가 포함된 한국 시장
+- 산업: 3D/AR/WebXR 기술 솔루션
+- 핵심 가치: 몰입형 기술 쇼케이스 및 고객 확보
+
+## 중요한 프로젝트 가이드라인
+
+### 파일 생성 정책
+- **목표 달성에 절대적으로 필요하지 않은 한 파일을 생성하지 마세요**
+- **새 파일을 만드는 것보다 기존 파일을 편집하는 것을 항상 선호하세요**
+- **문서 파일(*.md)이나 README 파일을 적극적으로 생성하지 마세요** (명시적으로 요청된 경우 제외)
+- 사용자가 명시적으로 요청한 경우에만 문서 파일을 생성하세요
+
+### 개발 접근 방식
+- `docs/` 디렉토리의 문서화된 구현 패턴을 따르세요
+- 새로운 접근 방식을 제안하기 전에 성공적인 구현 예제를 참조하세요
+- 복잡한 작업을 추적하고 계획하기 위해 TodoWrite 도구를 자주 사용하세요
+- 테마 작업 시 항상 기존의 성공적인 구현을 참조하세요

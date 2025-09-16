@@ -280,9 +280,7 @@ export default function ContactPage() {
                       name="name"
                       value={formData.name}
                       onChange={(e) => handleInputChange('name', e.target.value)}
-                      className={`w-full pl-10 pr-4 py-3 bg-white dark:bg-slate-700/50 border rounded-lg text-gray-900 dark:text-slate-100 placeholder-gray-400 dark:placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-green-500 dark:focus:ring-slate-500 focus:border-transparent ${
-                        errors.name ? 'border-red-500' : 'border-gray-300 dark:border-slate-600'
-                      }`}
+                      className={`w-full pl-10 pr-4 py-3 bg-white dark:bg-slate-700/50 border rounded-lg text-gray-900 dark:text-slate-100 placeholder-gray-400 dark:placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-green-500 dark:focus:ring-slate-500 focus:border-transparent ${errors.name ? 'border-red-500' : 'border-gray-300 dark:border-slate-600'}`}
                       placeholder="홍길동"
                     />
                   </div>
@@ -306,9 +304,7 @@ export default function ContactPage() {
                       name="email"
                       value={formData.email}
                       onChange={(e) => handleInputChange('email', e.target.value)}
-                      className={`w-full pl-10 pr-4 py-3 bg-white dark:bg-slate-700/50 border rounded-lg text-gray-900 dark:text-slate-100 placeholder-gray-400 dark:placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-green-500 dark:focus:ring-slate-500 focus:border-transparent ${
-                        errors.email ? 'border-red-500' : 'border-gray-300 dark:border-slate-600'
-                      }`}
+                      className={`w-full pl-10 pr-4 py-3 bg-white dark:bg-slate-700/50 border rounded-lg text-gray-900 dark:text-slate-100 placeholder-gray-400 dark:placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-green-500 dark:focus:ring-slate-500 focus:border-transparent ${errors.email ? 'border-red-500' : 'border-gray-300 dark:border-slate-600'}`}
                       placeholder="hong@example.com"
                     />
                   </div>

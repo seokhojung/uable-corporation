@@ -42,16 +42,45 @@ export const CSS_VARIABLES = {
 } as const
 
 /**
- * CSS 변수 적용 함수
+ * CSS 변수 적용 함수 (브랜드 테마 포함)
  */
-export const applyCSSVariables = (theme: 'light' | 'dark'): void => {
+export const applyCSSVariables = (theme: 'light' | 'dark' | 'brand'): void => {
   if (typeof document === 'undefined') return
-  
+
   const root = document.documentElement
-  
-  Object.entries(CSS_VARIABLES).forEach(([property, values]) => {
-    root.style.setProperty(property, values[theme])
-  })
+
+  // 기존 CSS Variables 적용
+  if (theme === 'light' || theme === 'dark') {
+    Object.entries(CSS_VARIABLES).forEach(([property, values]) => {
+      root.style.setProperty(property, values[theme as 'light' | 'dark'])
+    })
+  }
+
+  // 브랜드 테마 CSS Variables 적용
+  if (theme === 'brand') {
+    root.style.setProperty('--primary-100', '#2E8B57')
+    root.style.setProperty('--primary-200', '#61bc84')
+    root.style.setProperty('--primary-300', '#c6ffe6')
+    root.style.setProperty('--accent-100', '#8FBC8F')
+    root.style.setProperty('--accent-200', '#345e37')
+    root.style.setProperty('--text-100', '#FFFFFF')
+    root.style.setProperty('--text-200', '#e0e0e0')
+    root.style.setProperty('--bg-100', '#1E1E1E')
+    root.style.setProperty('--bg-200', '#2d2d2d')
+    root.style.setProperty('--bg-300', '#454545')
+  } else {
+    // 브랜드 테마가 아닐 때 브랜드 변수 제거
+    root.style.removeProperty('--primary-100')
+    root.style.removeProperty('--primary-200')
+    root.style.removeProperty('--primary-300')
+    root.style.removeProperty('--accent-100')
+    root.style.removeProperty('--accent-200')
+    root.style.removeProperty('--text-100')
+    root.style.removeProperty('--text-200')
+    root.style.removeProperty('--bg-100')
+    root.style.removeProperty('--bg-200')
+    root.style.removeProperty('--bg-300')
+  }
 }
 
 /**

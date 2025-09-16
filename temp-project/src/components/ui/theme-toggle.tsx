@@ -21,12 +21,13 @@ const LegacyThemeToggle = ({
   // 접근성 개선된 토글 함수
   const handleToggle = async () => {
     if (isTransitioning) return
-    
-    const newTheme = theme === 'light' ? 'dark' : 'light'
-    
+
+    // Brand 테마에서도 Light로 가도록 수정
+    const newTheme = (theme === 'light' || theme === 'brand') ? 'dark' : 'light'
+
     // 테마 변경
     toggleTheme()
-    
+
     // 스크린 리더 알림
     announceThemeChange(newTheme)
   }
@@ -49,7 +50,8 @@ const LegacyThemeToggle = ({
   }
 
   const isDark = theme === 'dark'
-  const nextTheme = isDark ? '라이트' : '다크'
+  const isBrand = theme === 'brand'
+  const nextTheme = (isDark || isBrand) ? '라이트' : '다크'
 
   return (
     <button
@@ -62,23 +64,23 @@ const LegacyThemeToggle = ({
       )}
       aria-label={`${nextTheme} 모드로 전환`}
       aria-pressed={isDark}
-      title={`현재: ${isDark ? '다크' : '라이트'} 모드 (클릭하여 ${nextTheme} 모드로 전환)`}
+      title={`현재: ${isDark ? '다크' : isBrand ? '브랜드' : '라이트'} 모드 (클릭하여 ${nextTheme} 모드로 전환)`}
       role="switch"
       aria-checked={isDark}
       type="button"
       {...props}
     >
-      {isDark ? (
-        <Sun 
+      {(isDark || isBrand) ? (
+        <Sun
           className={cn(
             'w-4 h-4 text-yellow-500 transition-all duration-200',
             'rotate-0 scale-100 hover:rotate-12',
             isTransitioning && 'animate-pulse'
-          )} 
+          )}
           aria-hidden="true"
         />
       ) : (
-        <Moon 
+        <Moon
           className={cn(
             'w-4 h-4 text-slate-700 dark:text-slate-300 transition-all duration-200',
             'rotate-0 scale-100 hover:-rotate-12',
@@ -90,7 +92,7 @@ const LegacyThemeToggle = ({
       
       {/* 스크린 리더용 텍스트 */}
       <span className="sr-only">
-        현재 {isDark ? '다크' : '라이트'} 모드, {nextTheme} 모드로 전환하려면 클릭하세요
+        현재 {isDark ? '다크' : isBrand ? '브랜드' : '라이트'} 모드, {nextTheme} 모드로 전환하려면 클릭하세요
       </span>
     </button>
   )

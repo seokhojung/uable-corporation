@@ -2,6 +2,9 @@
 @tailwind components;
 @tailwind utilities;
 
+/* Brand Theme Import */
+@import '../styles/brand-theme.css';
+
 @layer base {
   html {
     scroll-behavior: smooth;
