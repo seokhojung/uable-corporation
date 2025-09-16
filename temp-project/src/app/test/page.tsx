@@ -30,7 +30,7 @@ export default function TestPage() {
             {sections.map((section) => (
               <Button
                 key={section.id}
-                variant={activeSection === section.id ? 'default' : 'outline'}
+                variant={activeSection === section.id ? 'primary' : 'outline'}
                 size="sm"
                 onClick={() => setActiveSection(section.id)}
                 className="flex items-center gap-2"
