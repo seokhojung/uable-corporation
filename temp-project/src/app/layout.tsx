@@ -98,8 +98,8 @@ export default function RootLayout({
                 try {
                   var theme = localStorage.getItem('theme')
                   if (!theme) {
-                    // 기본값은 다크 모드 (기존 디자인 유지)
-                    theme = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'dark'
+                    // 기본값은 브랜드 테마
+                    theme = 'brand'
                   }
                   
                   // Tailwind 클래스 적용

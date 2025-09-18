@@ -4,7 +4,6 @@
 import { useState } from 'react'
 import { Menu, X } from 'lucide-react'
 import { Button } from '@/components/primitives/Button'
-import { ThemeToggle } from '@/components/ui/theme-toggle'
 import { BrandThemeToggle } from '@/components/ui/brand-theme-toggle'
 import { useHeaderTheme } from '@/lib/header-theme-utils'
 import Link from 'next/link'
@@ -61,7 +60,6 @@ export const Header = () => {
           ))}
           {/* 테마 토글 버튼 - 데스크톱 */}
           <div className="flex items-center gap-2 ml-2">
-            <ThemeToggle />
             <BrandThemeToggle />
           </div>
           <Button variant="primary" className={`${themeClasses.contactButton} ${themeClasses.contactButtonHover} transition-all duration-300`}>
@@ -116,7 +114,6 @@ export const Header = () => {
                   <div className="flex items-center justify-between">
                     <span className={`text-sm font-medium ${themeClasses.navText}`}>테마</span>
                     <div className="flex items-center gap-2">
-                      <ThemeToggle />
                       <BrandThemeToggle />
                     </div>
                   </div>

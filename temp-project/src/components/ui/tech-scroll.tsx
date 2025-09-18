@@ -1,6 +1,7 @@
 'use client'
 
 import { useEffect, useRef, useState } from 'react'
+import { useTheme } from '@/contexts/ThemeContext'
 
 interface TechScrollProps {
   technologies: string[]
@@ -9,6 +10,7 @@ interface TechScrollProps {
 }
 
 export const TechScroll = ({ technologies, speed = 1, className = '' }: TechScrollProps) => {
+  const { theme } = useTheme()
   const scrollRef = useRef<HTMLDivElement>(null)
   const [translateX, setTranslateX] = useState(0)
   const animationRef = useRef<number>()
@@ -63,7 +65,12 @@ export const TechScroll = ({ technologies, speed = 1, className = '' }: TechScro
            {technologies.map((tech, index) => (
              <span
                key={`first-${index}`}
-               className="text-sm md:text-lg lg:text-xl font-semibold text-slate-400"
+               className={`text-sm md:text-lg lg:text-xl font-semibold ${
+                 theme === 'light' ? 'text-gray-600' :
+                 theme === 'dark' ? 'text-slate-400' :
+                 theme === 'brand' ? 'text-custom-text-200' :
+                 'text-gray-600'
+               }`}
              >
                {tech}
              </span>
@@ -75,7 +82,12 @@ export const TechScroll = ({ technologies, speed = 1, className = '' }: TechScro
            {technologies.map((tech, index) => (
              <span
                key={`second-${index}`}
-               className="text-sm md:text-lg lg:text-xl font-semibold text-slate-300"
+               className={`text-sm md:text-lg lg:text-xl font-semibold ${
+                 theme === 'light' ? 'text-gray-500' :
+                 theme === 'dark' ? 'text-slate-300' :
+                 theme === 'brand' ? 'text-custom-text-300' :
+                 'text-gray-500'
+               }`}
              >
                {tech}
              </span>

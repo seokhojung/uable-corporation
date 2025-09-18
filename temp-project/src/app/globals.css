@@ -182,6 +182,29 @@
     transform: translateY(0);
   }
 
+  /* WebGL 히어로 섹션 애니메이션 */
+  .animate-hero-content {
+    opacity: 0;
+    transform: translateX(-50px);
+    transition: all 1.2s ease-out;
+  }
+
+  .animate-hero-content.in-view {
+    opacity: 1;
+    transform: translateX(0);
+  }
+
+  .animate-hero-visual {
+    opacity: 0;
+    transform: translateX(50px) scale(0.9);
+    transition: all 1.2s ease-out;
+  }
+
+  .animate-hero-visual.in-view {
+    opacity: 1;
+    transform: translateX(0) scale(1);
+  }
+
   .animate-process-section {
     opacity: 0;
     transform: translateY(50px);
@@ -291,5 +314,10 @@ select:-webkit-autofill:focus {
   
   .text-pretty {
     text-wrap: pretty;
+  }
+
+  /* 3D perspective for image stack */
+  .perspective-1000 {
+    perspective: 1000px;
   }
 }

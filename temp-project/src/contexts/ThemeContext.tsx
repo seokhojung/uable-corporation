@@ -48,10 +48,10 @@ interface ThemeProviderProps {
 /**
  * 테마 상태 관리 Provider
  */
-export const ThemeProvider: React.FC<ThemeProviderProps> = ({ 
-  children, 
-  defaultTheme = 'dark',
-  forcedTheme 
+export const ThemeProvider: React.FC<ThemeProviderProps> = ({
+  children,
+  defaultTheme = 'brand',
+  forcedTheme
 }) => {
   const [theme, setThemeState] = useState<Theme>(defaultTheme)
   const [mounted, setMounted] = useState(false)
@@ -86,20 +86,20 @@ export const ThemeProvider: React.FC<ThemeProviderProps> = ({
           document.documentElement.classList.toggle('dark', savedTheme === 'dark')
           document.documentElement.setAttribute('data-theme', savedTheme)
         } else {
-          console.log('📖 기본 다크 테마 적용')
-          setThemeState('dark')
-          applyCSSVariables('dark')
-          document.documentElement.classList.add('dark')
-          document.documentElement.setAttribute('data-theme', 'dark')
+          console.log('📖 기본 브랜드 테마 적용')
+          setThemeState('brand')
+          applyCSSVariables('brand')
+          document.documentElement.classList.remove('dark')
+          document.documentElement.setAttribute('data-theme', 'brand')
         }
       }
     } catch (error) {
       console.warn('Failed to load theme:', error)
-      setThemeState('dark')
-      applyCSSVariables('dark')
+      setThemeState('brand')
+      applyCSSVariables('brand')
       if (typeof document !== 'undefined') {
-        document.documentElement.classList.add('dark')
-        document.documentElement.setAttribute('data-theme', 'dark')
+        document.documentElement.classList.remove('dark')
+        document.documentElement.setAttribute('data-theme', 'brand')
       }
     }
     
@@ -219,7 +219,7 @@ export const useTheme = (): ThemeContextType => {
  */
 export const useClientTheme = () => {
   const { theme, mounted } = useTheme()
-  return mounted ? theme : 'dark' // SSR 시 기본값
+  return mounted ? theme : 'brand' // SSR 시 기본값
 }
 
 /**

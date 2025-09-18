@@ -4,6 +4,7 @@ import { getActiveWebGLBundles } from '@/data/webgl-gallery'
 import { Badge } from '@/components/primitives/Badge'
 import { Button } from '@/components/primitives/Button'
 import { useTheme } from '@/contexts/ThemeContext'
+import Image from 'next/image'
 
 interface WebGLGalleryProps {
   title?: string
@@ -67,10 +68,11 @@ export function WebGLGallery({
               {/* 썸네일 영역 */}
               <div className="relative aspect-video">
                 {bundle.thumbnail ? (
-                  <img
+                  <Image
                     src={bundle.thumbnail}
                     alt={bundle.title}
-                    className="w-full h-full object-cover"
+                    fill
+                    className="object-cover"
                   />
                 ) : (
                   <div className={`w-full h-full flex items-center justify-center ${
