@@ -1,6 +1,6 @@
-# CLAUDE.md (한글 번역)
+# CLAUDE.md
 
-이 파일은 Claude Code (claude.ai/code)가 이 저장소의 코드를 작업할 때 필요한 가이드라인을 제공합니다.
+This file provides guidance to Claude Code (claude.ai/code) when working with code in this repository.
 
 ## 프로젝트 개요
 
@@ -12,27 +12,31 @@
 - **기술 스택**: Three.js, React Three Fiber, AR.js, WebXR API
 - **상태**: ✅ 레거시 정리 완료 (2025년 9월)
 
-## 개발 명령어
+## Development Commands
+
+**Working Directory**: Always run commands from `temp-project/` directory
 
 ```bash
-# 개발
+# Core Development
 cd temp-project
-npm run dev              # 개발 서버 시작
-npm run build            # 프로덕션 빌드
-npm run start            # 프로덕션 서버 시작
-npm run lint             # ESLint 검증
+npm run dev              # Start development server
+npm run build            # Production build
+npm run start            # Production server
+npm run lint             # ESLint validation
 
-# Windows 전용 서버 관리
-npm run dev-safe         # 개발 시작 전 서버 상태 확인
-npm run start-server     # PowerShell 서버 시작
-npm run server           # PowerShell 서버 시작 (별칭)
-npm run server-bg        # 백그라운드에서 서버 시작
-npm run stop-server      # 실행 중인 서버 중지
-npm run check-server     # 서버 상태 확인
+# Windows-specific Server Management
+npm run dev-safe         # Check server status before dev start
+npm run start-server     # Start PowerShell server
+npm run server           # Start PowerShell server (alias)
+npm run server-bg        # Start server in background
+npm run stop-server      # Stop running server
+npm run check-server     # Check server status
 
-# SEO & 성능
-npm run postbuild        # 빌드 후 사이트맵 생성
+# SEO & Performance
+npm run postbuild        # Generate sitemap after build
 ```
+
+**Important**: This project uses Windows PowerShell scripts for server management. Always run development commands from the `temp-project` directory, not the root.
 
 ## 아키텍처 개요
 
@@ -279,18 +283,30 @@ interface PortfolioItem {
 - 모바일 우선 반응형 디자인
 - 지역 비즈니스 스키마 마크업
 
-## 테스트 전략
+## Testing & Validation
 
-- TypeScript 타입 검사를 통한 컴포넌트 테스트
-- UI 컴포넌트의 시각적 회귀 테스트
-- 변경 후 SEO 구조화된 데이터 검증
-- 3D/WebGL 콘텐츠의 성능 테스트
-- WebGL 호환성을 위한 크로스 브라우저 테스트
+**No formal test framework** - Use these validation methods:
+- **TypeScript**: `npx tsc --noEmit` for type checking
+- **ESLint**: `npm run lint` for code quality
+- **Manual Testing**: UI components across all three theme states
+- **SEO Validation**: Structured data after changes
+- **Performance**: WebGL content performance testing
+- **Browser Compatibility**: Cross-browser WebGL testing
+
+**Important**: Always run `npm run lint` before committing changes.
 
 ## 추가 컨텍스트
 
-### 전문 에이전트
-이 저장소는 다양한 개발 역할(개발자, 아키텍트, 분석가 등)을 위한 `.cursor/rules/` 디렉토리를 통한 전문 AI 에이전트를 포함합니다. 프로젝트의 특정 측면을 작업할 때 참조할 수 있습니다.
+### Specialized AI Agents
+This repository includes specialized AI agents for different development roles through the `.cursor/rules/` directory:
+- **dev.mdc**: Full Stack Developer agent for implementation
+- **architect.mdc**: System Architecture specialist
+- **analyst.mdc**: Business Analysis specialist
+- **pm.mdc**: Project Management specialist
+- **qa.mdc**: Quality Assurance specialist
+- **ux-expert.mdc**: UX/UI Design specialist
+
+Use `@{agent-name}` to activate specific agent personas when working on specialized aspects of the project.
 
 ### 문서 구조
 - **`docs/architecture.md`**: 전체 시스템 아키텍처
@@ -313,8 +329,10 @@ interface PortfolioItem {
 - **문서 파일(*.md)이나 README 파일을 적극적으로 생성하지 마세요** (명시적으로 요청된 경우 제외)
 - 사용자가 명시적으로 요청한 경우에만 문서 파일을 생성하세요
 
-### 개발 접근 방식
-- `docs/` 디렉토리의 문서화된 구현 패턴을 따르세요
-- 새로운 접근 방식을 제안하기 전에 성공적인 구현 예제를 참조하세요
-- 복잡한 작업을 추적하고 계획하기 위해 TodoWrite 도구를 자주 사용하세요
-- 테마 작업 시 항상 기존의 성공적인 구현을 참조하세요
+### Development Approach
+- Follow documented implementation patterns in `docs/` directory
+- Reference successful implementation examples before proposing new approaches
+- Use TodoWrite tool frequently to track and plan complex tasks
+- For theme work, always reference existing successful implementations
+- **Critical**: Component changes must support all three theme states (light/dark/brand)
+- **File Location**: Always work in `temp-project/src/` - this is the active codebase

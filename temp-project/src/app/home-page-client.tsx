@@ -1,10 +1,9 @@
 'use client'
 
-import { ArrowRight, Play, Pause, Star, Users, Award, CheckCircle, Volume2, VolumeX } from 'lucide-react'
+import { Play, Pause, Star, Users, Award, CheckCircle, Volume2, VolumeX } from 'lucide-react'
 import { Button } from '@/components/primitives/Button'
 import { Badge } from '@/components/primitives/Badge'
 import Link from 'next/link'
-import Image from 'next/image'
 import { useEffect, useRef, useState } from 'react'
 import { portfolioProjects } from '@/data/portfolio'
 import { CountUp } from '@/components/ui/count-up'
@@ -126,12 +125,12 @@ export function HomePageClient() {
       theme === 'brand' ? 'min-h-screen bg-custom-bg-100' :
       'min-h-screen bg-white'
     }>
-      {/* Hero Section - VIVAR 스타일 참고 */}
+      {/* Hero Section */}
       <section className={`relative min-h-screen md:h-[90vh] lg:h-[85vh] flex items-center justify-center overflow-hidden md:pt-0 ${
         theme === 'light' ? 'bg-gradient-to-br from-gray-50 via-white to-gray-50' :
         theme === 'dark' ? 'bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900' :
-        theme === 'brand' ? 'bg-gradient-to-br from-custom-bg-100 via-custom-bg-200 to-custom-bg-100' :
-        'bg-gradient-to-br from-gray-50 via-white to-gray-50'
+        theme === 'brand' ? 'bg-gradient-to-r from-custom-bg-100 via-custom-bg-100 to-custom-bg-200' :
+        'bg-gray-50'
       }`}>
 
         <div className="relative z-10 w-full max-w-7xl mx-auto px-4 lg:px-8 xl:px-12">
@@ -161,7 +160,7 @@ export function HomePageClient() {
                 <span className={`text-transparent bg-clip-text bg-gradient-to-r ${
                   theme === 'light' ? 'from-green-600 to-teal-600' :
                   theme === 'dark' ? 'from-slate-300 to-slate-400' :
-                  theme === 'brand' ? 'from-primary-100 to-accent-200' :
+                  theme === 'brand' ? 'from-primary-100 to-accent-100' :
                   'from-green-600 to-teal-600'
                 }`}>
                   제품은 모두 다릅니다.
@@ -260,7 +259,7 @@ export function HomePageClient() {
               </div>
             </div>
 
-            {/* 시각적 요소 - VIVAR 스타일 */}
+            {/* 시각적 요소 */}
             <div ref={heroVisualRef} className="lg:col-span-5 relative animate-hero-visual py-8 lg:py-0 min-h-[200px] lg:min-h-auto">
               {/* 데스크톱에서만 ServiceScroll 표시 (CSS로 제어) */}
               <div className="hidden lg:block h-full">
@@ -285,8 +284,8 @@ export function HomePageClient() {
       <section className={`py-32 ${
         theme === 'light' ? 'bg-gradient-to-br from-gray-50 via-white to-gray-50' :
         theme === 'dark' ? 'bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900' :
-        theme === 'brand' ? 'bg-gradient-to-br from-custom-bg-200 via-custom-bg-100 to-custom-bg-200' :
-        'bg-gradient-to-br from-gray-50 via-white to-gray-50'
+        theme === 'brand' ? 'bg-gradient-to-r from-custom-bg-100 via-custom-bg-100 to-custom-bg-200' :
+        'bg-gray-50'
       }`}>
         <div className="w-full max-w-7xl mx-auto px-4 lg:px-8 xl:px-12">
           <div ref={serviceHeaderRef} className="max-w-4xl mx-auto text-center mb-16 animate-service-header">
@@ -308,7 +307,7 @@ export function HomePageClient() {
               <br /> <span className={`text-transparent bg-clip-text bg-gradient-to-r ${
                 theme === 'light' ? 'from-green-600 to-teal-600' :
                 theme === 'dark' ? 'from-slate-300 to-slate-400' :
-                theme === 'brand' ? 'from-primary-100 to-accent-200' :
+                theme === 'brand' ? 'from-primary-100 to-accent-100' :
                 'from-green-600 to-teal-600'
               }`}>
                 3D 제품 컨피규레이터
@@ -477,8 +476,8 @@ export function HomePageClient() {
       <section className={`py-32 ${
         theme === 'light' ? 'bg-white' :
         theme === 'dark' ? 'bg-slate-900' :
-        theme === 'brand' ? 'bg-custom-bg-100' :
-        'bg-white'
+        theme === 'brand' ? 'bg-gradient-to-r from-custom-bg-100 via-custom-bg-100 to-custom-bg-200' :
+        'bg-gray-50'
       }`}>
         <div className="w-full max-w-7xl mx-auto px-4 lg:px-8 xl:px-12">
           <div ref={productsSectionRef} className="animate-service-cards">
@@ -492,13 +491,13 @@ export function HomePageClient() {
       </section>
 
       {/* 포트폴리오 섹션 */}
-      <section ref={portfolioSectionRef} className={`py-32 animate-portfolio-section ${
+      <section className={`py-32 ${
         theme === 'light' ? 'bg-gradient-to-br from-gray-50 via-white to-gray-50' :
         theme === 'dark' ? 'bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900' :
-        theme === 'brand' ? 'bg-gradient-to-br from-custom-bg-200 via-custom-bg-100 to-custom-bg-200' :
-        'bg-gradient-to-br from-gray-50 via-white to-gray-50'
+        theme === 'brand' ? 'bg-gradient-to-r from-custom-bg-100 via-custom-bg-100 to-custom-bg-200' :
+        'bg-gray-50'
       }`}>
-        <div className="w-full max-w-7xl mx-auto px-4 lg:px-8 xl:px-12">
+        <div ref={portfolioSectionRef} className="w-full max-w-7xl mx-auto px-4 lg:px-8 xl:px-12 animate-portfolio-section">
           <div className="max-w-4xl mx-auto text-center mb-16">
             <Badge variant="outline" className={`mb-6 ${
               theme === 'light' ? 'text-emerald-600 border-emerald-300' :
@@ -556,13 +555,13 @@ export function HomePageClient() {
       </section>
 
       {/* WebGL 3D 체험 섹션 */}
-      <section ref={webglSectionRef} className={`py-32 animate-webgl-section ${
+      <section className={`py-32 ${
         theme === 'light' ? 'bg-white' :
         theme === 'dark' ? 'bg-slate-800' :
-        theme === 'brand' ? 'bg-custom-bg-100' :
-        'bg-white'
+        theme === 'brand' ? 'bg-gradient-to-r from-custom-bg-100 via-custom-bg-100 to-custom-bg-200' :
+        'bg-gray-50'
       }`}>
-        <div className="w-full max-w-7xl mx-auto px-4 lg:px-8 xl:px-12">
+        <div ref={webglSectionRef} className="w-full max-w-7xl mx-auto px-4 lg:px-8 xl:px-12 animate-webgl-section">
           <div className="max-w-4xl mx-auto text-center mb-16">
             <Badge variant="outline" className={`mb-6 ${
               theme === 'light' ? 'text-emerald-600 border-emerald-300' :
@@ -612,13 +611,13 @@ export function HomePageClient() {
       </section>
 
       {/* 도입 절차 섹션 */}
-      <section ref={processSectionRef} className={`py-32 animate-process-section ${
+      <section className={`py-32 ${
         theme === 'light' ? 'bg-gradient-to-br from-gray-50 via-white to-gray-50' :
         theme === 'dark' ? 'bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900' :
-        theme === 'brand' ? 'bg-gradient-to-br from-custom-bg-200 via-custom-bg-100 to-custom-bg-200' :
-        'bg-gradient-to-br from-gray-50 via-white to-gray-50'
+        theme === 'brand' ? 'bg-gradient-to-r from-custom-bg-100 via-custom-bg-100 to-custom-bg-200' :
+        'bg-gray-50'
       }`}>
-        <div className="w-full max-w-7xl mx-auto px-4 lg:px-8 xl:px-12">
+        <div ref={processSectionRef} className="w-full max-w-7xl mx-auto px-4 lg:px-8 xl:px-12 animate-process-section">
           <div className="max-w-4xl mx-auto text-center mb-16">
             <Badge variant="primary" className={`mb-6 ${
               theme === 'light' ? 'bg-gradient-to-r from-green-600 to-teal-600 text-white border-green-500' :
@@ -774,13 +773,13 @@ export function HomePageClient() {
       </section>
 
       {/* 도입 효과 섹션 */}
-      <section ref={effectsSectionRef} className={`py-32 animate-effects-section ${
+      <section className={`py-32 ${
         theme === 'light' ? 'bg-white' :
         theme === 'dark' ? 'bg-slate-800' :
-        theme === 'brand' ? 'bg-custom-bg-100' :
-        'bg-white'
+        theme === 'brand' ? 'bg-gradient-to-r from-custom-bg-100 via-custom-bg-100 to-custom-bg-200' :
+        'bg-gray-50'
       }`}>
-        <div className="w-full max-w-7xl mx-auto px-4 lg:px-8 xl:px-12">
+        <div ref={effectsSectionRef} className="w-full max-w-7xl mx-auto px-4 lg:px-8 xl:px-12 animate-effects-section">
           {/* 헤드라인 섹션 */}
           <div className="max-w-4xl mx-auto text-center mb-16">
             <Badge variant="primary" className={`mb-6 ${
@@ -902,7 +901,7 @@ export function HomePageClient() {
       <section className={`py-32 ${
         theme === 'light' ? 'bg-gray-50' :
         theme === 'dark' ? 'bg-gradient-to-r from-slate-700 via-slate-800 to-slate-900' :
-        theme === 'brand' ? 'bg-gradient-to-r from-custom-bg-200 via-custom-bg-100 to-custom-bg-200' :
+        theme === 'brand' ? 'bg-gradient-to-r from-custom-bg-100 via-custom-bg-100 to-custom-bg-200' :
         'bg-gray-50'
       }`}>
         <div className="w-full max-w-7xl mx-auto px-4 lg:px-8 xl:px-12">

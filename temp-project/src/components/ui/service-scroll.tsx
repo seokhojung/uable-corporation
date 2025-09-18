@@ -113,7 +113,7 @@ export const ServiceScroll = ({ className = '', speed = 1 }: ServiceScrollProps)
     <div className={`overflow-hidden rounded-3xl p-8 shadow-xl ${
       theme === 'light' ? 'bg-gradient-to-br from-gray-100 to-gray-200 border border-gray-300' :
       theme === 'dark' ? 'bg-gradient-to-br from-slate-900 to-slate-800 border border-slate-700' :
-      theme === 'brand' ? 'bg-gradient-to-br from-custom-bg-200 to-custom-bg-300 border border-primary-100/20' :
+      theme === 'brand' ? 'bg-gradient-to-br from-custom-bg-000 to-custom-bg-000 border border-gray-800' :
       'bg-gradient-to-br from-slate-900 to-slate-800 border border-slate-700'
     } ${className}`}>
       <div 
@@ -124,14 +124,14 @@ export const ServiceScroll = ({ className = '', speed = 1 }: ServiceScrollProps)
         }}
       >
         {/* 첫 번째 세트 */}
-        <div className="space-y-8">
+        <div className="">
           {portfolioProjects.map((project, index) => (
             <Link key={`first-${project.id}`} href={`/portfolio/${project.id}`}>
-              <div className={`rounded-2xl p-6 shadow-sm hover:shadow-lg transition-all duration-300 hover:scale-105 cursor-pointer group ${
-                theme === 'light' ? 'bg-white border border-gray-200' :
-                theme === 'dark' ? 'bg-slate-800 border border-slate-700' :
-                theme === 'brand' ? 'bg-custom-bg-200 border border-primary-100/20' :
-                'bg-slate-800 border border-slate-700'
+              <div className={`rounded-2xl p-6 shadow-sm hover:shadow-lg transition-all duration-300 hover:scale-105 cursor-pointer group backdrop-blur-md ${
+                theme === 'light' ? 'bg-white/80 border border-gray-200/50' :
+                theme === 'dark' ? 'bg-slate-800/80 border border-slate-700/50' :
+                theme === 'brand' ? 'bg-custom-bg-000/70 border border-gray-600/30 shadow-lg shadow-primary-100/5' :
+                'bg-slate-800/80 border border-slate-700/50'
               }`}>
                 <div className="flex items-start space-x-4 mb-4">
                   <div className="flex-1">
@@ -221,14 +221,14 @@ export const ServiceScroll = ({ className = '', speed = 1 }: ServiceScrollProps)
         </div>
         
         {/* 두 번째 세트 (무한 스크롤을 위해 복제) */}
-        <div className="space-y-8">
+        <div className="">
           {portfolioProjects.map((project, index) => (
             <Link key={`second-${project.id}`} href={`/portfolio/${project.id}`}>
-              <div className={`rounded-2xl p-6 shadow-sm hover:shadow-lg transition-all duration-300 hover:scale-105 cursor-pointer group ${
-                theme === 'light' ? 'bg-white border border-gray-200' :
-                theme === 'dark' ? 'bg-slate-800 border border-slate-700' :
-                theme === 'brand' ? 'bg-custom-bg-200 border border-primary-100/20' :
-                'bg-slate-800 border border-slate-700'
+              <div className={`rounded-2xl p-6 shadow-sm hover:shadow-lg transition-all duration-300 hover:scale-105 cursor-pointer group backdrop-blur-md ${
+                theme === 'light' ? 'bg-white/80 border border-gray-200/50' :
+                theme === 'dark' ? 'bg-slate-800/80 border border-slate-700/50' :
+                theme === 'brand' ? 'bg-custom-bg-000/70 border border-gray-600/30 shadow-lg shadow-primary-100/5' :
+                'bg-slate-800/80 border border-slate-700/50'
               }`}>
                 <div className="flex items-start space-x-4 mb-4">
                   <div className="flex-1">
@@ -318,14 +318,14 @@ export const ServiceScroll = ({ className = '', speed = 1 }: ServiceScrollProps)
         </div>
         
         {/* 세 번째 세트 (완전한 리셋 예방을 위해) */}
-        <div className="space-y-8">
-          {portfolioProjects.map((project, index) => (
+        <div className="">
+          {portfolioProjects.map((project) => (
             <Link key={`third-${project.id}`} href={`/portfolio/${project.id}`}>
-              <div className={`rounded-2xl p-6 shadow-sm hover:shadow-lg transition-all duration-300 hover:scale-105 cursor-pointer group ${
-                theme === 'light' ? 'bg-white border border-gray-200' :
-                theme === 'dark' ? 'bg-slate-800 border border-slate-700' :
-                theme === 'brand' ? 'bg-custom-bg-200 border border-primary-100/20' :
-                'bg-slate-800 border border-slate-700'
+              <div className={`rounded-2xl p-6 shadow-sm hover:shadow-lg transition-all duration-300 hover:scale-105 cursor-pointer group backdrop-blur-md ${
+                theme === 'light' ? 'bg-white/80 border border-gray-200/50' :
+                theme === 'dark' ? 'bg-slate-800/80 border border-slate-700/50' :
+                theme === 'brand' ? 'bg-custom-bg-000/70 border border-gray-600/30 shadow-lg shadow-primary-100/5' :
+                'bg-slate-800/80 border border-slate-700/50'
               }`}>
                 <div className="flex items-start space-x-4 mb-4">
                   <div className="flex-1">

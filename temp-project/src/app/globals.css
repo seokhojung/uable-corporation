@@ -171,6 +171,17 @@
     transform: translateY(0);
   }
 
+  .animate-webgl-section {
+    opacity: 0;
+    transform: translateY(50px);
+    transition: all 1s ease-out;
+  }
+
+  .animate-webgl-section.in-view {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
   .animate-process-section {
     opacity: 0;
     transform: translateY(50px);
