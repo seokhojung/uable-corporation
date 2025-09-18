@@ -145,7 +145,10 @@ export const ServiceScroll = ({ className = '', speed = 1 }: ServiceScrollProps)
                         {getCategoryLabel(project.category)}
                       </Badge>
                       {project.featured && (
-                        <Badge variant="primary" className="text-xs">
+                        <Badge variant="primary" className={`text-xs ${
+                          theme === 'light' ? 'bg-teal-600 text-white hover:bg-teal-700' :
+                          theme === 'brand' ? 'bg-primary-100 text-custom-text-100 hover:bg-accent-200' : ''
+                        }`}>
                           추천
                         </Badge>
                       )}
@@ -205,12 +208,18 @@ export const ServiceScroll = ({ className = '', speed = 1 }: ServiceScrollProps)
                 {/* 기술 스택 */}
                 <div className="mt-3 flex flex-wrap gap-1">
                   {project.technologies.slice(0, 3).map((tech) => (
-                    <Badge key={tech} variant="secondary" className="text-xs">
+                    <Badge key={tech} variant="secondary" className={`text-xs ${
+                      theme === 'light' ? 'bg-teal-100 text-teal-800 hover:bg-teal-200' :
+                      theme === 'brand' ? 'bg-primary-100/20 text-custom-text-100 hover:bg-primary-100/30' : ''
+                    }`}>
                       {tech}
                     </Badge>
                   ))}
                   {project.technologies.length > 3 && (
-                    <Badge variant="secondary" className="text-xs">
+                    <Badge variant="secondary" className={`text-xs ${
+                      theme === 'light' ? 'bg-teal-100 text-teal-800 hover:bg-teal-200' :
+                      theme === 'brand' ? 'bg-primary-100/20 text-custom-text-100 hover:bg-primary-100/30' : ''
+                    }`}>
                       +{project.technologies.length - 3}
                     </Badge>
                   )}
@@ -242,7 +251,10 @@ export const ServiceScroll = ({ className = '', speed = 1 }: ServiceScrollProps)
                         {getCategoryLabel(project.category)}
                       </Badge>
                       {project.featured && (
-                        <Badge variant="primary" className="text-xs">
+                        <Badge variant="primary" className={`text-xs ${
+                          theme === 'light' ? 'bg-teal-600 text-white hover:bg-teal-700' :
+                          theme === 'brand' ? 'bg-primary-100 text-custom-text-100 hover:bg-accent-200' : ''
+                        }`}>
                           추천
                         </Badge>
                       )}
@@ -302,12 +314,18 @@ export const ServiceScroll = ({ className = '', speed = 1 }: ServiceScrollProps)
                 {/* 기술 스택 */}
                 <div className="mt-3 flex flex-wrap gap-1">
                   {project.technologies.slice(0, 3).map((tech) => (
-                    <Badge key={tech} variant="secondary" className="text-xs">
+                    <Badge key={tech} variant="secondary" className={`text-xs ${
+                      theme === 'light' ? 'bg-teal-100 text-teal-800 hover:bg-teal-200' :
+                      theme === 'brand' ? 'bg-primary-100/20 text-custom-text-100 hover:bg-primary-100/30' : ''
+                    }`}>
                       {tech}
                     </Badge>
                   ))}
                   {project.technologies.length > 3 && (
-                    <Badge variant="secondary" className="text-xs">
+                    <Badge variant="secondary" className={`text-xs ${
+                      theme === 'light' ? 'bg-teal-100 text-teal-800 hover:bg-teal-200' :
+                      theme === 'brand' ? 'bg-primary-100/20 text-custom-text-100 hover:bg-primary-100/30' : ''
+                    }`}>
                       +{project.technologies.length - 3}
                     </Badge>
                   )}
@@ -339,7 +357,10 @@ export const ServiceScroll = ({ className = '', speed = 1 }: ServiceScrollProps)
                         {getCategoryLabel(project.category)}
                       </Badge>
                       {project.featured && (
-                        <Badge variant="primary" className="text-xs">
+                        <Badge variant="primary" className={`text-xs ${
+                          theme === 'light' ? 'bg-teal-600 text-white hover:bg-teal-700' :
+                          theme === 'brand' ? 'bg-primary-100 text-custom-text-100 hover:bg-accent-200' : ''
+                        }`}>
                           추천
                         </Badge>
                       )}
@@ -398,12 +419,18 @@ export const ServiceScroll = ({ className = '', speed = 1 }: ServiceScrollProps)
                 {/* 기술 스택 */}
                 <div className="mt-3 flex flex-wrap gap-1">
                   {project.technologies.slice(0, 3).map((tech) => (
-                    <Badge key={tech} variant="secondary" className="text-xs">
+                    <Badge key={tech} variant="secondary" className={`text-xs ${
+                      theme === 'light' ? 'bg-teal-100 text-teal-800 hover:bg-teal-200' :
+                      theme === 'brand' ? 'bg-primary-100/20 text-custom-text-100 hover:bg-primary-100/30' : ''
+                    }`}>
                       {tech}
                     </Badge>
                   ))}
                   {project.technologies.length > 3 && (
-                    <Badge variant="secondary" className="text-xs">
+                    <Badge variant="secondary" className={`text-xs ${
+                      theme === 'light' ? 'bg-teal-100 text-teal-800 hover:bg-teal-200' :
+                      theme === 'brand' ? 'bg-primary-100/20 text-custom-text-100 hover:bg-primary-100/30' : ''
+                    }`}>
                       +{project.technologies.length - 3}
                     </Badge>
                   )}
