@@ -6,6 +6,7 @@ import { Footer } from '@/components/layout/footer'
 import SkipLink from '@/components/ui/skip-link'
 import { MigrationProvider } from '@/contexts/MigrationContext'
 import { ThemeProvider } from '@/contexts/ThemeContext'
+import { ClarityAnalytics } from '@/components/analytics'
 
 const inter = Inter({ subsets: ['latin'] })
 
@@ -269,10 +270,11 @@ export default function RootLayout({
           }}
         />
       </head>
-      <body 
+      <body
         className={`${inter.className} bg-white dark:bg-slate-900 text-slate-900 dark:text-slate-100 transition-colors duration-200`}
         suppressHydrationWarning
       >
+        <ClarityAnalytics projectId={process.env.NEXT_PUBLIC_CLARITY_PROJECT_ID || ''} />
         <MigrationProvider>
           <ThemeProvider>
             <SkipLink />
